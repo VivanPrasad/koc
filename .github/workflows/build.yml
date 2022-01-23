@@ -1,0 +1,28 @@
+name: GoDot Build
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  Godot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [windows_64, windows64, win64, windows10, win10]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Build
+        id: build
+        uses: josephbmanley/build-godot-action@v1.4.1
+        with:
+          name: Kingdom of Cards ALPHA
+          preset: ${{ matrix.platform }}
+          debugMode: "true"
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Client - ${{ matrix.platform }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
