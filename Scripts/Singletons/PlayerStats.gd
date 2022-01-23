@@ -10,7 +10,7 @@ var house_id : int
 var gold : int
 
 var life : int
-var status = "Good"
+var status : String
 var can_eat = true
 
 var slot_selector
@@ -19,6 +19,8 @@ var inventory = preload("res://Scripts/Systems/Inventory.tres")
 
 var selected : String = "none"
 func new_stats():
+	life = 1
+	status = "Good"
 	randomize()
 	luck = randi() % 100 + 1 #1-100
 	print("luck: " + str(luck))
