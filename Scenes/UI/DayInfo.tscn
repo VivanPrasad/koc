@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/UI/Assets/gold_icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Systems/TimeSystem.gd" type="Script" id=2]
+[ext_resource path="res://Assets/UI/Fonts/ShopUI-Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/UI/Status.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/UI/Fonts/royal-intonation.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
+
+[node name="DayInfo" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Status" parent="." instance=ExtResource( 5 )]
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_left = 0.6375
+anchor_top = 0.0837778
+anchor_right = 0.8475
+anchor_bottom = 0.207667
+margin_left = -3.8147e-06
+margin_top = -0.0800002
+margin_right = 28.8
+margin_bottom = 9.62002
+rect_scale = Vector2( 0.7, 0.7 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Box" type="VBoxContainer" parent="Margin"]
+margin_right = 96.0
+margin_bottom = 32.0
+
+[node name="Day" type="Label" parent="Margin/Box"]
+margin_right = 96.0
+margin_bottom = 12.0
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Day 1"
+align = 2
+
+[node name="Cycle" type="Label" parent="Margin/Box"]
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 28.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Morning"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Margin/Box"]
+visible = false
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "Time"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gold" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Gold"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = -23.0
+margin_right = -8.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Gold/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 18.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Amount" type="Label" parent="Gold/HBoxContainer"]
+margin_left = 20.0
+margin_right = 28.0
+margin_bottom = 18.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Class" type="Label" parent="."]
+margin_left = 16.5
+margin_top = 157.0
+margin_right = 56.5
+margin_bottom = 169.0
+custom_fonts/font = ExtResource( 3 )
+text = "Class"
+__meta__ = {
+"_edit_use_anchors_": false
+}

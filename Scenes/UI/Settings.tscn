@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/UI/Fonts/MenuUI-Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Settings.gd" type="Script" id=2]
+[ext_resource path="res://Assets/UI/Assets/grabber.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Themes/theme.tres" type="Theme" id=4]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+margin_right = 288.0
+margin_bottom = 156.0
+
+[node name="Tabs" type="TabContainer" parent="Margin/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 156.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Audio" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 23.0
+margin_right = -5.0
+margin_bottom = -5.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/Tabs/Audio"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -131.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer"]
+margin_right = 147.0
+margin_bottom = 40.0
+size_flags_vertical = 3
+
+[node name="Master" type="Label" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer3"]
+margin_top = 12.0
+margin_right = 71.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Master"
+
+[node name="MSlider" type="HSlider" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer3"]
+margin_left = 75.0
+margin_top = 16.0
+margin_right = 147.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+min_value = -72.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer"]
+margin_top = 44.0
+margin_right = 147.0
+margin_bottom = 84.0
+size_flags_vertical = 3
+
+[node name="Music" type="Label" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer"]
+margin_top = 12.0
+margin_right = 71.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Music"
+
+[node name="MuSlider" type="HSlider" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer"]
+margin_left = 75.0
+margin_top = 16.0
+margin_right = 147.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+min_value = -72.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer"]
+margin_top = 88.0
+margin_right = 147.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+
+[node name="SFX" type="Label" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer2"]
+margin_top = 12.0
+margin_right = 71.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "SFX"
+autowrap = true
+
+[node name="SSlider2" type="HSlider" parent="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer2"]
+margin_left = 75.0
+margin_top = 16.0
+margin_right = 147.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme = ExtResource( 4 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+min_value = -72.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 23.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="Display" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 23.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/Tabs/Display"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution" type="OptionButton" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
+margin_right = 92.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Resolution"
+
+[node name="Fullscreen" type="CheckButton" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
+margin_top = 29.0
+margin_right = 113.0
+margin_bottom = 54.0
+size_flags_horizontal = 0
+text = "Fullscreen"
+flat = true
+
+[node name="Debug" type="CheckBox" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
+margin_top = 58.0
+margin_right = 278.0
+margin_bottom = 83.0
+text = "Debug Mode"
+flat = true
+
+[node name="Back" type="Button" parent="Margin/VBoxContainer/Tabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 23.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[connection signal="tab_changed" from="Margin/VBoxContainer/Tabs" to="." method="_on_TabContainer_tab_changed"]
+[connection signal="value_changed" from="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer3/MSlider" to="." method="_on_MSlider_value_changed"]
+[connection signal="value_changed" from="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer/MuSlider" to="." method="_on_MuSlider_value_changed"]
+[connection signal="value_changed" from="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer2/SSlider2" to="." method="_on_SSlider_value_changed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/VBoxContainer/Debug" to="." method="_on_Debug_pressed"]

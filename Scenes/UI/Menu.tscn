@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/UI/Fonts/royal-intonation.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/UI/Fonts/ShopTitleUI-Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/UI/Assets/koc_bg.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/UI/Fonts/SettingUI-Font.tres" type="DynamicFont" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 320, 180 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 320, 180 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 320, 180 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 4.0
+} ]
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG2" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+frame = 2
+playing = true
+centered = false
+
+[node name="BG" type="ColorRect" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+color = Color( 1, 1, 1, 0.956863 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 10.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+margin_right = 288.0
+margin_bottom = 154.0
+
+[node name="Title" type="Label" parent="Margin/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 23.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Kingdom of Cards"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBoxContainer"]
+margin_top = 27.0
+margin_right = 288.0
+margin_bottom = 154.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/HBoxContainer"]
+margin_top = 35.0
+margin_right = 67.0
+margin_bottom = 127.0
+size_flags_vertical = 8
+custom_constants/separation = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 67.0
+size_flags_vertical = 3
+
+[node name="Play" type="Button" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 5.0
+margin_right = 33.0
+margin_bottom = 23.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+shortcut_in_tooltip = false
+text = "Play"
+flat = true
+align = 0
+
+[node name="Tutorial" type="Button" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 56.0
+margin_bottom = 46.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+disabled = true
+shortcut_in_tooltip = false
+text = "Tutorial"
+flat = true
+align = 0
+
+[node name="Settings" type="Button" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 62.0
+margin_bottom = 69.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+shortcut_in_tooltip = false
+text = "Settings"
+flat = true
+align = 0
+
+[node name="Collection" type="Button" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 67.0
+margin_bottom = 92.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0.666667, 0.666667, 0.666667, 1 )
+disabled = true
+text = "Collection"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin/VBoxContainer/HBoxContainer"]
+margin_left = 71.0
+margin_right = 288.0
+margin_bottom = 127.0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+
+[node name="Version" type="Label" parent="Margin/VBoxContainer/HBoxContainer/MarginContainer"]
+margin_left = 169.0
+margin_top = 119.0
+margin_right = 217.0
+margin_bottom = 127.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+text = "Alpha 1.9.3"
+align = 2
+uppercase = true
+
+[connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_Play_mouse_exited"]
+[connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Tutorial" to="." method="_on_Tutorial_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Tutorial" to="." method="_on_Tutorial_mouse_exited"]
+[connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_mouse_exited"]
+[connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_mouse_exited"]
+[connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_pressed"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/UI/Fonts/royal-intonation.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/DialogueBox.gd" type="Script" id=2]
+[ext_resource path="res://Assets/UI/Assets/indicator.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Themes/theme.tres" type="Theme" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0
+theme = ExtResource( 4 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="ColorRect" parent="."]
+margin_left = 16.0
+margin_top = 90.0
+margin_right = 304.0
+margin_bottom = 170.0
+color = Color( 0.329412, 0.282353, 0.215686, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = 94.0
+margin_right = 300.0
+margin_bottom = 166.0
+color = Color( 0.137255, 0.117647, 0.101961, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 98.0
+margin_right = 296.0
+margin_bottom = 162.0
+theme = ExtResource( 4 )
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.980392, 0.807843, 0.576471, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="AnimatedSprite" parent="."]
+modulate = Color( 0.662745, 0.556863, 0.415686, 1 )
+position = Vector2( 280, 146 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+centered = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
