@@ -3,17 +3,16 @@ extends CanvasLayer
 signal quit_to_menu
 onready var settings = load("res://Scenes/UI/Settings.tscn")
 
-onready var back = $Container/Panel/VBox/Continue
-onready var collection = $Container/Panel/VBox/Collection
-onready var settings_button = $Container/Panel/VBox/Settings
-onready var quit = $Container/Panel/VBox/Quit
+onready var back = $Panel/VBox/Continue
+onready var collection = $Panel/VBox/Collection
+onready var settings_button = $Panel/VBox/Settings
+onready var quit = $Panel/VBox/Quit
 
 func _ready():
 	back.focus_mode = 0
 	collection.focus_mode = 0
 	settings_button.focus_mode = 0
 	quit.focus_mode = 0
-	#get_tree().paused = true
 
 func _on_Continue_pressed():
 	PlayerStats.can_move = true
