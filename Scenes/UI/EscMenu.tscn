@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/UI/Themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/UI/Assets/shopslot-bg.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/EscMenu.gd" type="Script" id=3]
 
 [node name="EscMenu" type="CanvasLayer"]
@@ -10,7 +11,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Container" type="PanelContainer" parent="."]
+[node name="Panel" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -19,71 +20,77 @@ margin_left = -64.0
 margin_top = -64.0
 margin_right = 64.0
 margin_bottom = 64.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="Container"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 121.0
-margin_bottom = 121.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBox" type="VBoxContainer" parent="Container/Panel"]
-margin_right = 114.0
-margin_bottom = 114.0
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -57.0
+margin_top = -57.0
+margin_right = 57.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue" type="Button" parent="Container/Panel/VBox"]
+[node name="Continue" type="Button" parent="Panel/VBox"]
 margin_right = 114.0
 margin_bottom = 25.0
 size_flags_vertical = 3
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0.674507, 0.621384, 0.824219, 1 )
+custom_colors/font_color = Color( 0.823529, 0.619608, 0.729412, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = "Continue"
 flat = true
 
-[node name="Collection" type="Button" parent="Container/Panel/VBox"]
+[node name="Collection" type="Button" parent="Panel/VBox"]
 margin_top = 29.0
 margin_right = 114.0
 margin_bottom = 55.0
 size_flags_vertical = 3
-custom_colors/font_color = Color( 0.533333, 0.490196, 0.654902, 1 )
+custom_colors/font_color = Color( 0.654902, 0.490196, 0.615686, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+disabled = true
 text = "Collection"
 flat = true
 
-[node name="Settings" type="Button" parent="Container/Panel/VBox"]
+[node name="Settings" type="Button" parent="Panel/VBox"]
 margin_top = 59.0
 margin_right = 114.0
 margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_colors/font_color = Color( 0.533333, 0.490196, 0.654902, 1 )
+custom_colors/font_color = Color( 0.654902, 0.490196, 0.607843, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = "Settings"
 flat = true
 
-[node name="Quit" type="Button" parent="Container/Panel/VBox"]
+[node name="Quit" type="Button" parent="Panel/VBox"]
 margin_top = 88.0
 margin_right = 114.0
-margin_bottom = 109.0
+margin_bottom = 104.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-custom_colors/font_color = Color( 0.235294, 0.192157, 0.360784, 1 )
+custom_colors/font_color = Color( 0.545098, 0.396078, 0.498039, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 text = "Save and Quit"
 flat = true
 
-[connection signal="pressed" from="Container/Panel/VBox/Continue" to="." method="_on_Continue_pressed"]
-[connection signal="pressed" from="Container/Panel/VBox/Collection" to="." method="_on_Collection_pressed"]
-[connection signal="pressed" from="Container/Panel/VBox/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="Container/Panel/VBox/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Panel/VBox/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Panel/VBox/Collection" to="." method="_on_Collection_pressed"]
+[connection signal="pressed" from="Panel/VBox/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Panel/VBox/Quit" to="." method="_on_Quit_pressed"]
