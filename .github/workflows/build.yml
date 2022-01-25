@@ -18,7 +18,7 @@ jobs:
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
-          name: Kingdom of Cards ALPHA
+          name: KoC_build${{ steps.buildnumber.outputs.build_number }}
           preset: ${{ matrix.platform }}
           debugMode: "true"
       - name: Upload Artifact
