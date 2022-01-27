@@ -13,6 +13,7 @@ func _ready():
 	collection.focus_mode = 0
 	settings_button.focus_mode = 0
 	quit.focus_mode = 0
+	#get_tree().paused = true
 
 func _on_Continue_pressed():
 	PlayerStats.can_move = true

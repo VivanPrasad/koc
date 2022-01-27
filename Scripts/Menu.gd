@@ -29,16 +29,11 @@ func setup():
 	collection_button.focus_mode = 0
 	randomize()
 	bg.modulate = (Color(colors[int(rand_range(0,4))]))
-	#new_color = (Color(colors[int(rand_range(0,4))]))
 
 
-func _input(event) -> void:
-	if event is InputEventKey:
-		if event.scancode == KEY_ESCAPE:
-			get_tree().quit()
-	#new_color = (Color(colors[int(rand_range(0,4))]))
-	#while bg.modulate != new_color:
-		#bg.modulate = lerp(bg.modulate, new_color, 0.005)
+func _physics_process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _on_Play_mouse_entered():
 	play_button.text = "~ Play"
@@ -82,3 +77,7 @@ func _on_Settings_pressed():
 	
 func _on_Collection_pressed():
 	pass
+
+
+func _on_Discord_pressed():
+	OS.shell_open("https://discord.com/invite/ZEETC5Y7Df")

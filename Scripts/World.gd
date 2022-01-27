@@ -22,20 +22,19 @@ func _ready():
 	$Stairs.connect("exit_dungeon", self, "exit_dungeon")
 	PlayerStats.can_move = true
 	call_deferred("new_stats")
-	call_deferred("check_tile")
+	#call_deferred("check_tile")
 	
-	$Building/Structures/Chest4/Collision.disabled = true
-	$Building/Structures/Chest5/Collision.disabled = true
+	$Objects/Buildings/Structures/Chest4/Collision.disabled = true
+	$Objects/Buildings/Structures/Chest5/Collision.disabled = true
 
 func new_stats():
 	PlayerStats.new_stats()
 	TownStats.start_town_economy()
-func check_tile():
-	yield(get_tree().create_timer(1),"timeout")
-	tile_pos = $Floor.world_to_map(Vector2($Player.position.x / 4 - 1, $Player.position.y / 4 - 1))
-	tile = $Floor.get_cellv(Vector2(tile_pos))
-	tile_name = $Floor.tile_set.tile_get_name(tile)
-	check_tile()
+
+#func check_tile():
+	#tile_pos = $Floor.world_to_map(Vector2($Player.position.x / 4 - 1, $Player.position.y / 4 - 1))
+	#tile = $Floor.get_cellv(Vector2(tile_pos))
+	#tile_name = $Floor.tile_set.tile_get_name(tile)
 
 func _physics_process(_delta):
 	var time = $UI/DayInfo.second
@@ -88,21 +87,25 @@ func _input(_event):
 				PlayerStats.add_card("res://Assets/UI/Inventory/Gold.tres")
 func enter_dungeon():
 	$Stairs.in_dungeon = true
-	$Dungeon/Building.set_collision_layer_bit(0, true)
+	$Objects/Dungeon.visible = true
+	$Objects/Dungeon/Building.set_collision_layer_bit(0, true)
+	$Objects/Dungeon/Building.z_index = 2
 	$Floor.visible = false
-	$Decoration.visible = false
-	$Building.visible = false
-	$Building.set_collision_layer_bit(0, false)
+	$Objects/Decoration.visible = false
+	$Objects/Buildings.visible = false
+	$Objects/Buildings.set_collision_layer_bit(0, false)
 	$Shader.visible = false
 	slow_tiles = [""]
 
 func exit_dungeon():
 	$Stairs.in_dungeon = false
-	$Dungeon/Building.set_collision_layer_bit(0, false)
+	$Objects/Dungeon/Building.set_collision_layer_bit(0, false)
+	$Objects/Dungeon/Building.z_index = 0
+	$Objects/Dungeon.visible = false
 	$Floor.visible = true
-	$Decoration.visible = true
-	$Building.visible = true
-	$Building.set_collision_layer_bit(0, true)
+	$Objects/Decoration.visible = true
+	$Objects/Buildings.visible = true
+	$Objects/Buildings.set_collision_layer_bit(0, true)
 	$Shader.visible = true
 	slow_tiles = ["Grass", "Grass1", "Grass2", "Grass3", "RedFlowers", "YellowFlowers"]
 

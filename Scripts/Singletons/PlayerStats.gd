@@ -21,10 +21,10 @@ var selected : String = "none"
 func new_stats():
 	life = 1
 	status = "Good"
+	get_tree().get_root().find_node("Status", true, false).update_display()
 	randomize()
 	luck = randi() % 100 + 1 #1-100
 	print("luck: " + str(luck))
-	luck = 80
 	if luck < 16:
 		starting_class = 3 #Prisoner
 		if randi() % 100 < 21:
@@ -39,6 +39,7 @@ func new_stats():
 		house_id = randi() % 5 + 1 #1-5
 	preset_inventory(starting_class)
 	TownStats.start_market()
+	get_tree().get_root().find_node("Player", true, false).set_location()
 	
 func preset_inventory(preset_id):
 	if preset_id < 3:

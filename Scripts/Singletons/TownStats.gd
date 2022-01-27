@@ -22,37 +22,44 @@ var day = 1
 var economy_started = false
 var can_steal = true
 
-var vacant = 5
+var vacant = [1, 2, 3, 4, 5]
 
 func update_market():
 	get_tree().get_root().find_node("MarketUI", true, false).update()
 
 func start_market():
 	yield(get_tree().create_timer(0), "timeout")
-	if PlayerStats.starting_class > 1 and vacant > 0:
-		bank_list.append("House")
-	if PlayerStats.starting_class == 1:
-		if PlayerStats.house_id > 3:
-			bank_list.append("Old Chest")
-		else:
-			bank_list.append("New Chest")
+	update_bank_shop()
 	
 	food_cost = [int(1 + floor(0.4*day) - wealth)]
 	food_stock = [int(population * 2)]
 	item_cost = [int(5 - wealth),int(3 - wealth), int(2 + floor(0.4*day) - wealth)]
 	item_stock = [int(round(0.4*population)), int(round(0.8*population)), int(population - 2)]
+
+func update_bank_shop():
+	yield(get_tree().create_timer(1), "timeout")
+	if PlayerStats.starting_class > 1 and len(vacant) > 0:
+		bank_list.append("House")
+	if PlayerStats.starting_class == 1:
+		if PlayerStats.house_id > 3:
+			if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(0).disabled:
+				bank_list.append("Old Chest")
+			elif get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
+				bank_list.append("New Chest")
+		else:
+			if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
+				bank_list.append("New Chest")
 	
 	for item in bank_list:
 		if item == "House":
 			bank_cost.append(8)
-			bank_stock.append(vacant)
+			bank_stock.append(int(bool(len(vacant))))
 		if item == "Old Chest":
 			bank_cost.append(3)
 			bank_stock.append(1)
 		elif item == "New Chest":
 			bank_cost.append(6)
 			bank_stock.append(1)
-
 func start_town_economy():
 	economy_started = true
 	population = randi() % 2 + 4 #4-5

@@ -11,12 +11,11 @@ func _process(_delta):
 		collision.disabled = false
 	else:
 		collision.disabled = true
-
 func _ready():
 	call_deferred("link_house")
 
 func link_house():
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	if get_index() > 4:
 		owned = true
 	if PlayerStats.starting_class == 1:

@@ -5,7 +5,6 @@ var slot = preload("res://Scenes/UI/Slot.tscn")
 func _ready():
 	PlayerStats.inventory.connect("cards_changed", self, "on_cards_changed")
 	get_hand()
-	yield(get_tree().create_timer(0), "timeout")
 	update_inventory_display()
 
 func get_hand():

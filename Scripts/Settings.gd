@@ -9,14 +9,15 @@ onready var flscrn = $Margin/VBoxContainer/Tabs/Display/VBoxContainer/Fullscreen
 
 var new_color : Color
 
-onready var debug_ui = preload("res://Scenes/UI/Debug.tscn")
+onready var debug_ui = preload("res://Scenes/UI/DebugUI.tscn")
 func _ready():
 	master_vol.value = AudioServer.get_bus_volume_db(0)
 	music_vol.value = AudioServer.get_bus_volume_db(1)
 	sfx_vol.value = AudioServer.get_bus_volume_db(2)
 	focus_disable()
 	flscrn.pressed = OS.window_fullscreen
-
+# warning-ignore:standalone_expression
+	debug.pressed = bool(get_tree().get_root().find_node("DebugUI", true, false) != null)
 func focus_disable():
 	$Margin/VBoxContainer/Tabs/Display/VBoxContainer/Resolution.focus_mode = 0
 	$Margin/VBoxContainer/Tabs/Display/VBoxContainer/Debug.focus_mode = 0
@@ -45,4 +46,4 @@ func _on_Debug_pressed():
 	if debug.pressed == true:
 		get_tree().get_root().add_child(debug_ui.instance())
 	else:
-		get_node("/root/Debug/").queue_free()
+		get_tree().get_root().find_node("DebugUI", true, false).queue_free()
