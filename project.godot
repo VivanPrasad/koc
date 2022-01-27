@@ -48,6 +48,10 @@ Audio="*res://Scenes/Autoloads/Audio.tscn"
 PlayerStats="*res://Scripts/Singletons/PlayerStats.gd"
 TownStats="*res://Scripts/Singletons/TownStats.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=320
