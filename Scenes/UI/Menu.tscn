@@ -42,8 +42,6 @@ __meta__ = {
 
 [node name="BG2" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
-frame = 2
-playing = true
 centered = false
 
 [node name="BG" type="ColorRect" parent="."]

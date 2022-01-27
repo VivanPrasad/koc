@@ -22,6 +22,7 @@ func _ready():
 
 func setup():
 	Audio.play_menu()
+	$BG2.playing = true
 	play_button.focus_mode = 0
 	tutorial_button.focus_mode = 0
 	settings_button.focus_mode = 0
