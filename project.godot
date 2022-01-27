@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Kingdom of Cards"
-run/main_scene="res://Scenes/UI/Menu.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/use_custom_user_dir=true
 run/flush_stdout_on_print.debug=false
 run/low_processor_mode=true

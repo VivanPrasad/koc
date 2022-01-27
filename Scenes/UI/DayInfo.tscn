@@ -19,27 +19,25 @@ script = ExtResource( 2 )
 [node name="Status" parent="." instance=ExtResource( 5 )]
 
 [node name="Margin" type="MarginContainer" parent="."]
-anchor_left = 0.6375
-anchor_top = 0.0837778
-anchor_right = 0.8475
-anchor_bottom = 0.207667
-margin_left = -3.8147e-06
-margin_top = -0.0800002
-margin_right = 28.8
-margin_bottom = 9.62002
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -129.0
+margin_top = 14.0
+margin_right = -10.0
+margin_bottom = 55.0
 rect_scale = Vector2( 0.7, 0.7 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="Box" type="VBoxContainer" parent="Margin"]
-margin_right = 96.0
-margin_bottom = 32.0
+margin_right = 119.0
+margin_bottom = 41.0
 
 [node name="Day" type="Label" parent="Margin/Box"]
-margin_right = 96.0
+margin_right = 119.0
 margin_bottom = 12.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -48,7 +46,7 @@ align = 2
 
 [node name="Cycle" type="Label" parent="Margin/Box"]
 margin_top = 16.0
-margin_right = 96.0
+margin_right = 119.0
 margin_bottom = 28.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Morning"
@@ -58,9 +56,9 @@ __meta__ = {
 }
 
 [node name="Time" type="Label" parent="Margin/Box"]
-visible = false
+modulate = Color( 1, 1, 1, 0.498039 )
 margin_top = 32.0
-margin_right = 96.0
+margin_right = 119.0
 margin_bottom = 41.0
 custom_fonts/font = SubResource( 1 )
 text = "Time"
@@ -106,10 +104,10 @@ __meta__ = {
 }
 
 [node name="Class" type="Label" parent="."]
-margin_left = 16.5
-margin_top = 157.0
-margin_right = 56.5
-margin_bottom = 169.0
+margin_left = 5.67059
+margin_top = 166.67
+margin_right = 45.6706
+margin_bottom = 178.67
 custom_fonts/font = ExtResource( 3 )
 text = "Class"
 __meta__ = {
