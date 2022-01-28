@@ -14,9 +14,9 @@ func _on_Area2D_area_entered(_area):
 		get_tree().get_root().find_node("TileSelect", true, false).queue_free()
 		add_child(tile_select.instance())
 	$Key.visible = true
-	if $Sprite.frame == 0:
+	if $Sprite.frame == 1:
 		PlayerStats.selected = "food"
-	elif $Sprite.frame == 1:
+	elif $Sprite.frame == 0:
 		PlayerStats.selected = "item"
 	elif $Sprite.frame == 2:
 		PlayerStats.selected = "bank"

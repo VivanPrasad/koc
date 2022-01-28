@@ -27,10 +27,11 @@ animations = [ {
 } ]
 
 [node name="TileSelect" type="AnimatedSprite"]
-modulate = Color( 1, 1, 1, 0.498039 )
+modulate = Color( 1, 1, 1, 0.247059 )
 position = Vector2( -1, -1 )
 z_index = 1
 z_as_relative = false
 frames = SubResource( 5 )
+frame = 2
 playing = true
 centered = false

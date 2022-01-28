@@ -82,10 +82,8 @@ func update_labels():
 	$Margin/Box/Cycle.text = time_cycle
 	if time_cycle == "Early Morning":
 		$Margin/Box/Cycle.add_color_override("font_color", Color("ffae70"))
-		print("a")
 	elif time_cycle == "Morning":
 		$Margin/Box/Cycle.add_color_override("font_color", Color("ffd885"))
-		print("o")
 	elif time_cycle == "Afternoon":
 		$Margin/Box/Cycle.add_color_override("font_color", Color("cccccc"))
 	elif time_cycle == "Evening":
