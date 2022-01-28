@@ -4,6 +4,7 @@ onready var esc = preload("res://Scenes/UI/EscMenu.tscn")
 onready var day = preload("res://Scenes/UI/DayInfo.tscn")
 onready var inv = preload("res://Scenes/UI/InventoryUI.tscn")
 
+onready var chest = preload("res://Scenes/UI/ChestUI.tscn")
 onready var food = preload("res://Scenes/UI/MarketUI.tscn")
 
 onready var dialogue = preload("res://Scenes/Instances/DialogueBox.tscn")
@@ -85,6 +86,15 @@ func _input(_event):
 			if TownStats.town_gold > 0:
 				TownStats.town_gold -= 1
 				PlayerStats.add_card("res://Assets/UI/Inventory/Gold.tres")
+		elif PlayerStats.selected == "chest":
+			if get_tree().get_root().find_node("ChestUI", true, false) == null:
+				if PlayerStats.current_menu == "none":
+					$UI.add_child(chest.instance())
+					PlayerStats.current_menu = "chest"
+			else:
+				$UI/ChestUI.queue_free()
+				PlayerStats.current_menu = "none"
+					
 func enter_dungeon():
 	$Stairs.in_dungeon = true
 	$Objects/Dungeon.visible = true

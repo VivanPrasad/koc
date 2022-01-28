@@ -1,4 +1,4 @@
-extends ColorRect
+extends Control
 
 var inventory = preload("res://Scripts/Systems/Inventory.tres")
 

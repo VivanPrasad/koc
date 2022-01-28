@@ -25,6 +25,7 @@ func new_stats():
 	randomize()
 	luck = randi() % 100 + 1 #1-100
 	print("luck: " + str(luck))
+	luck = 80
 	if luck < 16:
 		starting_class = 3 #Prisoner
 		if randi() % 100 < 21:
@@ -37,6 +38,7 @@ func new_stats():
 	else:
 		starting_class = 1 #Homeowner
 		house_id = randi() % 5 + 1 #1-5
+		house_id = 1
 	preset_inventory(starting_class)
 	TownStats.start_market()
 	get_tree().get_root().find_node("Player", true, false).set_location()
