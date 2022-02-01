@@ -23,11 +23,7 @@ func _ready():
 func setup():
 	Audio.play_menu()
 	$BG2.playing = true
-	play_button.focus_mode = 0
-	tutorial_button.focus_mode = 0
-	settings_button.focus_mode = 0
-	settings_button.focus_mode = 0
-	collection_button.focus_mode = 0
+	play_button.focus_mode = 0;tutorial_button.focus_mode = 0;settings_button.focus_mode = 0;settings_button.focus_mode = 0;collection_button.focus_mode = 0;
 	randomize()
 	bg.modulate = (Color(colors[int(rand_range(0,4))]))
 
@@ -82,3 +78,7 @@ func _on_Collection_pressed():
 
 func _on_Discord_pressed():
 	OS.shell_open("https://discord.com/invite/ZEETC5Y7Df")
+
+
+func _on_Reddit_pressed():
+	OS.shell_open("https://www.reddit.com/r/kingdomofcards/")

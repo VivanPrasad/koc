@@ -67,7 +67,6 @@ margin_left = 26.0
 margin_top = 18.0
 margin_right = 26.0
 margin_bottom = 18.0
-columns = 5
 
 [node name="Tooltip" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.266

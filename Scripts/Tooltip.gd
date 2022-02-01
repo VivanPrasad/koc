@@ -1,72 +1,107 @@
 extends Panel
 
+const markets = ["food", "item", "bank"]
+
+onready var Name = $Margin/VBox/HBox/Name
+onready var type = $Margin/VBox/HBox/Type
+onready var desc = $Margin/VBox/HBox2/Text
+
+onready var button = $Panel/Button
+onready var button2 = $Panel2/Button2
+
 var id
-var menu
+
 func _ready():
-	$Panel/Button.focus_mode = 0
-	$Panel2/Button2.focus_mode = 0
+	button.focus_mode = 0
+	button2.focus_mode = 0
+
+func _process(_delta):
 	id = PlayerStats.slot_selector
-	menu = PlayerStats.selected
-func _on_Button_pressed():
+	if PlayerStats.current_menu == "inv":
+		if not PlayerStats.slot_selector == null:
+			card_info(PlayerStats.inventory.cards[id].name, PlayerStats.current_menu)
+			if PlayerStats.inventory.cards[id].type == "Item": type.add_color_override("font_color", Color("42549c"))
+			elif PlayerStats.inventory.cards[id].type == "Food": type.add_color_override("font_color", Color("9e3f60"))
+			elif PlayerStats.inventory.cards[id].type == "Wealth": type.add_color_override("font_color", Color("cfa365"))
+			if PlayerStats.inventory.cards[id].type != "Wealth":
+				$Panel2.visible = true
+				if PlayerStats.inventory.cards[id].type == "Food":
+					button2.text = "EAT"
+					if PlayerStats.can_eat:
+						button2.disabled = false
+					else:
+						button2.disabled = true
+				elif PlayerStats.inventory.cards[id].type == "Item":
+					button2.disabled = false
+					button2.text = "USE"
+			else:
+				$Panel2.visible = false
+		else:
+			visible = false
+			Name.text = ""
+			type.text = ""
+			desc.text = ""
+	elif PlayerStats.current_menu == "market":
+		if PlayerStats.selected == "item": type.add_color_override("font_color", Color("42549c"))
+		elif PlayerStats.selected == "food": type.add_color_override("font_color", Color("9e3f60"))
+		elif PlayerStats.selected == "bank": type.add_color_override("font_color", Color("cfa365"))
+		if not PlayerStats.slot_selector == null:
+			var get_card = load("res://Assets/UI/Inventory/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
+			card_info(get_card, "market")
+func card_info(item, menu):
+	visible = true
+	if menu == "inv":
+		Name.text = item
+		type.text = PlayerStats.inventory.cards[PlayerStats.slot_selector].type
+		desc.text = PlayerStats.inventory.cards[PlayerStats.slot_selector].desc
+	elif menu == "market":
+		Name.text = item.name
+		type.text = item.type
+		desc.text = item.desc
+func _on_Button_pressed(): #BUY OR DROP
 	id = PlayerStats.slot_selector
-	if menu == "none" and PlayerStats.current_menu == "inv":
-		PlayerStats.inventory.cards.erase(PlayerStats.inventory.cards[id])
-		PlayerStats.inventory.cards.append(null)
-		PlayerStats.update_inventory()
-	elif menu != "none" and PlayerStats.current_menu == "market":
-		if menu == "food":
-			if TownStats.food_stock[id] > 0:
-				if TownStats.food_cost[id] > PlayerStats.gold:
-					$Panel/Button.disabled = true
+	if PlayerStats.current_menu == "inv": 
+		PlayerStats.slot_selector = null
+		PlayerStats.remove_card(PlayerStats.inventory.cards[id])
+	elif PlayerStats.selected in markets:
+			if TownStats.item_list[TownStats.current_list[id]][2] > 0:
+				if TownStats.item_list[TownStats.current_list[id]][1] > PlayerStats.gold:
+					button.disabled = true
 				else:
-					PlayerStats.gold -= TownStats.food_cost[id]
-					PlayerStats.remove_gold(TownStats.food_cost[id])
-					TownStats.food_stock[id] -= 1
-					PlayerStats.add_card("res://Assets/UI/Inventory/" + str(TownStats.food_list[id]) + ".tres")
+					PlayerStats.remove_gold(TownStats.item_list[TownStats.current_list[id]][1])
+					TownStats.item_list[TownStats.current_list[id]][2] -= 1
+					PlayerStats.add_card("res://Assets/UI/Inventory/" + str(TownStats.current_list[id]) + ".tres")
 					TownStats.update_market()
-		elif menu == "item":
-			if TownStats.item_stock[id] > 0:
-				if TownStats.item_cost[id] > PlayerStats.gold:
-					$Panel/Button.disabled = true
-				else:
-					PlayerStats.gold -= TownStats.item_cost[id]
-					PlayerStats.remove_gold(TownStats.item_cost[id])
-					TownStats.item_stock[id] -= 1
-					PlayerStats.add_card("res://Assets/UI/Inventory/" + str(TownStats.item_list[id]) + ".tres")
-					TownStats.update_market()
-		elif menu == "bank":
-			PlayerStats.gold -= TownStats.bank_cost[id]
-			TownStats.bank_stock[id] -= 1
-			PlayerStats.remove_gold(TownStats.bank_cost[id])
-			if TownStats.bank_list[id] == "Old Chest":
-				var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
-				chest.visible = true
-				chest.get_child(0).disabled = false
-			elif TownStats.bank_list[id] == "New Chest":
-				var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
-				chest.get_child(1).frame = 1
-			elif TownStats.bank_list[id] == "House":
-				if len(TownStats.vacant) > 0:
-					PlayerStats.house_id = TownStats.vacant[0]
-					PlayerStats.starting_class = 1
-					get_tree().get_root().find_node("DayInfo", true, false).set_class()
-					TownStats.vacant.erase(PlayerStats.house_id)
-					get_tree().get_root().find_node("Door" +  str(PlayerStats.house_id), true, false).link_house()
-			TownStats.update_bank_shop()
-			PlayerStats.slot_selector = null
-			TownStats.bank_list.erase(TownStats.bank_list[id])
-			TownStats.bank_cost.erase(TownStats.bank_cost[id])
-			TownStats.bank_stock.erase(TownStats.bank_stock[id])
+			if PlayerStats.selected  == "bank":
+				TownStats.bank_stock[id] -= 1
+				PlayerStats.remove_gold(TownStats.bank_cost[id])
+				if TownStats.bank_list[id] == "Old Chest":
+					var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
+					chest.visible = true
+					chest.get_child(0).disabled = false
+				elif TownStats.bank_list[id] == "New Chest":
+					var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
+					chest.get_child(1).frame = 1
+				elif TownStats.bank_list[id] == "House":
+					if len(TownStats.vacant) > 0:
+						PlayerStats.house_id = TownStats.vacant[0]
+						PlayerStats.starting_class = 1
+						get_tree().get_root().find_node("DayInfo", true, false).set_class()
+						TownStats.vacant.erase(PlayerStats.house_id)
+						get_tree().get_root().find_node("Door" +  str(PlayerStats.house_id), true, false).link_house()
+				TownStats.update_bank_shop()
+				TownStats.unregister_item(TownStats.current_list[id])
+				PlayerStats.slot_selector = null
 func _on_Button2_pressed():
 	id = PlayerStats.slot_selector
-	if $Panel2/Button2.text == "EAT":
-		PlayerStats.food_eaten(PlayerStats.inventory.cards[id].name)
-		PlayerStats.inventory.cards.erase(PlayerStats.inventory.cards[id])
-		PlayerStats.inventory.cards.append(null)
-		PlayerStats.update_inventory()
-
-func _input(event):
-	if event is InputEventKey:
-		if event.scancode == KEY_Q:
-			if PlayerStats.slot_selector != null:
-				_on_Button_pressed()
+	if not id == null:
+		PlayerStats.slot_selector = null
+		if button2.text == "EAT":
+			PlayerStats.food_eaten(PlayerStats.inventory.cards[id].name)
+			PlayerStats.remove_card(PlayerStats.inventory.cards[id])
+		elif button2.text == "USE":
+			if PlayerStats.inventory.cards[id].name == "Bag":
+				PlayerStats.inventory.max_hand = 10
+				for i in 5:
+					PlayerStats.inventory.add_slot()
+				PlayerStats.remove_card(PlayerStats.inventory.cards[id])

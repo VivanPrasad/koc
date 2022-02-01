@@ -1,17 +1,18 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Scenes/Instances/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/World/Tilesets/world_tileset-sheet-v3.png" type="Texture" id=2]
 [ext_resource path="res://Assets/World/fountain.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=4]
-[ext_resource path="res://Assets/World/Bed.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/World/Door.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/World/Chest.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/World/Stairs.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/World/Market.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/World/GoldPot.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Instances/Bed.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Instances/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Instances/Chest.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Instances/Stairs.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Instances/Market.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Instances/GoldPot.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Dungeon.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/World/minifountain.png" type="Texture" id=12]
+[ext_resource path="res://Assets/UI/Fonts/Label-Font32.tres" type="DynamicFont" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grass"
@@ -1637,10 +1638,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4, 6, 7, 10, 12, 16, 18, 19, 20, 24 ),
+"times": PoolRealArray( 0, 4, 6, 8, 10, 12, 16, 18, 20, 22, 24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0.447059, 0.396078, 0.87451, 1 ), Color( 0.592157, 0.537255, 1, 1 ), Color( 1, 0.682353, 0.439216, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 0.682353, 0.439216, 1 ), Color( 0.592157, 0.537255, 1, 1 ), Color( 0.447059, 0.396078, 0.87451, 1 ) ]
+"values": [ Color( 0.592157, 0.537255, 1, 1 ), Color( 0.592157, 0.537255, 1, 1 ), Color( 1, 0.682353, 0.439216, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.847059, 0.521569, 1 ), Color( 1, 0.682353, 0.439216, 1 ), Color( 0.592157, 0.537255, 1, 1 ), Color( 0.592157, 0.537255, 1, 1 ) ]
 }
 
 [node name="World" type="Node2D"]
@@ -1671,6 +1672,10 @@ scale = Vector2( 4, 4 )
 collision_mask = 0
 
 [node name="Objects" type="YSort" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Player" parent="Objects" instance=ExtResource( 1 )]
 position = Vector2( 544, 474 )
@@ -1687,7 +1692,6 @@ cell_size = Vector2( 8, 8 )
 cell_quadrant_size = 8
 cell_tile_origin = 1
 cell_y_sort = true
-show_collision = true
 collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1310741, 22, 0, -1310740, 19, 0, -1310739, 19, 0, -1310738, 19, 0, -1310737, 19, 0, -1310736, 19, 0, -1310735, 19, 0, -1310734, 19, 0, -1310733, 19, 0, -1310732, 19, 0, -1310731, 19, 0, -1310730, 19, 0, -1310729, 19, 0, -1310728, 19, 0, -1310727, 19, 0, -1310726, 19, 0, -1310725, 19, 0, -1310724, 19, 0, -1310723, 19, 0, -1310722, 19, 0, -1310721, 19, 0, -1376256, 19, 0, -1376255, 19, 0, -1376254, 19, 0, -1376253, 19, 0, -1376252, 19, 0, -1376251, 19, 0, -1376250, 19, 0, -1376249, 19, 0, -1376248, 19, 0, -1376247, 19, 0, -1376246, 19, 0, -1376245, 19, 0, -1376244, 19, 0, -1376243, 19, 0, -1376242, 19, 0, -1376241, 19, 0, -1376240, 19, 0, -1376239, 19, 0, -1376238, 19, 0, -1376237, 19, 0, -1376236, 19, 0, -1376235, 42, 0, -1245205, 22, 0, -1310699, 42, 0, -1179669, 22, 0, -1179666, 40, 0, -1179665, 37, 0, -1179664, 37, 0, -1179663, 41, 0, -1179652, 22, 0, -1179650, 42, 0, -1245180, 22, 0, -1245179, 19, 0, -1245178, 19, 0, -1245177, 19, 0, -1245176, 42, 0, -1245163, 42, 0, -1114133, 22, 0, -1114131, 40, 0, -1114130, 37, 0, -1114127, 37, 0, -1114126, 41, 0, -1114116, 22, 0, -1114114, 42, 0, -1179644, 22, 0, -1179640, 42, 0, -1179627, 42, 0, -1048597, 22, 0, -1048595, 40, 0, -1048590, 41, 0, -1048580, 21, 0, -1048579, 19, 0, -1048578, 20, 0, -1114108, 22, 0, -1114104, 42, 0, -1114091, 42, 0, -983061, 22, 0, -983059, 40, 0, -983054, 41, 0, -1048572, 22, 0, -1048568, 42, 0, -1048555, 42, 0, -917525, 22, 0, -917523, 40, 0, -917518, 41, 0, -917510, 22, 0, -917509, 19, 0, -917508, 19, 0, -917507, 19, 0, -917506, 19, 0, -917505, 19, 0, -983040, 19, 0, -983039, 19, 0, -983037, 19, 0, -983036, 536870955, 0, -983032, 42, 0, -983026, 40, 0, -983025, 37, 0, -983024, 37, 0, -983023, 41, 0, -983019, 42, 0, -851989, 22, 0, -851987, 40, 0, -851982, 41, 0, -851974, 22, 0, -917500, 21, 0, -917496, 42, 0, -917490, 40, 0, -917487, 41, 0, -917483, 42, 0, -786453, 22, 0, -786451, 38, 0, -786450, 37, 0, -786448, 37, 0, -786447, 37, 0, -786446, 39, 0, -786438, 22, 0, -851960, 42, 0, -851955, 40, 0, -851954, 37, 0, -851951, 37, 0, -851950, 41, 0, -851947, 42, 0, -720917, 22, 0, -720902, 22, 0, -720899, 43, 0, -720898, 19, 0, -720897, 19, 0, -786432, 19, 0, -786431, 19, 0, -786430, 19, 0, -786429, 19, 0, -786428, 19, 0, -786427, 536870955, 0, -786426, 19, 0, -786425, 19, 0, -786424, 42, 0, -786419, 40, 0, -786414, 41, 0, -786411, 42, 0, -655381, 22, 0, -655366, 22, 0, -655363, 20, 0, -720891, 536870954, 0, -720888, 42, 0, -720883, 40, 0, -720878, 41, 0, -720875, 42, 0, -589845, 22, 0, -589830, 22, 0, -655355, 536870954, 0, -655352, 42, 0, -655347, 40, 0, -655342, 41, 0, -655339, 42, 0, -524309, 22, 0, -524294, 22, 0, -524291, 42, 0, -589819, 21, 0, -589816, 42, 0, -589811, 40, 0, -589806, 41, 0, -589803, 42, 0, -458773, 22, 0, -458758, 21, 0, -458757, 19, 0, -458756, 19, 0, -458755, 19, 0, -458754, 19, 0, -458753, 536870955, 0, -524280, 42, 0, -524275, 38, 0, -524274, 37, 0, -524273, 37, 0, -524272, 37, 0, -524270, 39, 0, -524267, 42, 0, -393237, 22, 0, -393217, 22, 0, -458747, 536870954, 0, -458744, 42, 0, -458731, 42, 0, -327701, 22, 0, -327694, 40, 0, -327693, 37, 0, -327692, 37, 0, -327691, 37, 0, -327690, 37, 0, -327689, 41, 0, -327681, 22, 0, -393213, 43, 0, -393212, 19, 0, -393211, 19, 0, -393210, 19, 0, -393209, 19, 0, -393208, 20, 0, -393195, 42, 0, -262165, 22, 0, -262158, 40, 0, -262153, 41, 0, -262145, 22, 0, -327677, 42, 0, -327659, 42, 0, -196629, 22, 0, -196622, 40, 0, -196617, 41, 0, -196609, 22, 0, -262141, 42, 0, -262123, 42, 0, -131093, 22, 0, -131086, 40, 0, -131081, 41, 0, -131073, 21, 0, -196608, 19, 0, -196606, 19, 0, -196605, 20, 0, -196587, 42, 0, -65557, 22, 0, -65550, 38, 0, -65549, 37, 0, -65548, 37, 0, -65546, 37, 0, -65545, 39, 0, -131065, 29, 0, -131064, 25, 0, -131063, 25, 0, -131062, 25, 0, -131061, 25, 0, -131060, 25, 0, -131059, 28, 0, -131051, 42, 0, -21, 22, 0, -65529, 29, 0, -65523, 28, 0, -65515, 42, 0, 65515, 22, 0, 7, 29, 0, 9, 30, 0, 11, 30, 0, 13, 28, 0, 21, 42, 0, 131051, 22, 0, 65543, 29, 0, 65549, 28, 0, 65557, 42, 0, 196587, 22, 0, 131079, 29, 0, 131081, 30, 0, 131083, 30, 0, 131085, 28, 0, 131093, 42, 0, 262123, 22, 0, 196615, 29, 0, 196621, 28, 0, 196629, 42, 0, 327659, 22, 0, 262151, 29, 0, 262152, 25, 0, 262154, 25, 0, 262155, 25, 0, 262156, 25, 0, 262157, 28, 0, 262165, 42, 0, 393195, 22, 0, 393213, 4, 0, 393214, 5, 0, 327687, 29, 0, 327693, 28, 0, 327701, 42, 0, 458731, 22, 0, 393218, 8, 0, 393223, 29, 0, 393229, 28, 0, 393237, 42, 0, 524267, 22, 0, 524283, 7, 0, 458754, 8, 0, 458759, 26, 0, 458760, 25, 0, 458761, 25, 0, 458762, 25, 0, 458763, 25, 0, 458765, 27, 0, 458773, 42, 0, 589803, 22, 0, 589819, 7, 0, 524309, 42, 0, 655339, 22, 0, 589845, 42, 0, 720875, 22, 0, 720891, 9, 0, 655381, 42, 0, 786411, 22, 0, 786415, 40, 0, 786416, 37, 0, 786417, 37, 0, 786418, 37, 0, 786419, 41, 0, 720898, 8, 0, 720917, 42, 0, 851947, 22, 0, 851951, 40, 0, 851955, 41, 0, 851964, 5, 0, 786432, 46, 0, 786453, 42, 0, 917483, 22, 0, 917487, 40, 0, 917491, 41, 0, 851981, 40, 0, 851982, 37, 0, 851983, 37, 0, 851984, 37, 0, 851985, 37, 0, 851986, 41, 0, 851989, 42, 0, 983019, 22, 0, 983023, 40, 0, 983027, 41, 0, 917517, 40, 0, 917522, 41, 0, 917525, 42, 0, 1048555, 22, 0, 1048559, 38, 0, 1048560, 37, 0, 1048562, 37, 0, 1048563, 39, 0, 983053, 40, 0, 983058, 41, 0, 983061, 42, 0, 1114091, 22, 0, 1048589, 40, 0, 1048592, 44, 0, 1048593, 37, 0, 1048594, 39, 0, 1048597, 42, 0, 1179627, 22, 0, 1114125, 38, 0, 1114127, 37, 0, 1114128, 39, 0, 1114133, 42, 0, 1245163, 22, 0, 1179669, 42, 0, 1310699, 22, 0, 1245205, 42, 0, 1376235, 22, 0, 1310741, 42, 0, 1441771, 21, 0, 1441772, 19, 0, 1441773, 19, 0, 1441774, 19, 0, 1441775, 19, 0, 1441776, 19, 0, 1441777, 19, 0, 1441778, 19, 0, 1441779, 19, 0, 1441780, 19, 0, 1441781, 19, 0, 1441782, 19, 0, 1441783, 19, 0, 1441784, 19, 0, 1441785, 19, 0, 1441786, 19, 0, 1441787, 19, 0, 1441788, 19, 0, 1441789, 19, 0, 1441790, 19, 0, 1441791, 19, 0, 1376256, 19, 0, 1376257, 19, 0, 1376258, 19, 0, 1376259, 19, 0, 1376260, 19, 0, 1376261, 19, 0, 1376262, 19, 0, 1376263, 19, 0, 1376264, 19, 0, 1376265, 19, 0, 1376266, 19, 0, 1376267, 19, 0, 1376268, 19, 0, 1376269, 19, 0, 1376270, 19, 0, 1376271, 19, 0, 1376272, 19, 0, 1376273, 19, 0, 1376274, 19, 0, 1376275, 19, 0, 1376276, 19, 0, 1376277, 20, 0 )
@@ -1812,6 +1816,16 @@ position = Vector2( 128, 112 )
 [node name="GoldPot" parent="Objects/Buildings/Structures" instance=ExtResource( 10 )]
 position = Vector2( 80, 8 )
 
+[node name="cBed" parent="Objects/Buildings/Structures" instance=ExtResource( 5 )]
+position = Vector2( 47.75, -144 )
+
+[node name="Sprite" parent="Objects/Buildings/Structures/cBed" index="1"]
+hframes = 1
+region_rect = Rect2( 8, 56, 8, 8 )
+
+[node name="cChest" parent="Objects/Buildings/Structures" instance=ExtResource( 7 )]
+position = Vector2( 56, -88 )
+
 [node name="Market" type="YSort" parent="Objects/Buildings"]
 __meta__ = {
 "_edit_lock_": true
@@ -1859,7 +1873,6 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/Fountain"]
 frames = SubResource( 53 )
-frame = 1
 playing = true
 centered = false
 
@@ -1877,7 +1890,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/MiniFountain"]
 frames = SubResource( 61 )
 animation = "New Anim"
-frame = 1
 playing = true
 centered = false
 
@@ -1895,6 +1907,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/MiniFountain2"]
 frames = SubResource( 61 )
 animation = "New Anim"
+frame = 2
 playing = true
 centered = false
 
@@ -1903,13 +1916,130 @@ position = Vector2( 4, 4 )
 shape = SubResource( 62 )
 
 [node name="Shader" type="CanvasModulate" parent="."]
-color = Color( 0.53049, 0.477255, 0.946667, 1 )
+color = Color( 0.592157, 0.537255, 1, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shader"]
 anims/TimeCycle = SubResource( 63 )
+
+[node name="Markers" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House1" type="Label" parent="Markers"]
+margin_left = -546.515
+margin_top = -470.536
+margin_right = -444.515
+margin_bottom = -434.536
+custom_fonts/font = ExtResource( 13 )
+text = "House 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House2" type="Label" parent="Markers"]
+margin_left = 479.163
+margin_top = -321.413
+margin_right = 581.163
+margin_bottom = -285.413
+custom_fonts/font = ExtResource( 13 )
+text = "House 2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House3" type="Label" parent="Markers"]
+margin_left = -381.854
+margin_top = -121.728
+margin_right = -279.854
+margin_bottom = -85.7276
+custom_fonts/font = ExtResource( 13 )
+text = "House 3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House4" type="Label" parent="Markers"]
+margin_left = -498.17
+margin_top = 421.236
+margin_right = -396.17
+margin_bottom = 457.236
+custom_fonts/font = ExtResource( 13 )
+text = "House 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="House5" type="Label" parent="Markers"]
+margin_left = 478.798
+margin_top = 469.441
+margin_right = 580.798
+margin_bottom = 505.441
+custom_fonts/font = ExtResource( 13 )
+text = "House 5"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Other" type="Control" parent="Markers"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Markers/Other"]
+margin_left = -100.736
+margin_top = 252.858
+margin_right = 73.2636
+margin_bottom = 288.858
+custom_fonts/font = ExtResource( 13 )
+text = "Town Square"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Markers/Other"]
+margin_left = 318.299
+margin_top = 73.9628
+margin_right = 395.299
+margin_bottom = 109.963
+custom_fonts/font = ExtResource( 13 )
+text = "Bank"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Markers/Other"]
+margin_left = 51.0608
+margin_top = -255.297
+margin_right = 139.061
+margin_bottom = -219.297
+custom_fonts/font = ExtResource( 13 )
+text = "Castle"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1921,5 +2051,6 @@ anims/TimeCycle = SubResource( 63 )
 [editable path="Objects/Buildings/Structures/Bed1"]
 [editable path="Objects/Buildings/Structures/Bed2"]
 [editable path="Objects/Buildings/Structures/Bed3"]
+[editable path="Objects/Buildings/Structures/cBed"]
 [editable path="Objects/Buildings/Market/Item"]
 [editable path="Objects/Buildings/Market/Bank"]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/UI/Fonts/royal-intonation.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Assets/UI/Fonts/ShopTitleUI-Font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/UI/Assets/koc_bg.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/UI/Misc/koc_bg.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=4]
-[ext_resource path="res://Assets/UI/Fonts/SettingUI-Font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Assets/UI/Assets/discord.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Fonts/UI-Font12.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/UI/Misc/discord.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Misc/reddit.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -173,11 +174,26 @@ uppercase = true
 [node name="Discord" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -32.0
+margin_left = -24.0
 margin_top = 8.0
-margin_right = -16.0
+margin_right = -8.0
 margin_bottom = 24.0
+rect_scale = Vector2( 0.75, 0.75 )
 texture_normal = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reddit" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_top = 8.0
+margin_right = -24.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.75, 0.75 )
+texture_normal = ExtResource( 7 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -196,3 +212,4 @@ __meta__ = {
 [connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_mouse_exited"]
 [connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_pressed"]
 [connection signal="pressed" from="Discord" to="." method="_on_Discord_pressed"]
+[connection signal="pressed" from="Reddit" to="." method="_on_Reddit_pressed"]

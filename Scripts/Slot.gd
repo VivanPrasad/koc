@@ -14,7 +14,7 @@ func display_card(card):
 		cardTexture.texture_normal = card.texture
 		$Selector.visible = false
 	else:
-		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Cards/empty.png")
+		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
 		$Selector.visible = false
 
 func get_drag_data(_position):

@@ -54,8 +54,10 @@ func _input(_event):
 	if Input.is_action_just_pressed("map"):
 		if PlayerStats.current_menu == "none":
 			PlayerStats.current_menu = "map"
-			if $Camera2D.zoom == Vector2(1.2, 1.2):
-				$Camera2D.zoom = Vector2(4,4)
+			if $Camera2D.current:
+				$Camera2D.zoom = Vector2(3.6,3.75)
+				get_tree().get_root().find_node("Markers", true, false).visible = true
 		elif PlayerStats.current_menu == "map":
-				$Camera2D.zoom = Vector2(1.2, 1.2)
+				$Camera2D.zoom = Vector2(1.2,1.25)
 				PlayerStats.current_menu = "none"
+				get_tree().get_root().find_node("Markers", true, false).visible =  false

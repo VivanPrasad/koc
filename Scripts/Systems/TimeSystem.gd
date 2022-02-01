@@ -26,11 +26,15 @@ func _ready():
 func set_class():
 	yield(get_tree().create_timer(0), "timeout")
 	if PlayerStats.starting_class == 1:
-		$Class.text = "Homeowner"
+		$Class.text = "Homeowner " + "(" + str(PlayerStats.house_id) + ")"
+		get_tree().get_root().find_node("Markers", true, false).get_child(PlayerStats.house_id - 1).add_color_override("font_color", Color("ffad00"))
 	elif PlayerStats.starting_class == 2:
 		$Class.text = "Homeless"
 	else:
-		$Class.text = "Prisoner"
+		if PlayerStats.sentence != 1:
+			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence) + " day remaining)")
+		else:
+			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence) + " days remaining)")
 func _process(delta):
 	if hour == 0 and processed == false:
 		start_new_day()
@@ -102,7 +106,12 @@ func start_new_day():
 	if TownStats.day == 7:
 		print("Day 7 Reached, you win")
 		get_tree().quit()
-
+	if PlayerStats.starting_class == 3:
+		if PlayerStats.sentence > 0:
+			PlayerStats.sentence -= 1
+		else:
+			PlayerStats.starting_class = 2
+		set_class()
 func configure_day():
 	pass
 
