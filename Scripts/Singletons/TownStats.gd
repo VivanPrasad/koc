@@ -19,17 +19,18 @@ var vacant = [1, 2, 3, 4, 5]
 
 func update_market():
 	get_tree().get_root().find_node("MarketUI", true, false).update()
-
+	for item in item_list:
+		print(item_list[item][1])
 func start_market():
 	yield(get_tree().create_timer(0), "timeout")
-	update_bank_shop()
-	register_item("Bread", "food", int(1+floor(0.4 * day)), int(population * 2))
+	set_bank_shop()
+	register_item("Bread", "food", int(2+floor(0.4 * day)), int(population * 2))
 	
 	register_item("Bag", "item", int(5 - wealth), int(round(0.4*population)))
 	register_item("Lantern", "item", int(3 - wealth), int(round(0.8*population)))
-	register_item("Key", "item", int(2 + floor(0.4*day) - wealth), int(population - 2))
+	register_item("Key", "item", int(1 + floor(0.4*day) - wealth), int(population - 2))
 
-func update_bank_shop():
+func set_bank_shop():
 	yield(get_tree().create_timer(1), "timeout")
 	if PlayerStats.starting_class > 1 and len(vacant) > 0:
 		register_item("House", "bank", 8, int(bool(len(vacant))))

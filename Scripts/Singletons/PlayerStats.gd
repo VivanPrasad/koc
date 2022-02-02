@@ -16,6 +16,7 @@ var can_eat = true
 var slot_selector
 var current_menu : String = "none"
 var inventory = preload("res://Scripts/Systems/Inventory.tres")
+var chest = preload("res://Scripts/Systems/Chest.tres")
 
 var selected : String = "none"
 func new_stats():
@@ -23,7 +24,7 @@ func new_stats():
 	get_tree().get_root().find_node("Status", true, false).update_display()
 	randomize()
 	luck = randi() %100+1
-	luck = 40
+	luck = 80
 	if luck < 16:
 		starting_class = 3 #Prisoner
 		if randi()%100 < 21:
@@ -35,6 +36,7 @@ func new_stats():
 	else:
 		starting_class = 1 #Homeowner
 		house_id = randi()%5+1 #1-5
+		house_id = 1
 	
 	
 	preset_inventory(starting_class)
@@ -57,15 +59,30 @@ func add_card(card):
 		if i > len(inventory.cards) - 1:
 			inventory.add_slot()
 			break
-	inventory.cards[i] = load(card)
+	inventory.cards[i] = card
 	update_inventory()
 
+func add_to_chest(card):
+	remove_card(inventory.cards[slot_selector])
+	var i = 0
+	while chest.cards[i] != null:
+		i += 1
+		if i > len(chest.cards) - 1:
+			chest.add_slot()
+			break
+	chest.cards[i] = card
+	update_inventory()
+func take_card(card):
+	chest.cards.erase(card)
+	chest.cards.append(null)
+	add_card(card)
+	update_inventory()
 func remove_gold(amount):
 	if inventory.cards.has(load("res://Assets/UI/Inventory/RoyalGold.tres")):
 		for i in round(amount / 3) + 1:
-			remove_card(load("res://Assets/UI/Inventory/Gold.tres"))
+			remove_card(load("res://Assets/UI/Inventory/RoyalGold.tres"))
 			for e in 3:
-				add_card("res://Assets/UI/Inventory/Gold.tres")
+				add_card(load("res://Assets/UI/Inventory/Gold.tres"))
 	for i in amount:
 		remove_card(load("res://Assets/UI/Inventory/Gold.tres"))
 	update_inventory()
@@ -78,6 +95,8 @@ func remove_card(card):
 func update_inventory():
 	if get_tree().get_root().find_node("InventoryUI", true, false) != null:
 		get_tree().get_root().find_node("InventoryUI", true, false).update()
+	if get_tree().get_root().find_node("ChestUI", true, false) != null:
+		get_tree().get_root().find_node("ChestUI", true, false).update()
 	count_gold()
 
 func count_gold():

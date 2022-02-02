@@ -77,8 +77,7 @@ func _on_Collection_pressed():
 
 
 func _on_Discord_pressed():
-	OS.shell_open("https://discord.com/invite/ZEETC5Y7Df")
-
+	return OS.shell_open("https://discord.com/invite/ZEETC5Y7Df/")
 
 func _on_Reddit_pressed():
-	OS.shell_open("https://www.reddit.com/r/kingdomofcards/")
+	return OS.shell_open("https://www.reddit.com/r/kingdomofcards/")

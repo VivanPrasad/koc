@@ -1873,6 +1873,7 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/Fountain"]
 frames = SubResource( 53 )
+frame = 5
 playing = true
 centered = false
 
@@ -1890,6 +1891,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/MiniFountain"]
 frames = SubResource( 61 )
 animation = "New Anim"
+frame = 2
 playing = true
 centered = false
 
@@ -1907,7 +1909,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Objects/Decoration/MiniFountain2"]
 frames = SubResource( 61 )
 animation = "New Anim"
-frame = 2
+frame = 1
 playing = true
 centered = false
 
