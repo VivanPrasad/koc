@@ -1,7 +1,9 @@
 extends AnimatedSprite
 
 func _ready():
-	yield(get_tree().create_timer(0),"timeout")
+	call_deferred("check")
+
+func check():
 	if PlayerStats.selected == "chest":
 		$Key/Label.text = "Open"
 	elif PlayerStats.selected == "royalchest":
