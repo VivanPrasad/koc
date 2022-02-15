@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Slot.gd" type="Script" id=2]
 [ext_resource path="res://Assets/UI/Misc/card_select.png" type="Texture" id=3]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 10, 18 )
@@ -44,7 +43,7 @@ visible = false
 modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
 position = Vector2( -1, -1 )
 frames = SubResource( 5 )
-frame = 3
+frame = 1
 playing = true
 centered = false
 

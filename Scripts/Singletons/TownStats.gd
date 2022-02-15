@@ -15,23 +15,43 @@ var economy_started = false
 var can_steal = true
 
 var royalchest = 10
+
 var vacant = [1, 2, 3, 4, 5]
 
+const events = [
+	"food_bank",
+	"festival",
+	"tax",
+	"birthday",
+	"bounty",
+	"werewolves",
+	"outbreak",
+	"triple_triumph",
+	"the_culling",
+	"double_event",
+	"new_order",
+	"blood_moon",
+	"plague",
+]
+const forecast = [
+	"clear",
+	"snowstorm",
+	"heat_wave",
+	"thunderstorm",
+]
 func update_market():
-	get_tree().get_root().find_node("MarketUI", true, false).update()
-	for item in item_list:
-		print(item_list[item][1])
-func start_market():
+	if get_tree().get_root().find_node("MarketUI", true, false) != null:
+		get_tree().get_root().find_node("MarketUI", true, false).update()
+func set_market():
 	yield(get_tree().create_timer(0), "timeout")
 	set_bank_shop()
-	register_item("Bread", "food", int(2+floor(0.4 * day)), int(population * 2))
-	
+	register_item("Bread", "food", int(2 + floor(0.4 * day) - wealth), int(population * 2))
 	register_item("Bag", "item", int(5 - wealth), int(round(0.4*population)))
 	register_item("Lantern", "item", int(3 - wealth), int(round(0.8*population)))
 	register_item("Key", "item", int(1 + floor(0.4*day) - wealth), int(population - 2))
 
 func set_bank_shop():
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0), "timeout")
 	if PlayerStats.starting_class > 1 and len(vacant) > 0:
 		register_item("House", "bank", 8, int(bool(len(vacant))))
 	if PlayerStats.starting_class == 1:
@@ -64,16 +84,21 @@ func _physics_process(_delta):
 		else:
 			wealth = 2
 		
-		get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
+		if get_tree().get_root().find_node("World", true, false) != null:
+			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
 func open_town():
-	pass
-
+	set_market()
+	for item in item_list:
+		print(item)
+	update_item_cost("Bread", int(2+floor(0.4 * day) - wealth))
 func register_item(Name, market, cost, stock):
 	item_list[Name] = [market,cost,stock]
 
 func unregister_item(Name):
 	item_list.erase(Name)
 
+func update_item_cost(Name, value):
+	item_list[Name][1] = value
 func update_listing():
 	current_list = []
 	for slot in TownStats.item_list.keys():

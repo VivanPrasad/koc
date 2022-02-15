@@ -77,19 +77,18 @@ func _input(_event):
 					$UI.add_child(food.instance())
 					PlayerStats.current_menu = "market"
 				else:
-					$UI/InventoryUI.queue_free()
-					PlayerStats.current_menu = "none"
+					pass
 			else:
 				$UI/MarketUI.queue_free()
 				PlayerStats.current_menu = "none"
 		elif PlayerStats.selected == "pot":
 			if TownStats.town_gold > 0:
 				TownStats.town_gold -= 1
-				PlayerStats.add_card("res://Assets/UI/Inventory/Gold.tres")
+				PlayerStats.add_card(load("res://Assets/UI/Inventory/Gold.tres"))
 		elif PlayerStats.selected == "royalchest":
 			if TownStats.royalchest > 0:
 				TownStats.royalchest -= 1
-				PlayerStats.add_card("res://Assets/UI/Inventory/RoyalGold.tres")
+				PlayerStats.add_card(load("res://Assets/UI/Inventory/RoyalGold.tres"))
 				get_tree().get_root().find_node("TileSelect", true, false).update_value()
 		elif PlayerStats.selected == "chest":
 			if get_tree().get_root().find_node("ChestUI", true, false) == null:

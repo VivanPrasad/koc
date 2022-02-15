@@ -19,12 +19,12 @@ var inventory = preload("res://Scripts/Systems/Inventory.tres")
 var chest = preload("res://Scripts/Systems/Chest.tres")
 
 var selected : String = "none"
+
 func new_stats():
 	life = 1; status = "Good"
 	get_tree().get_root().find_node("Status", true, false).update_display()
 	randomize()
 	luck = randi() %100+1
-	luck = 80
 	if luck < 16:
 		starting_class = 3 #Prisoner
 		if randi()%100 < 21:
@@ -35,12 +35,11 @@ func new_stats():
 		starting_class = 2 #Homeless
 	else:
 		starting_class = 1 #Homeowner
-		house_id = randi()%5+1 #1-5
-		house_id = 1
+		house_id = randi() % 5+1 #1-5
 	
 	
 	preset_inventory(starting_class)
-	TownStats.start_market()
+	TownStats.set_market()
 	get_tree().get_root().find_node("Player", true, false).set_location()
 	
 func preset_inventory(preset_id):

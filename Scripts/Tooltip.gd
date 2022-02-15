@@ -18,7 +18,7 @@ func _ready():
 func _process(_delta):
 	id = PlayerStats.slot_selector
 	if PlayerStats.current_menu == "inv":
-		if not PlayerStats.slot_selector == null:
+		if not id == null:
 			card_info(PlayerStats.inventory.cards[id].name, PlayerStats.current_menu)
 			if PlayerStats.inventory.cards[id].type == "Item": type.add_color_override("font_color", Color("42549c"))
 			elif PlayerStats.inventory.cards[id].type == "Food": type.add_color_override("font_color", Color("9e3f60"))
@@ -46,8 +46,11 @@ func _process(_delta):
 		elif PlayerStats.selected == "food": type.add_color_override("font_color", Color("9e3f60"))
 		elif PlayerStats.selected == "bank": type.add_color_override("font_color", Color("cfa365"))
 		if not PlayerStats.slot_selector == null:
-			var get_card = load("res://Assets/UI/Inventory/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
-			card_info(get_card, "market")
+			if PlayerStats.selected != "bank":
+				var get_card = load("res://Assets/UI/Inventory/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
+				card_info(get_card, "market")
+			else:
+				pass
 func card_info(item, menu):
 	visible = true
 	if menu == "inv":
@@ -55,9 +58,12 @@ func card_info(item, menu):
 		type.text = PlayerStats.inventory.cards[PlayerStats.slot_selector].type
 		desc.text = PlayerStats.inventory.cards[PlayerStats.slot_selector].desc
 	elif menu == "market":
-		Name.text = item.name
-		type.text = item.type
-		desc.text = item.desc
+		if PlayerStats.selected != "bank":
+			Name.text = item.name
+			type.text = item.type
+			desc.text = item.desc
+		else:
+			pass
 func _on_Button_pressed(): #BUY OR DROP
 	id = PlayerStats.slot_selector
 	if PlayerStats.current_menu == "inv": 
@@ -70,28 +76,27 @@ func _on_Button_pressed(): #BUY OR DROP
 				else:
 					PlayerStats.remove_gold(TownStats.item_list[TownStats.current_list[id]][1])
 					TownStats.item_list[TownStats.current_list[id]][2] -= 1
-					PlayerStats.add_card("res://Assets/UI/Inventory/" + str(TownStats.current_list[id]) + ".tres")
-					TownStats.update_market()
-			if PlayerStats.selected  == "bank":
-				TownStats.bank_stock[id] -= 1
-				PlayerStats.remove_gold(TownStats.bank_cost[id])
-				if TownStats.bank_list[id] == "Old Chest":
-					var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
-					chest.visible = true
-					chest.get_child(0).disabled = false
-				elif TownStats.bank_list[id] == "New Chest":
-					var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
-					chest.get_child(1).frame = 1
-				elif TownStats.bank_list[id] == "House":
-					if len(TownStats.vacant) > 0:
-						PlayerStats.house_id = TownStats.vacant[0]
-						PlayerStats.starting_class = 1
-						get_tree().get_root().find_node("DayInfo", true, false).set_class()
-						TownStats.vacant.erase(PlayerStats.house_id)
-						get_tree().get_root().find_node("Door" +  str(PlayerStats.house_id), true, false).link_house()
-				TownStats.update_bank_shop()
-				TownStats.unregister_item(TownStats.current_list[id])
-				PlayerStats.slot_selector = null
+					if PlayerStats.selected != "bank":
+						PlayerStats.add_card(load("res://Assets/UI/Inventory/" + str(TownStats.current_list[id]) + ".tres"))
+						TownStats.update_market()
+					else:
+						if TownStats.current_list[id] == "Old Chest":
+							var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
+							chest.visible = true
+							chest.get_child(0).disabled = false
+						elif TownStats.current_list[id] == "New Chest":
+							var chest = get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false)
+							chest.get_child(1).frame = 1
+						elif TownStats.current_list[id] == "House":
+							if len(TownStats.vacant) > 0:
+								PlayerStats.house_id = TownStats.vacant[0]
+								PlayerStats.starting_class = 1
+								get_tree().get_root().find_node("DayInfo", true, false).set_class()
+								TownStats.vacant.erase(PlayerStats.house_id)
+								get_tree().get_root().find_node("Door" +  str(PlayerStats.house_id), true, false).link_house()
+						TownStats.update_listing()
+						TownStats.unregister_item(TownStats.current_list[id])
+						PlayerStats.slot_selector = null
 func _on_Button2_pressed():
 	id = PlayerStats.slot_selector
 	if not id == null:

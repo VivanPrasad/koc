@@ -8,6 +8,8 @@ func _ready():
 		$Key/Label.text = "Steal"
 		$Gold.visible = true
 		$Gold.text = str(TownStats.royalchest) + "/" + "10"
+	elif PlayerStats.selected == "bed":
+		$Key.visible = false
 	elif PlayerStats.selected != "pot":
 		$Key/Label.text = "Buy"
 	else:

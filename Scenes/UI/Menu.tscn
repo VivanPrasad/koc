@@ -159,7 +159,7 @@ size_flags_horizontal = 11
 size_flags_vertical = 11
 
 [node name="Version" type="Label" parent="Margin/VBoxContainer/HBoxContainer/MarginContainer"]
-margin_left = 172.0
+margin_left = 171.0
 margin_top = 119.0
 margin_right = 217.0
 margin_bottom = 127.0
@@ -167,7 +167,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
-text = "Alpha 1.10"
+text = "Alpha 1.10\\"
 align = 2
 uppercase = true
 
