@@ -207,7 +207,7 @@ tracks/0/keys = {
 extents = Vector2( 4, 4 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 32, 26 )
+position = Vector2( 0, -6 )
 scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 2 )

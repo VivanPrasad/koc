@@ -8,6 +8,13 @@ const house_location = [
 	Vector2(-448, 442),
 	Vector2(544, 474)
 	]
+const cell_location = [
+	Vector2(32, -486),
+	Vector2(128, -486),
+	Vector2(224, -486),
+	Vector2(320, -486)
+]
+
 var velocity = Vector2.ZERO
 
 onready var animationPlayer = $AnimationPlayer
@@ -25,7 +32,8 @@ func set_location():
 	elif PlayerStats.starting_class == 2:
 		self.position = Vector2(32, 282)
 	else:
-		position = Vector2(64, -486)
+		yield(get_tree().create_timer(0), "timeout")
+		position = cell_location[PlayerStats.sentence[1]]
 		get_tree().get_root().find_node("World", true, false).enter_dungeon()
 func _physics_process(_delta):
 	if PlayerStats.current_menu == "none":

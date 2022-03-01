@@ -16,7 +16,8 @@ var can_steal = true
 
 var royalchest = 10
 
-var vacant = [1, 2, 3, 4, 5]
+var vacant = [1,2,3,4,5]
+var cells = [0,0,0,0]
 
 const events = [
 	"food_bank",
@@ -86,11 +87,17 @@ func _physics_process(_delta):
 		
 		if get_tree().get_root().find_node("World", true, false) != null:
 			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
+
 func open_town():
 	set_market()
 	for item in item_list:
-		print(item)
+		pass
+		#print(item)
 	update_item_cost("Bread", int(2+floor(0.4 * day) - wealth))
+	
+	if day == 2:
+		register_item("Berry", "food", int(2 + floor(0.4 * day) - wealth), 1)
+
 func register_item(Name, market, cost, stock):
 	item_list[Name] = [market,cost,stock]
 
@@ -99,8 +106,24 @@ func unregister_item(Name):
 
 func update_item_cost(Name, value):
 	item_list[Name][1] = value
+
 func update_listing():
 	current_list = []
 	for slot in TownStats.item_list.keys():
 		if TownStats.item_list[slot][0] == PlayerStats.selected:
 			current_list.append(slot)
+
+func update_sentence(time, cell):
+	cells[cell] = time
+	if time == 0:
+		PlayerStats.sentence[1] = null
+		PlayerStats.starting_class = 2
+
+func set_sentence(time):
+	if cells.has(0):
+		for i in cells:
+			print(i)
+			if i == 0:
+				cells[i] = time
+				PlayerStats.sentence[1] = i
+				break

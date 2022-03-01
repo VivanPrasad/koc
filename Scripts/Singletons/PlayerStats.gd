@@ -5,13 +5,14 @@ var can_move = true
 var luck : int
 
 var starting_class : int
-var sentence : int
+var sentence : Array
 var house_id : int
 var gold : int
 
 var life : int
 var status : String
 var can_eat = true
+var can_sleep = false
 
 var slot_selector
 var current_menu : String = "none"
@@ -24,13 +25,14 @@ func new_stats():
 	life = 1; status = "Good"
 	get_tree().get_root().find_node("Status", true, false).update_display()
 	randomize()
-	luck = randi() %100+1
+	luck = randi() % 100+1
 	if luck < 16:
 		starting_class = 3 #Prisoner
-		if randi()%100 < 21:
-			sentence = randi()%4+1 #1-4
+		if randi() %100 < 21:
+			sentence = [randi()%4+1,null]
 		else:
-			sentence = randi()%2+1 #1-2
+			sentence = [randi()%2+1,null]
+		TownStats.set_sentence(sentence[0])
 	elif luck < 41:
 		starting_class = 2 #Homeless
 	else:

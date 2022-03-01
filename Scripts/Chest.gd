@@ -2,7 +2,7 @@ extends StaticBody2D
 var tile_select = preload("res://Scenes/Instances/TileSelect.tscn")
 
 func _on_Area2D_area_entered(_area):
-	if name == "Chest" + str(PlayerStats.house_id):
+	if name == "Chest" + str(PlayerStats.house_id) and visible:
 		PlayerStats.selected = "chest"
 	elif name == "cChest":
 		PlayerStats.selected = "royalchest"

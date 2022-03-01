@@ -16,6 +16,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,6 +25,7 @@ __meta__ = {
 [node name="Inventory" type="ColorRect" parent="HBoxContainer"]
 margin_right = 160.0
 margin_bottom = 180.0
+mouse_filter = 2
 size_flags_horizontal = 3
 color = Color( 0, 0, 0, 0.74902 )
 
@@ -47,6 +49,7 @@ margin_top = 0.0599982
 margin_right = -86.96
 margin_bottom = -56.98
 rect_scale = Vector2( 2.5, 2.5 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,6 +79,7 @@ __meta__ = {
 margin_left = 160.0
 margin_right = 320.0
 margin_bottom = 180.0
+mouse_filter = 2
 size_flags_horizontal = 3
 color = Color( 0, 0, 0, 0.74902 )
 
@@ -88,6 +92,7 @@ margin_top = 0.0599982
 margin_right = -85.52
 margin_bottom = -56.98
 rect_scale = Vector2( 2.5, 2.5 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -136,6 +141,7 @@ margin_left = -208.0
 margin_top = -16.06
 margin_right = -192.0
 margin_bottom = -16.08
+mouse_filter = 2
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -164,6 +170,7 @@ margin_left = -64.0
 margin_top = -0.0399952
 margin_right = -48.0
 margin_bottom = -0.0600035
+mouse_filter = 2
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false

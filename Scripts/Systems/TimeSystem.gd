@@ -31,10 +31,10 @@ func set_class():
 	elif PlayerStats.starting_class == 2:
 		$Class.text = "Homeless"
 	else:
-		if PlayerStats.sentence != 1:
-			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence) + " day remaining)")
+		if PlayerStats.sentence[0] == 1:
+			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence[0]) + " day remaining)")
 		else:
-			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence) + " days remaining)")
+			$Class.text = "Prisoner " + "(" + (str(PlayerStats.sentence[0]) + " days remaining)")
 func _process(delta):
 	if hour == 0 and processed == false:
 		start_new_day()
@@ -53,6 +53,15 @@ func _process(delta):
 	else:
 		speed = 480*2 #night
 		time_cycle = "Night"
+		
+	if hour > 17 and hour < 23:
+		if not PlayerStats.can_sleep:
+			PlayerStats.can_sleep = true
+			print("can_sleep")
+	else:
+		if PlayerStats.can_sleep:
+			PlayerStats.can_sleep = false
+			print("cannot_sleep")
 	
 	if time_cycle == "Morning" and processed == false and TownStats.can_steal:
 		TownStats.open_town()
@@ -76,10 +85,10 @@ func _process(delta):
 func update_labels():
 	$Gold/HBoxContainer/Amount.text = str(PlayerStats.gold)
 	$Margin/Box/Day.text = "Day " + str(TownStats.day)
-	if hour < 13:
+	if hour < 13 and hour != 0:
 		$Margin/Box/Time.text = str(hour) + ":00" + " " + splitter
 	elif hour == 0:
-		$Margin/Box/Time.text = str(12) + ":00" + " " + splitter
+		$Margin/Box/Time.text = "12:00" + " " + splitter
 	else:
 		$Margin/Box/Time.text = str(hour-12) + ":00" + " " + splitter
 	
@@ -107,10 +116,12 @@ func start_new_day():
 		print("Day 7 Reached, you win")
 		get_tree().quit()
 	if PlayerStats.starting_class == 3:
-		if PlayerStats.sentence > 0:
-			PlayerStats.sentence -= 1
+		if PlayerStats.sentence[0] > 0:
+			PlayerStats.sentence[0] -= 1
+			TownStats.update_sentence(PlayerStats.sentence[0], PlayerStats.sentence[1])
 		else:
 			PlayerStats.starting_class = 2
+			
 		set_class()
 func configure_day():
 	pass
