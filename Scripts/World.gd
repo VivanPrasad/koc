@@ -4,6 +4,7 @@ onready var esc = preload("res://Scenes/UI/EscMenu.tscn")
 onready var day = preload("res://Scenes/UI/DayInfo.tscn")
 onready var inv = preload("res://Scenes/UI/InventoryUI.tscn")
 
+onready var chest = preload("res://Scenes/UI/ChestUI.tscn")
 onready var food = preload("res://Scenes/UI/MarketUI.tscn")
 
 onready var dialogue = preload("res://Scenes/Instances/DialogueBox.tscn")
@@ -76,20 +77,34 @@ func _input(_event):
 					$UI.add_child(food.instance())
 					PlayerStats.current_menu = "market"
 				else:
-					$UI/InventoryUI.queue_free()
-					PlayerStats.current_menu = "none"
+					pass
 			else:
 				$UI/MarketUI.queue_free()
 				PlayerStats.current_menu = "none"
 		elif PlayerStats.selected == "pot":
 			if TownStats.town_gold > 0:
 				TownStats.town_gold -= 1
-				PlayerStats.add_card("res://Assets/UI/Inventory/Gold.tres")
+				PlayerStats.add_card(load("res://Assets/UI/Inventory/Gold.tres"))
+		elif PlayerStats.selected == "royalchest":
+			if TownStats.royalchest > 0:
+				TownStats.royalchest -= 1
+				PlayerStats.add_card(load("res://Assets/UI/Inventory/RoyalGold.tres"))
+				get_tree().get_root().find_node("TileSelect", true, false).update_value()
+		elif PlayerStats.selected == "chest":
+			if get_tree().get_root().find_node("ChestUI", true, false) == null:
+				if PlayerStats.current_menu == "none":
+					$UI.add_child(chest.instance())
+					PlayerStats.current_menu = "chest"
+			else:
+				$UI/ChestUI.queue_free()
+				PlayerStats.current_menu = "none"
+					
 func enter_dungeon():
 	$Stairs.in_dungeon = true
 	$Objects/Dungeon.visible = true
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, true)
 	$Objects/Dungeon/Building.z_index = 2
+	
 	$Floor.visible = false
 	$Objects/Decoration.visible = false
 	$Objects/Buildings.visible = false
@@ -102,26 +117,10 @@ func exit_dungeon():
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, false)
 	$Objects/Dungeon/Building.z_index = 0
 	$Objects/Dungeon.visible = false
+	
 	$Floor.visible = true
 	$Objects/Decoration.visible = true
 	$Objects/Buildings.visible = true
 	$Objects/Buildings.set_collision_layer_bit(0, true)
 	$Shader.visible = true
 	slow_tiles = ["Grass", "Grass1", "Grass2", "Grass3", "RedFlowers", "YellowFlowers"]
-
-func buy_chest():
-	if PlayerStats.house_id == 4:
-		pass
-	elif PlayerStats.house_id == 5:
-		pass
-func new_chest():
-	if PlayerStats.house_id == 1:
-		pass
-	elif PlayerStats.house_id == 2:
-		pass
-	elif PlayerStats.house_id == 3:
-		pass
-	elif PlayerStats.house_id == 4:
-		pass
-	elif PlayerStats.house_id == 5:
-		pass

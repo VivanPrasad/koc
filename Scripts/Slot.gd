@@ -14,13 +14,15 @@ func display_card(card):
 		cardTexture.texture_normal = card.texture
 		$Selector.visible = false
 	else:
-		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Cards/empty.png")
+		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
 		$Selector.visible = false
 
 func get_drag_data(_position):
+	PlayerStats.slot_selector = null
 	var card_index = get_index()
 	var card = PlayerStats.inventory.remove_item(card_index)
 	if card is Card:
+		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
 		var data = {}
 		data.card = card
 		data.card_index = card_index
@@ -45,14 +47,10 @@ func drop_data(_position, data):
 		PlayerStats.inventory.set_item(data.card_index, data.card)
 	$Selector.visible = false
 
-func _on_TextureRect_mouse_exited():
-	$Selector.visible = false
-	PlayerStats.slot_selector = null
-func _on_TextureRect_mouse_entered():
-	id = get_index()
-	if PlayerStats.inventory.cards[id] != null or not InputEventMouseButton:
-		$Selector.visible = true
-	PlayerStats.slot_selector = get_index()
+func _process(_delta):
+	if not PlayerStats.slot_selector == null:
+		if PlayerStats.slot_selector > len(PlayerStats.inventory.cards)-1:
+			$Selector.visible = false
 
 func _on_TextureRect_pressed():
 	if PlayerStats.slot_selector != get_index():

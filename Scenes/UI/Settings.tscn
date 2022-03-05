@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/UI/Fonts/MenuUI-Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/UI/Fonts/UI-Font10.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/Settings.gd" type="Script" id=2]
-[ext_resource path="res://Assets/UI/Assets/grabber.png" type="Texture" id=3]
-[ext_resource path="res://Assets/UI/Themes/theme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/UI/Misc/grabber.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/theme.tres" type="Theme" id=4]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://Assets/Player/Base Skins/KoC_male1-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Player/Base Skins/KoC_female1-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -207,7 +207,7 @@ tracks/0/keys = {
 extents = Vector2( 4, 4 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 32, 26 )
+position = Vector2( 0, -6 )
 scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 2 )
@@ -228,7 +228,7 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 1.2, 1.25 )
 limit_left = -656
 limit_top = -694
 limit_right = 720

@@ -2,7 +2,6 @@ extends Resource
 class_name Inventory
 
 signal cards_changed()
-
 export (Array, Resource) var cards = [
 	null, null, null, null, null
 ]
@@ -24,6 +23,7 @@ func swap_items(card_index, target_card_index):
 	cards[target_card_index] = card
 	cards[card_index] = targetCard
 	emit_signal("cards_changed", card_index)
+
 func remove_item(card_index):
 	var previousCard = cards[card_index]
 	cards[card_index] = null
