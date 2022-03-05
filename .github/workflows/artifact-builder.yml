@@ -17,5 +17,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Artifact: ${{ matrix.platform }}
+          name: Artifact ${{ matrix.platform }}
           path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
