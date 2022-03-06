@@ -81,3 +81,6 @@ func _on_Discord_pressed():
 
 func _on_Reddit_pressed():
 	return OS.shell_open("https://www.reddit.com/r/kingdomofcards/")
+
+func _on_Exit_pressed():
+	get_tree().quit()
