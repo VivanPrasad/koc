@@ -1,0 +1,22 @@
+name: Artifact Builder
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  Godot:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [windows]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifact ${{ matrix.platform }}
+          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          retention-days: 2

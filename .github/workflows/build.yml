@@ -21,8 +21,3 @@ jobs:
           name: KoC_devbuild.exe
           preset: ${{ matrix.platform }}
           debugMode: "true"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
