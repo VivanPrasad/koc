@@ -14,6 +14,7 @@ onready var play_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play
 onready var tutorial_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Tutorial
 onready var settings_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Settings
 onready var collection_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection
+onready var exit_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit
 onready var bg = $BG
 #var new_color : Color
 
@@ -58,6 +59,12 @@ func _on_Collection_mouse_entered():
 func _on_Collection_mouse_exited():
 	pass
 	#collection_button.text = "Collection"
+	
+func _on_Exit_mouse_entered():
+	exit_button.text = "~ Exit"
+	Audio.play_select()
+func _on_Exit_mouse_exited():
+	exit_button.text = "Exit"
 
 func _on_Play_pressed():
 # warning-ignore:return_value_discarded
