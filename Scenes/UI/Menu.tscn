@@ -72,8 +72,8 @@ margin_bottom = 154.0
 margin_right = 288.0
 margin_bottom = 23.0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Kingdom of Cards"
 align = 1
 
@@ -84,7 +84,7 @@ margin_bottom = 154.0
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
+margin_top = 12.0
 margin_right = 67.0
 margin_bottom = 127.0
 size_flags_vertical = 8
@@ -100,8 +100,8 @@ margin_right = 33.0
 margin_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+custom_fonts/font = ExtResource( 5 )
 shortcut_in_tooltip = false
 text = "Play"
 flat = true
@@ -113,9 +113,9 @@ margin_right = 56.0
 margin_bottom = 46.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0.666667, 0.666667, 0.666667, 1 )
 custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+custom_fonts/font = ExtResource( 5 )
 disabled = true
 shortcut_in_tooltip = false
 text = "Tutorial"
@@ -128,8 +128,8 @@ margin_right = 62.0
 margin_bottom = 69.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_hover = Color( 1, 0.894118, 0.662745, 1 )
+custom_fonts/font = ExtResource( 5 )
 shortcut_in_tooltip = false
 text = "Settings"
 flat = true
@@ -141,10 +141,25 @@ margin_right = 67.0
 margin_bottom = 92.0
 size_flags_horizontal = 0
 size_flags_vertical = 2
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_disabled = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = ExtResource( 5 )
 disabled = true
 text = "Collection"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="Margin/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 97.0
+margin_right = 35.0
+margin_bottom = 115.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+custom_colors/font_color_disabled = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Exit"
 flat = true
 align = 0
 __meta__ = {
@@ -165,8 +180,8 @@ margin_right = 217.0
 margin_bottom = 127.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 2 )
 text = "Alpha 1.10"
 align = 2
 uppercase = true
@@ -211,5 +226,8 @@ __meta__ = {
 [connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_mouse_entered"]
 [connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_mouse_exited"]
 [connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection" to="." method="_on_Collection_pressed"]
+[connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_mouse_exited"]
+[connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Discord" to="." method="_on_Discord_pressed"]
 [connection signal="pressed" from="Reddit" to="." method="_on_Reddit_pressed"]
