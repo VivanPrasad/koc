@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name = "Basket"
-type = ""
+type = "Item"
 desc = "Used to refill the market"
-has_icon = false
+has_icon = true
 texture = ExtResource( 1 )

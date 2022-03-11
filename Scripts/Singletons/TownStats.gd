@@ -43,6 +43,7 @@ const forecast = [
 func update_market():
 	if get_tree().get_root().find_node("MarketUI", true, false) != null:
 		get_tree().get_root().find_node("MarketUI", true, false).update()
+
 func set_market():
 	yield(get_tree().create_timer(0), "timeout")
 	set_bank_shop()
@@ -89,17 +90,26 @@ func _physics_process(_delta):
 			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
 
 func open_town():
+	PlayerStats.show_alert(4)
 	set_market()
 	for item in item_list:
 		pass
 		#print(item)
+	if day > 1:
+		register_item("Berry", "food", int(2 + floor(0.4*day) - wealth), int(population))
+		register_item("Medicine", "item", int(2 + floor(0.4*day) - wealth), int(population))
+	if day > 2:
+		register_item("Basket", "item", int(4 - wealth), 1)
+	if day > 3:
+		register_item("Potion", "item", int(6 - wealth), int(round(0.3*population)))
 	update_item_cost("Bread", int(2+floor(0.4 * day) - wealth))
-	
-	if day == 2:
-		register_item("Berry", "food", int(2 + floor(0.4 * day) - wealth), 1)
+
 
 func register_item(Name, market, cost, stock):
-	item_list[Name] = [market,cost,stock]
+	if Name in item_list:
+		pass
+	else:
+		item_list[Name] = [market,cost,stock]
 
 func unregister_item(Name):
 	item_list.erase(Name)
@@ -118,7 +128,6 @@ func update_sentence(time, cell):
 	if time == 0:
 		PlayerStats.sentence[1] = null
 		PlayerStats.starting_class = 2
-
 func set_sentence(time):
 	if cells.has(0):
 		for i in cells:

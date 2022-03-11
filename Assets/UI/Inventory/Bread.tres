@@ -8,5 +8,5 @@ script = ExtResource( 2 )
 name = "Bread"
 type = "Food"
 desc = "+1 Life"
-has_icon = false
+has_icon = true
 texture = ExtResource( 1 )

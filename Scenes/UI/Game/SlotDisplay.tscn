@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scripts/SlotDisplay.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/SlotDisplay.gd" type="Script" id=1]
 
 [node name="SlotsDisplay" type="GridContainer"]
 anchor_right = 1.0
@@ -10,7 +10,7 @@ size_flags_vertical = 3
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 5
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

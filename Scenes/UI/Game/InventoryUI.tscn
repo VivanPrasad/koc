@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/UI/SlotDisplay.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/InventoryUI.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UI/Tooltip.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/Game/SlotDisplay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/UI/Game/Tooltip.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/UI/InventoryUI.gd" type="Script" id=3]
 
 [node name="InventoryUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -69,7 +69,7 @@ margin_top = 18.0
 margin_right = 26.0
 margin_bottom = 18.0
 
-[node name="Tooltip" parent="." instance=ExtResource( 3 )]
+[node name="Tooltip" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.266
 anchor_top = 0.794444
 margin_left = -5.12

@@ -133,4 +133,4 @@ func configure_day():
 	#4am -> 10pm daytime (18 hours in 3 minutes, speed = 270)
 	
 	#formula: speed = (in-game hour * 60) / irl minutes
-var inventory = preload("res://Scenes/UI/InventoryUI.tscn")
+var inventory = preload("res://Scenes/UI/Game/InventoryUI.tscn")

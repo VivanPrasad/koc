@@ -8,5 +8,5 @@ script = ExtResource( 2 )
 name = "Bag"
 type = "Item"
 desc = "+5 Inventory Slots"
-has_icon = false
+has_icon = true
 texture = ExtResource( 1 )

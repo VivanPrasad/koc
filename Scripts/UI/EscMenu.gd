@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal quit_to_menu
-onready var settings = load("res://Scenes/UI/Settings.tscn")
+onready var settings = load("res://Scenes/UI/Settings/Settings.tscn")
 
 onready var back = $Panel/VBox/Continue
 onready var collection = $Panel/VBox/Collection

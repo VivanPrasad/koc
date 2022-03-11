@@ -1,6 +1,6 @@
 extends Control
 
-onready var settings = preload("res://Scenes/UI/Settings.tscn")
+onready var settings = preload("res://Scenes/UI/Settings/Settings.tscn")
 onready var world = preload("res://Scenes/World.tscn")
 
 const colors = [
@@ -24,7 +24,7 @@ func _ready():
 func setup():
 	Audio.play_menu()
 	$BG2.playing = true
-	play_button.focus_mode = 0;tutorial_button.focus_mode = 0;settings_button.focus_mode = 0;settings_button.focus_mode = 0;collection_button.focus_mode = 0;
+	play_button.focus_mode = 0;tutorial_button.focus_mode = 0;settings_button.focus_mode = 0;settings_button.focus_mode = 0;collection_button.focus_mode = 0;exit_button.focus_mode = 0
 	randomize()
 	bg.modulate = (Color(colors[int(rand_range(0,4))]))
 

@@ -110,3 +110,7 @@ func _on_Button2_pressed():
 				for i in 5:
 					PlayerStats.inventory.add_slot()
 				PlayerStats.remove_card(PlayerStats.inventory.cards[id])
+			elif PlayerStats.inventory.cards[id].name == "Key":
+				if PlayerStats.starting_class == 3:
+					PlayerStats.sentence[0] = 0
+					TownStats.update_sentence(PlayerStats.sentence[0], PlayerStats.sentence[1])

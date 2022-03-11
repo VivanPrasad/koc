@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/MarketUI.gd" type="Script" id=1]
-[ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Scenes/UI/Tooltip.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/UI/Misc/gold_icon.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/UI/Game/Tooltip.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/UI/MarketUI.gd" type="Script" id=2]
+[ext_resource path="res://Assets/UI/Misc/gold_icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=4]
 
 [node name="MarketUI" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.74902 )
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -55,7 +55,7 @@ margin_left = 32.0
 margin_right = 54.0
 margin_bottom = 16.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 text = "CARD"
 align = 1
@@ -69,7 +69,7 @@ margin_left = 83.0
 margin_right = 105.0
 margin_bottom = 16.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 text = "COST"
 align = 1
@@ -83,7 +83,7 @@ margin_left = 107.0
 margin_right = 135.0
 margin_bottom = 16.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 text = "STOCK"
 align = 1
@@ -134,7 +134,7 @@ margin_right = 16.0
 margin_bottom = 16.0
 size_flags_horizontal = 9
 size_flags_vertical = 4
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="Amount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 20.0
@@ -148,4 +148,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tooltip" parent="." instance=ExtResource( 3 )]
+[node name="Tooltip" parent="." instance=ExtResource( 1 )]

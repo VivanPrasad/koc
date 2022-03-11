@@ -3,8 +3,9 @@
 [ext_resource path="res://Assets/UI/Misc/tile_select.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/Fonts/UI-Font10.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/UI/Misc/keys.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/TileSelect.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/UI/TileSelect.gd" type="Script" id=4]
 [ext_resource path="res://Assets/UI/Fonts/UI-Font8.tres" type="DynamicFont" id=5]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -36,6 +37,7 @@ position = Vector2( -1, -1 )
 z_index = 1
 z_as_relative = false
 frames = SubResource( 5 )
+frame = 2
 playing = true
 centered = false
 script = ExtResource( 4 )

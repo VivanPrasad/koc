@@ -1,11 +1,11 @@
 extends Node2D
 
-onready var esc = preload("res://Scenes/UI/EscMenu.tscn")
-onready var day = preload("res://Scenes/UI/DayInfo.tscn")
-onready var inv = preload("res://Scenes/UI/InventoryUI.tscn")
+onready var esc = preload("res://Scenes/UI/Main/EscMenu.tscn")
+onready var day = preload("res://Scenes/UI/Game/DayInfo.tscn")
+onready var inv = preload("res://Scenes/UI/Game/InventoryUI.tscn")
 
-onready var chest = preload("res://Scenes/UI/ChestUI.tscn")
-onready var food = preload("res://Scenes/UI/MarketUI.tscn")
+onready var chest = preload("res://Scenes/UI/Game/ChestUI.tscn")
+onready var food = preload("res://Scenes/UI/Game/MarketUI.tscn")
 
 onready var dialogue = preload("res://Scenes/Instances/DialogueBox.tscn")
 

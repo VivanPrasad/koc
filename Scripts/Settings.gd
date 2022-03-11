@@ -9,7 +9,7 @@ onready var flscrn = $Margin/VBoxContainer/Tabs/Display/VBoxContainer/Fullscreen
 
 var new_color : Color
 
-onready var debug_ui = preload("res://Scenes/UI/DebugUI.tscn")
+onready var debug_ui = preload("res://Scenes/UI/Settings/DebugUI.tscn")
 func _ready():
 	master_vol.value = AudioServer.get_bus_volume_db(0)
 	music_vol.value = AudioServer.get_bus_volume_db(1)

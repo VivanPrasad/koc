@@ -18,24 +18,26 @@ func display_card(card):
 		$Selector.visible = false
 
 func get_drag_data(_position):
-	PlayerStats.slot_selector = null
-	var card_index = get_index()
-	var card = PlayerStats.inventory.remove_item(card_index)
-	if card is Card:
-		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
-		var data = {}
-		data.card = card
-		data.card_index = card_index
-		var dragPreview = TextureRect.new()
-		$Selector.visible = false
-		dragPreview.texture = card.texture
-		dragPreview.rect_scale.x = 3
-		dragPreview.rect_scale.y = 3
-		set_drag_preview(dragPreview)
-		return data
+	if PlayerStats.current_menu == "inv":
+		PlayerStats.slot_selector = null
+		var card_index = get_index()
+		var card = PlayerStats.inventory.remove_item(card_index)
+		if card is Card:
+			cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
+			var data = {}
+			data.card = card
+			data.card_index = card_index
+			var dragPreview = TextureRect.new()
+			$Selector.visible = false
+			dragPreview.texture = card.texture
+			dragPreview.rect_scale.x = 3
+			dragPreview.rect_scale.y = 3
+			set_drag_preview(dragPreview)
+			return data
 
 func can_drop_data(_position, data):
-	return data is Dictionary and data.has("card")
+	if PlayerStats.current_menu == "inv":
+		return data is Dictionary and data.has("card")
 
 func drop_data(_position, data):
 	var my_card_index = get_index()

@@ -11,7 +11,7 @@ func check():
 		$Gold.visible = true
 		$Gold.text = str(TownStats.royalchest) + "/" + "10"
 	elif PlayerStats.selected == "bed":
-		$Key.visible = false
+		$Key/Label.text = "Sleep"
 	elif PlayerStats.selected != "pot":
 		$Key/Label.text = "Buy"
 	else:

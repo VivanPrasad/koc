@@ -1,7 +1,7 @@
 extends Node
 
 var can_move = true
-
+var sleeping : bool = false
 var luck : int
 
 var starting_class : int
@@ -19,7 +19,25 @@ var current_menu : String = "none"
 var inventory = preload("res://Scripts/Systems/Inventory.tres")
 var chest = preload("res://Scripts/Systems/Chest.tres")
 
+onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
+
 var selected : String = "none"
+
+const skins = [
+	"res://Assets/Player/Base Skins/KoC_female1-Sheet.png",
+	"res://Assets/Player/Base Skins/KoC_male1-Sheet.png",
+	"res://Assets/Player/Base Skins/KoC_male2-Sheet.png",
+	"res://Assets/Player/Base Skins/KoC_male3-Sheet.png"
+]
+
+const alerts = [
+	"You are hungry",
+	"You are ill",
+	"You are full",
+	"It's getting dark",
+	"The market is now open"
+]
+var alert_id : int
 
 func new_stats():
 	life = 1; status = "Good"
@@ -43,7 +61,8 @@ func new_stats():
 	preset_inventory(starting_class)
 	TownStats.set_market()
 	get_tree().get_root().find_node("Player", true, false).set_location()
-	
+	change_skin(skins[randi() % 3])
+
 func preset_inventory(preset_id):
 	if preset_id < 3:
 		for i in 5:
@@ -106,3 +125,10 @@ func count_gold():
 func food_eaten(food):
 	if food in TownStats.item_list: if life < 2: life += 1
 	get_tree().get_root().find_node("Status", true, false).update_display()
+	show_alert(2)
+func change_skin(skinPath):
+	get_tree().get_root().find_node("Player", true, false).update_skin(skinPath)
+
+func show_alert(id):
+	alert_id = id
+	get_tree().get_root().find_node("World", true, false).add_child(information.instance())

@@ -8,5 +8,5 @@ script = ExtResource( 2 )
 name = "Key"
 type = "Item"
 desc = "Used to Escape the Dungeon"
-has_icon = false
+has_icon = true
 texture = ExtResource( 1 )

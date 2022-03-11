@@ -69,3 +69,7 @@ func _input(_event):
 				$Camera2D.zoom = Vector2(1.2,1.25)
 				PlayerStats.current_menu = "none"
 				get_tree().get_root().find_node("Markers", true, false).visible =  false
+
+func update_skin(skinPath):
+	$Sprite.texture = load(skinPath)
+	#$Sprite.hframes = 12

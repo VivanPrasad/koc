@@ -1,6 +1,6 @@
 extends GridContainer
 
-var slot = preload("res://Scenes/UI/Slot.tscn")
+var slot = preload("res://Scenes/UI/Game/Slot.tscn")
 
 func _ready():
 	PlayerStats.inventory.connect("cards_changed", self, "on_cards_changed")
