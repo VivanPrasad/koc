@@ -15,7 +15,7 @@ func splash_fade():
 func unpause_tree():
 	get_tree().paused = false
 func fade_audio_out():
-	Audio.fade_out($"/root/Audio/Menu")
+	Audio.fade_out()
 
 # warning-ignore:unused_argument
 func change_scene(new_scene, current_scene, transition):

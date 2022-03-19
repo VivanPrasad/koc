@@ -4,6 +4,8 @@ onready var esc = preload("res://Scenes/UI/Main/EscMenu.tscn")
 onready var day = preload("res://Scenes/UI/Game/DayInfo.tscn")
 onready var inv = preload("res://Scenes/UI/Game/InventoryUI.tscn")
 
+onready var dungeon = preload("res://Scenes/UI/Game/Dungeon.tscn")
+onready var music = preload("res://Scenes/Instances/musicHandler.tscn")
 onready var chest = preload("res://Scenes/UI/Game/ChestUI.tscn")
 onready var food = preload("res://Scenes/UI/Game/MarketUI.tscn")
 
@@ -17,13 +19,13 @@ var tile_name
 
 func _ready():
 	$UI.add_child(day.instance())
+	add_child(music.instance())
 # warning-ignore:return_value_discarded
 	$Stairs.connect("enter_dungeon", self, "enter_dungeon")
 # warning-ignore:return_value_discarded
 	$Stairs.connect("exit_dungeon", self, "exit_dungeon")
 	PlayerStats.can_move = true
 	call_deferred("new_stats")
-	#call_deferred("check_tile")
 	
 	$Objects/Buildings/Structures/Chest4/Collision.disabled = true
 	$Objects/Buildings/Structures/Chest5/Collision.disabled = true
@@ -100,6 +102,9 @@ func _input(_event):
 				PlayerStats.current_menu = "none"
 					
 func enter_dungeon():
+	if $MusicChanger != null: 
+		$MusicChanger.queue_free()
+	$Objects.add_child(dungeon.instance())
 	$Stairs.in_dungeon = true
 	$Objects/Dungeon.visible = true
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, true)
@@ -110,17 +115,22 @@ func enter_dungeon():
 	$Objects/Buildings.visible = false
 	$Objects/Buildings.set_collision_layer_bit(0, false)
 	$Shader.visible = false
-	slow_tiles = [""]
+	Audio.play_dungeon()
 
 func exit_dungeon():
+	add_child(music.instance())
 	$Stairs.in_dungeon = false
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, false)
 	$Objects/Dungeon/Building.z_index = 0
-	$Objects/Dungeon.visible = false
+	#$Objects/Dungeon.visible = false
 	
 	$Floor.visible = true
 	$Objects/Decoration.visible = true
 	$Objects/Buildings.visible = true
 	$Objects/Buildings.set_collision_layer_bit(0, true)
 	$Shader.visible = true
-	slow_tiles = ["Grass", "Grass1", "Grass2", "Grass3", "RedFlowers", "YellowFlowers"]
+	if $UI/DayInfo.hour > 3 and $UI/DayInfo.hour < 21:
+		Audio.play_day()
+	else:
+		Audio.play_night()
+	$Objects/Dungeon.queue_free()

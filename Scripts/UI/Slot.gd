@@ -60,6 +60,7 @@ func _on_TextureRect_pressed():
 			return
 		PlayerStats.slot_selector = get_index()
 		$Selector.visible = true
+		Audio.play_select()
 		for slot in get_parent().get_child_count():
 			if slot == get_index():
 				pass

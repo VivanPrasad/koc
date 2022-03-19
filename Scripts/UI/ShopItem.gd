@@ -23,6 +23,7 @@ func _on_TextureRect_toggled(_button_pressed):
 	if PlayerStats.slot_selector != get_index():
 		PlayerStats.slot_selector = get_index()
 		$Selector.visible = true
+		Audio.play_dialogue()
 		for slot in get_parent().get_child_count():
 			if slot == get_index():
 				pass

@@ -3,7 +3,6 @@
 [ext_resource path="res://Assets/World/Tilesets/world_tileset-sheet-v3.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Instances/Bed.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 4 )
 
@@ -23,7 +22,7 @@ texture = ExtResource( 1 )
 centered = false
 hframes = 3
 region_enabled = true
-region_rect = Rect2( 80, 48, 24, 8 )
+region_rect = Rect2( 0, 40, 24, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false

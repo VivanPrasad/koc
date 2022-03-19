@@ -7,6 +7,6 @@
 script = ExtResource( 1 )
 name = "Gold"
 type = "Wealth"
-desc = "Used to purchase food and items (1g)"
+desc = "Used to purchase food and items"
 has_icon = true
 texture = ExtResource( 2 )

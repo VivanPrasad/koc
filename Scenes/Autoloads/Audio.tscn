@@ -5,13 +5,7 @@
 [node name="Audio" type="Node"]
 script = ExtResource( 4 )
 
-[node name="Menu" type="AudioStreamPlayer" parent="."]
-volume_db = -80.0
-pitch_scale = 0.9
-mix_target = 1
-bus = "Music"
-
-[node name="Town" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -80.0
 mix_target = 1
 bus = "Music"
@@ -34,10 +28,19 @@ bus = "SFX"
 
 [node name="Back" type="AudioStreamPlayer" parent="."]
 volume_db = 10.0
+mix_target = 1
+bus = "SFX"
 
 [node name="Back2" type="AudioStreamPlayer" parent="."]
 volume_db = 15.0
 pitch_scale = 2.0
+mix_target = 1
+bus = "SFX"
+
+[node name="Door" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+mix_target = 1
+bus = "SFX"
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0

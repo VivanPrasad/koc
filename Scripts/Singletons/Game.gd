@@ -40,6 +40,7 @@ func write_config():
 		else:
 			configfile.set_value("keybinds", key, "")
 	configfile.save(filepath)
+
 func add_object(_object, _hostDest,_destPath):
 	pass
 

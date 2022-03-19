@@ -8,15 +8,15 @@ extents = Vector2( 2, 2 )
 
 [node name="Stairs" type="Area2D"]
 modulate = Color( 1, 0.980392, 0.756863, 1 )
-monitorable = false
 collision_mask = 2
+monitorable = false
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
-region_rect = Rect2( 16, 72, 8, 8 )
+region_rect = Rect2( 88, 72, 8, 8 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 4, 4 )

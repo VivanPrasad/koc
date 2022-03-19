@@ -1,15 +1,22 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Instances/CellDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/World/Tilesets/world_tileset-sheet-v3.png" type="Texture" id=2]
 
 [sub_resource type="TileSet" id=1]
-0/name = "dungeonStone"
+0/name = "world_tileset-sheet-v3.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 24, 72, 8, 8 )
-0/tile_mode = 0
+0/region = Rect2( 64, 72, 32, 8 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 8, 8 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
@@ -18,26 +25,6 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-1/name = "Stairs"
-1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 16, 72, 8, 8 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
@@ -52,48 +39,6 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 points = PoolVector2Array( 0, 1, 8, 1, 8, 7, 0, 7 )
 
 [sub_resource type="TileSet" id=8]
-0/name = "world_tileset-sheet-v3.png 0"
-0/texture = ExtResource( 2 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 72, 8, 8 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-1/name = "world_tileset-sheet-v3.png 1"
-1/texture = ExtResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 8, 72, 8, 8 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 3 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = 0
 2/name = "world_tileset-sheet-v3.png 2"
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
@@ -136,11 +81,11 @@ points = PoolVector2Array( 0, 1, 8, 1, 8, 7, 0, 7 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
-6/name = "invisibleWall"
+6/name = "invisWall"
 6/texture = ExtResource( 2 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 80, 72, 8, 8 )
+6/region = Rect2( 96, 72, 8, 8 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
@@ -157,11 +102,11 @@ points = PoolVector2Array( 0, 1, 8, 1, 8, 7, 0, 7 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
-7/name = "world_tileset-sheet-v3.png 7"
+7/name = "Bed"
 7/texture = ExtResource( 2 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 72, 72, 8, 8 )
+7/region = Rect2( 24, 40, 8, 8 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
@@ -178,9 +123,30 @@ points = PoolVector2Array( 0, 1, 8, 1, 8, 7, 0, 7 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
+8/name = "Dungeon"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 16, 72, 48, 8 )
+8/tile_mode = 2
+8/autotile/icon_coordinate = Vector2( 0, 0 )
+8/autotile/tile_size = Vector2( 8, 8 )
+8/autotile/spacing = 0
+8/autotile/occluder_map = [  ]
+8/autotile/navpoly_map = [  ]
+8/autotile/priority_map = [  ]
+8/autotile/z_index_map = [  ]
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
 
 [node name="Dungeon" type="YSort"]
-modulate = Color( 1, 0.980392, 0.756863, 1 )
+position = Vector2( -144, -566 )
 
 [node name="Floor" type="TileMap" parent="."]
 scale = Vector2( 4, 4 )
@@ -188,7 +154,7 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( 3, 1, 0, 65538, 1, 0, 65539, 1, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, -1073741824, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131087, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 1610612736, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0 )
+tile_data = PoolIntArray( 2, 0, 3, 3, 1, 0, 65538, 0, 3, 65539, 1, 0, 131072, 0, 0, 131073, 0, 0, 131074, 536870912, 1, 131075, -1073741824, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 536870912, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 536870912, 2, 131086, 0, 0, 131087, 0, 0, 196608, 0, 1, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 1610612736, 2, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 1610612736, 1, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 1610612736, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327681, 1073741824, 2, 327682, 0, 0, 327683, 0, 0, 327684, 1610612736, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 536870912, 2, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 1 )
 
 [node name="Building" type="TileMap" parent="."]
 scale = Vector2( 4, 4 )
@@ -199,7 +165,7 @@ cell_y_sort = true
 show_collision = true
 collision_layer = 0
 format = 1
-tile_data = PoolIntArray( -65534, 6, 0, 0, 1, 0, 1, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 65536, 0, 0, 65537, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 196607, 6, 0, 131072, 536870916, 0, 131076, 4, 0, 131078, 536870919, 0, 131079, 4, 0, 131081, 536870919, 0, 131082, 4, 0, 131084, 536870919, 0, 131085, 4, 0, 131087, 536870919, 0, 131088, 6, 0, 262143, 6, 0, 196608, 536870916, 0, 196612, 4, 0, 196615, 4, 0, 196618, 4, 0, 196621, 4, 0, 196624, 6, 0, 327679, 6, 0, 262144, 536870914, 0, 262148, 2, 0, 262149, 2, 0, 262151, 2, 0, 262152, 2, 0, 262154, 2, 0, 262155, 2, 0, 262157, 2, 0, 262158, 2, 0, 262160, 6, 0, 393215, 6, 0, 327696, 6, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393229, 1, 0, 393230, 1, 0, 393231, 1, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0 )
+tile_data = PoolIntArray( -65534, 6, 0, 0, 8, 2, 1, 8, 2, 3, 8, 2, 4, 8, 2, 5, 8, 2, 6, 8, 2, 7, 8, 2, 8, 8, 2, 9, 8, 2, 10, 8, 2, 11, 8, 2, 12, 8, 2, 13, 8, 2, 14, 8, 2, 15, 8, 2, 65536, 8, 3, 65537, 8, 3, 65539, 8, 3, 65540, 8, 3, 65541, 8, 4, 65542, 8, 3, 65543, 8, 3, 65544, 8, 5, 65545, 8, 3, 65546, 8, 3, 65547, 8, 3, 65548, 8, 3, 65549, 8, 3, 65550, 536870920, 4, 65551, 8, 3, 196607, 6, 0, 131076, 536870920, 1, 131078, 536870919, 0, 131079, 536870920, 1, 131081, 536870919, 0, 131082, 536870920, 1, 131084, 536870919, 0, 131085, 536870920, 1, 131087, 536870919, 0, 131088, 6, 0, 262143, 6, 0, 196612, 536870920, 1, 196615, 536870920, 1, 196618, 536870920, 1, 196621, 536870920, 1, 196624, 6, 0, 327679, 6, 0, 262148, 8, 0, 262149, 8, 0, 262151, 8, 0, 262152, 8, 0, 262154, 8, 0, 262155, 8, 0, 262157, 8, 0, 262158, 8, 0, 262160, 6, 0, 393215, 6, 0, 327696, 6, 0, 393216, 8, 2, 393217, 8, 2, 393218, 8, 2, 393219, 8, 2, 393220, 8, 2, 393221, 8, 2, 393222, 8, 2, 393223, 8, 2, 393224, 8, 2, 393225, 8, 2, 393226, 8, 2, 393227, 8, 2, 393228, 8, 2, 393229, 8, 2, 393230, 8, 2, 393231, 8, 2, 458752, 8, 3, 458753, 8, 3, 458754, 8, 3, 458755, 8, 3, 458756, 8, 3, 458757, 8, 3, 458758, 8, 3, 458759, 8, 3, 458760, 8, 3, 458761, 8, 3, 458762, 8, 3, 458763, 8, 3, 458764, 8, 3, 458765, 8, 3, 458766, 8, 3, 458767, 8, 3 )
 
 [node name="Doors" type="YSort" parent="Building"]
 

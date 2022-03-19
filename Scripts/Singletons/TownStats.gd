@@ -128,6 +128,7 @@ func update_sentence(time, cell):
 	if time == 0:
 		PlayerStats.sentence[1] = null
 		PlayerStats.starting_class = 2
+
 func set_sentence(time):
 	if cells.has(0):
 		for i in cells:

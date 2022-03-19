@@ -26,7 +26,6 @@ func _ready():
 		label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 		button.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 		
-		print(key)
 		label.text = labels[key]
 		#label.text = label.text.capitalize()
 		
