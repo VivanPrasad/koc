@@ -1,6 +1,6 @@
 extends ColorRect
 
-var shopslot = preload("res://Scenes/UI/Game/ShopItem.tscn")
+var shopslot = load("res://Scenes/UI/Game/ShopItem.tscn")
 
 onready var shop_list = $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer
 onready var desc = $Tooltip/Margin/VBox/HBox2/Text

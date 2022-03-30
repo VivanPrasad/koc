@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
-"path": "res://Scripts/Systems/InventorySys.gd"
+"path": "res://Scripts/Systems/InvSystem.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
@@ -46,7 +46,7 @@ Transition="*res://Scenes/Autoloads/Transition.tscn"
 Audio="*res://Scenes/Autoloads/Audio.tscn"
 PlayerStats="*res://Scripts/Singletons/PlayerStats.gd"
 TownStats="*res://Scripts/Singletons/TownStats.gd"
-Game="*res://Scripts/Singletons/Game.gd"
+Settings="*res://Scripts/Singletons/Config.gd"
 
 [debug]
 
@@ -58,6 +58,7 @@ window/size/width=320
 window/size/height=180
 window/size/test_width=1280
 window/size/test_height=720
+window/dpi/allow_hidpi=true
 mouse_cursor/custom_image="res://Assets/UI/Misc/cursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -177,5 +178,9 @@ quality/intended_usage/framebuffer_allocation=1
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
 quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/spatial_partitioning/render_tree_balance=0.5
 environment/default_clear_color=Color( 0.137255, 0.137255, 0.137255, 1 )
+quality/depth/hdr=false
 environment/default_environment="res://Assets/Misc/default_env.tres"

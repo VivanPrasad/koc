@@ -12,7 +12,7 @@ func _ready():
 func update_display():
 	var id = get_index()
 	slot_name.text = TownStats.current_list[id]
-	slot_icon.texture = load("res://Assets/UI/Icon/" + str(TownStats.current_list[id]) + ".png")
+	slot_icon.texture = load("res://Assets/UI/Cards/Icon/" + str(TownStats.current_list[id]) + ".png")
 	slot_cost.text = str(TownStats.item_list[TownStats.current_list[id]][1])
 	slot_stock.text = str(TownStats.item_list[TownStats.current_list[id]][2])
 	

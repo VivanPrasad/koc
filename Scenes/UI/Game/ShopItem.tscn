@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/UI/Misc/gold_price.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/Misc/shop_select.png" type="Texture" id=2]
-[ext_resource path="res://Assets/UI/Icon/Bread.png" type="Texture" id=3]
 [ext_resource path="res://Assets/UI/Misc/shopslot-price.png" type="Texture" id=4]
 [ext_resource path="res://Assets/UI/Misc/shopslot-bg.png" type="Texture" id=5]
 [ext_resource path="res://Assets/UI/Fonts/UI-Font8.tres" type="DynamicFont" id=6]
@@ -43,7 +42,6 @@ script = ExtResource( 7 )
 visible = false
 modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
 frames = SubResource( 5 )
-frame = 3
 playing = true
 centered = false
 offset = Vector2( -1, -1 )
@@ -83,7 +81,6 @@ rect_min_size = Vector2( 8, 8 )
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -1,27 +1,9 @@
-[gd_resource type="TileSet" load_steps=11 format=2]
+[gd_resource type="TileSet" load_steps=16 format=2]
 
-[ext_resource path="res://Assets/World/Tilesets/world_tileset-sheet-v3.png" type="Texture" id=1]
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=64]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=65]
-points = PoolVector2Array( 5, 0, 8, 0, 8, 8, 5, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=66]
-points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=67]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=68]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+[ext_resource path="res://Assets/World/Tilesets/tileset-sheet-v4.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=69]
-points = PoolVector2Array( 5, 0, 8, 0, 8, 8, 5, 8 )
+points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
 
 [sub_resource type="ConvexPolygonShape2D" id=70]
 points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
@@ -29,50 +11,62 @@ points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
 [sub_resource type="ConvexPolygonShape2D" id=71]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
+[sub_resource type="ConvexPolygonShape2D" id=79]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=73]
+points = PoolVector2Array( 3, 8, 0, 8, 0, 0, 3, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=74]
+points = PoolVector2Array( 3, 8, 0, 8, 0, 0, 3, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=75]
+points = PoolVector2Array( 0, 6, 8, 6, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=78]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=64]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=65]
+points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=66]
+points = PoolVector2Array( 0, 0, 3, 0, 3, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=67]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=80]
+points = PoolVector2Array( 7, 8, 1, 8, 1, 6, 7, 6 )
+
+[sub_resource type="ConvexPolygonShape2D" id=76]
+points = PoolVector2Array( 0, 6, 8, 6, 8, 8, 0, 8 )
+
 [resource]
 resource_name = "Tileset"
-0/name = "itemShop"
-0/texture = ExtResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 4, 35, 0, 0 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-47/name = "Bank"
-47/texture = ExtResource( 1 )
-47/tex_offset = Vector2( 0, 0 )
-47/modulate = Color( 1, 1, 1, 1 )
-47/region = Rect2( 16, 64, 32, 8 )
-47/tile_mode = 2
-47/autotile/icon_coordinate = Vector2( 0, 0 )
-47/autotile/tile_size = Vector2( 8, 8 )
-47/autotile/spacing = 0
-47/autotile/occluder_map = [  ]
-47/autotile/navpoly_map = [  ]
-47/autotile/priority_map = [  ]
-47/autotile/z_index_map = [  ]
-47/occluder_offset = Vector2( 0, 0 )
-47/navigation_offset = Vector2( 0, 0 )
-47/shape_offset = Vector2( 0, 0 )
-47/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-47/shape = SubResource( 64 )
-47/shape_one_way = false
-47/shape_one_way_margin = 1.0
-47/shapes = [ {
+5/name = "Bank"
+5/texture = ExtResource( 1 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 16, 64, 32, 8 )
+5/tile_mode = 2
+5/autotile/icon_coordinate = Vector2( 0, 0 )
+5/autotile/tile_size = Vector2( 8, 8 )
+5/autotile/spacing = 0
+5/autotile/occluder_map = [  ]
+5/autotile/navpoly_map = [  ]
+5/autotile/priority_map = [  ]
+5/autotile/z_index_map = [  ]
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 64 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
@@ -97,7 +91,7 @@ resource_name = "Tileset"
 "shape": SubResource( 67 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
-47/z_index = 0
+5/z_index = 0
 48/name = "Castle"
 48/texture = ExtResource( 1 )
 48/tex_offset = Vector2( 0, 0 )
@@ -115,16 +109,10 @@ resource_name = "Tileset"
 48/navigation_offset = Vector2( 0, 0 )
 48/shape_offset = Vector2( 0, 0 )
 48/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-48/shape = SubResource( 68 )
+48/shape = SubResource( 69 )
 48/shape_one_way = false
 48/shape_one_way_margin = 1.0
 48/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 68 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
 "autotile_coord": Vector2( 1, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
@@ -141,6 +129,12 @@ resource_name = "Tileset"
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 71 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 79 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 48/z_index = 0
@@ -161,9 +155,34 @@ resource_name = "Tileset"
 49/navigation_offset = Vector2( 0, 0 )
 49/shape_offset = Vector2( 0, 0 )
 49/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+49/shape = SubResource( 73 )
 49/shape_one_way = false
-49/shape_one_way_margin = 0.0
-49/shapes = [  ]
+49/shape_one_way_margin = 1.0
+49/shapes = [ {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 73 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 74 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 3, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 75 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 78 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 49/z_index = 0
 50/name = "Pillar"
 50/texture = ExtResource( 1 )
@@ -175,11 +194,18 @@ resource_name = "Tileset"
 50/navigation_offset = Vector2( 0, 0 )
 50/shape_offset = Vector2( 0, 0 )
 50/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+50/shape = SubResource( 80 )
 50/shape_one_way = false
-50/shape_one_way_margin = 0.0
-50/shapes = [  ]
+50/shape_one_way_margin = 1.0
+50/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 80 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 50/z_index = 0
-51/name = "world_tileset-sheet-v3.png 51"
+51/name = "Market"
 51/texture = ExtResource( 1 )
 51/tex_offset = Vector2( 0, 0 )
 51/modulate = Color( 1, 1, 1, 1 )
@@ -196,7 +222,77 @@ resource_name = "Tileset"
 51/navigation_offset = Vector2( 0, 0 )
 51/shape_offset = Vector2( 0, 0 )
 51/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+51/shape = SubResource( 76 )
 51/shape_one_way = false
-51/shape_one_way_margin = 0.0
-51/shapes = [  ]
+51/shape_one_way_margin = 1.0
+51/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 76 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 51/z_index = 0
+52/name = "Bed"
+52/texture = ExtResource( 1 )
+52/tex_offset = Vector2( 0, 0 )
+52/modulate = Color( 1, 1, 1, 1 )
+52/region = Rect2( 8, 40, 8, 8 )
+52/tile_mode = 0
+52/occluder_offset = Vector2( 0, 0 )
+52/navigation_offset = Vector2( 0, 0 )
+52/shape_offset = Vector2( 0, 0 )
+52/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+52/shape_one_way = false
+52/shape_one_way_margin = 0.0
+52/shapes = [  ]
+52/z_index = 0
+53/name = "Chest"
+53/texture = ExtResource( 1 )
+53/tex_offset = Vector2( 0, 0 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 32, 40, 8, 8 )
+53/tile_mode = 0
+53/occluder_offset = Vector2( 0, 0 )
+53/navigation_offset = Vector2( 0, 0 )
+53/shape_offset = Vector2( 0, 0 )
+53/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+53/shape_one_way = false
+53/shape_one_way_margin = 0.0
+53/shapes = [  ]
+53/z_index = 0
+54/name = "Gold Pot"
+54/texture = ExtResource( 1 )
+54/tex_offset = Vector2( 0, 0 )
+54/modulate = Color( 1, 1, 1, 1 )
+54/region = Rect2( 64, 64, 8, 8 )
+54/tile_mode = 0
+54/occluder_offset = Vector2( 0, 0 )
+54/navigation_offset = Vector2( 0, 0 )
+54/shape_offset = Vector2( 0, 0 )
+54/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+54/shape_one_way = false
+54/shape_one_way_margin = 0.0
+54/shapes = [  ]
+54/z_index = 0
+55/name = "Door"
+55/texture = ExtResource( 1 )
+55/tex_offset = Vector2( 0, 0 )
+55/modulate = Color( 1, 1, 1, 1 )
+55/region = Rect2( 8, 48, 8, 24 )
+55/tile_mode = 2
+55/autotile/icon_coordinate = Vector2( 0, 0 )
+55/autotile/tile_size = Vector2( 8, 8 )
+55/autotile/spacing = 0
+55/autotile/occluder_map = [  ]
+55/autotile/navpoly_map = [  ]
+55/autotile/priority_map = [  ]
+55/autotile/z_index_map = [  ]
+55/occluder_offset = Vector2( 0, 0 )
+55/navigation_offset = Vector2( 0, 0 )
+55/shape_offset = Vector2( 0, 0 )
+55/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+55/shape_one_way = false
+55/shape_one_way_margin = 0.0
+55/shapes = [  ]
+55/z_index = 0

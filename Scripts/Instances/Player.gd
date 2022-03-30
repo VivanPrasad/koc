@@ -57,17 +57,22 @@ func _physics_process(_delta):
 	# warning-ignore:return_value_discarded
 		move_and_slide(speed * move_direction)
 	else:
-		animationState.travel("Idle")
+		if not PlayerStats.sleeping:
+			animationState.travel("Idle")
+		else:
+			animationState.travel("Sleep-Work")
+			position = Vector2(PlayerStats.bed[0].x * 4 + 16, PlayerStats.bed[0].y * 4 + 10)
+			z_index = 2
 func _input(_event):
 	if Input.is_action_just_pressed("map"):
 		if PlayerStats.current_menu == "none":
 			PlayerStats.current_menu = "map"
 			if $Camera2D.current:
-				$Camera2D.zoom = Vector2(3.6,3.75)
+				$Camera2D.zoom = Vector2(8,8)#Vector2(3.6,3.75)
 		elif PlayerStats.current_menu == "map":
 				$Camera2D.zoom = Vector2(1.2,1.25)
 				PlayerStats.current_menu = "none"
 
-func update_skin(skinPath):
+func update_skin(_skinPath):
 	pass #$Sprite.texture = load(skinPath)
 	#$Sprite.hframes = 12

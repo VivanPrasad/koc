@@ -2,18 +2,18 @@ extends StaticBody2D
 
 var owned : bool
 
+var type : int
 func _physics_process(_delta):
-	if $Sprite.frame == 0:
+	if $Sprite.frame == 1 + type:
 		$Collision.disabled = false
 	else:
 		$Collision.disabled = true
 
 func _ready():
+	position = Vector2(position.x +4,position.y +5)
+	type *= 2
+	$Sprite.frame = type + 1
 	call_deferred("link_house")
-	if str(name).begins_with("c"):
-		$Sprite.region_rect = Rect2(0,56,16,8)
-	elif str(name).begins_with("b"):
-		$Sprite.region_rect = Rect2(0,64,16,8)
 func link_house():
 	yield(get_tree().create_timer(0.5), "timeout")
 	if get_index() > 4:
@@ -25,10 +25,10 @@ func link_house():
 			pass
 func _on_Area2D_area_entered(_area):
 	if owned:
-		$Sprite.frame = 1
+		$Sprite.frame = 0 + type
 		Audio.play_door_open()
 
 func _on_Area2D_area_exited(_area):
 	if owned:
-		$Sprite.frame = 0
+		$Sprite.frame = 1 + type
 		Audio.play_door_close()

@@ -27,7 +27,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Castle2" type="Area2D" parent="."]
-position = Vector2( 96, -436 )
+position = Vector2( -96, -436 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -36,7 +36,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Town2" type="Area2D" parent="."]
-position = Vector2( 96, -472 )
+position = Vector2( -96, -472 )
 __meta__ = {
 "_edit_group_": true
 }

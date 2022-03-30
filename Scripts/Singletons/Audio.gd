@@ -118,3 +118,7 @@ func play_door_close():
 	$Door.stream = door_close
 	$Door.pitch_scale = 0.8
 	$Door.play()
+
+func play_death():
+	$Death.steam = death
+	$Death.play()

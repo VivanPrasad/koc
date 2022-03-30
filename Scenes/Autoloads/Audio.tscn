@@ -42,5 +42,7 @@ volume_db = -5.0
 mix_target = 1
 bus = "SFX"
 
+[node name="Death" type="AudioStreamPlayer" parent="."]
+
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
