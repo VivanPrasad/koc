@@ -23,12 +23,6 @@ onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
 
 var selected : String = "none"
 
-const skins = [
-	"res://Assets/Player/Base Skins/KoC_female1-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male1-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male2-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male3-Sheet.png"
-]
 
 const alerts = [
 	"You are hungry",
@@ -60,7 +54,6 @@ func new_stats():
 	TownStats.set_market()
 	preset_inventory(starting_class)
 	get_tree().get_root().find_node("Player", true, false).set_location()
-	change_skin(skins[randi() % 3])
 
 func preset_inventory(preset_id):
 	if preset_id < 3:

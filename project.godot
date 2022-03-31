@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Kingdom of Cards"
-run/main_scene="res://Scenes/World.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/use_custom_user_dir=true
 run/low_processor_mode=true
 boot_splash/image="res://Assets/Misc/icon.png"
@@ -47,10 +47,6 @@ Audio="*res://Scenes/Autoloads/Audio.tscn"
 PlayerStats="*res://Scripts/Singletons/PlayerStats.gd"
 TownStats="*res://Scripts/Singletons/TownStats.gd"
 Settings="*res://Scripts/Singletons/Config.gd"
-
-[debug]
-
-settings/fps/force_fps=60
 
 [display]
 
@@ -171,6 +167,11 @@ map={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="NPCs"
 
+[physics]
+
+2d/default_gravity=0
+2d/default_gravity_vector=Vector2( 0, 0 )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
@@ -180,7 +181,6 @@ quality/intended_usage/framebuffer_allocation.mobile=1
 quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
-quality/spatial_partitioning/render_tree_balance=0.5
 environment/default_clear_color=Color( 0.137255, 0.137255, 0.137255, 1 )
 quality/depth/hdr=false
 environment/default_environment="res://Assets/Misc/default_env.tres"

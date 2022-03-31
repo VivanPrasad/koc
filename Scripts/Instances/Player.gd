@@ -72,7 +72,3 @@ func _input(_event):
 		elif PlayerStats.current_menu == "map":
 				$Camera2D.zoom = Vector2(1.2,1.25)
 				PlayerStats.current_menu = "none"
-
-func update_skin(_skinPath):
-	pass #$Sprite.texture = load(skinPath)
-	#$Sprite.hframes = 12
