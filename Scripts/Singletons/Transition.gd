@@ -15,7 +15,7 @@ func splash_fade():
 func unpause_tree():
 	get_tree().paused = false
 func fade_audio_out():
-	Audio.fade_out($"/root/Audio/Menu")
+	Audio.fade_out()
 
 # warning-ignore:unused_argument
 func change_scene(new_scene, current_scene, transition):
@@ -44,3 +44,13 @@ func load_scene(path, now):
 		elif err == OK:
 			var progress = float(loader.get_stage())/loader.get_stage_count()
 			print(progress*100 % 100)
+
+func sleep_blackout():
+	layer = 1
+	animation.play("Sleep")
+
+func wake():
+	layer = 2
+	if animation.is_playing():
+		animation.stop()
+	$ColorRect.color = Color("00000000")

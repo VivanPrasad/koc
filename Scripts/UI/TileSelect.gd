@@ -4,6 +4,7 @@ func _ready():
 	call_deferred("check")
 
 func check():
+	$Key.text = OS.get_scancode_string(Settings.keybinds["interact"])
 	if PlayerStats.selected == "chest":
 		$Key/Label.text = "Open"
 	elif PlayerStats.selected == "royalchest":

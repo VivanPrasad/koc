@@ -1,19 +1,19 @@
 extends StaticBody2D
 
-onready var animationPlayer = $AnimationPlayer
-onready var collision = $Collision
-onready var sprite = $Sprite
+var owned : bool
 
-var owned 
-
-func _process(_delta):
-	if sprite.frame == 0:
-		collision.disabled = false
+var type : int
+func _physics_process(_delta):
+	if $Sprite.frame == 1 + type:
+		$Collision.disabled = false
 	else:
-		collision.disabled = true
-func _ready():
-	call_deferred("link_house")
+		$Collision.disabled = true
 
+func _ready():
+	position = Vector2(position.x +4,position.y +5)
+	type *= 2
+	$Sprite.frame = type + 1
+	call_deferred("link_house")
 func link_house():
 	yield(get_tree().create_timer(0.5), "timeout")
 	if get_index() > 4:
@@ -25,8 +25,10 @@ func link_house():
 			pass
 func _on_Area2D_area_entered(_area):
 	if owned:
-		animationPlayer.play("Door Open")
+		$Sprite.frame = 0 + type
+		Audio.play_door_open()
 
 func _on_Area2D_area_exited(_area):
 	if owned:
-		animationPlayer.play("Door Close")
+		$Sprite.frame = 1 + type
+		Audio.play_door_close()

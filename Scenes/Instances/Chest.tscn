@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/World/Tilesets/world_tileset-sheet-v3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/World/Tilesets/tileset-sheet-v4.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Instances/Chest.gd" type="Script" id=2]
 
 
@@ -23,7 +23,7 @@ texture = ExtResource( 1 )
 centered = false
 hframes = 2
 region_enabled = true
-region_rect = Rect2( 64, 48, 16, 8 )
+region_rect = Rect2( 32, 40, 16, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 monitorable = false

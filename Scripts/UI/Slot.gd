@@ -1,37 +1,57 @@
 extends CenterContainer
 
 onready var cardTexture = $TextureRect
+onready var cardIcon = $TextureRect/Icon
 
 var id
+
+var mode = 0
 func _ready():
 	if get_index() + 1 > PlayerStats.inventory.max_hand:
 		if PlayerStats.inventory.cards[get_index()] == null:
 			visible = false
 		else:
 			set_modulate(Color("ff7f7f"))
+	if get_parent().name != "SlotsDisplay":
+		mode = 1
+
 func display_card(card):
+	
+	$Selector.visible = false
 	if card is Card:
-		cardTexture.texture_normal = card.texture
-		$Selector.visible = false
+		cardIcon.visible = true
+		cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/card.png")
+		
+		
+		if Directory.new().file_exists("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png"):
+			cardIcon.texture = load("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png")
+		else:
+			cardIcon.texture = load("res://Assets/UI/Cards/Icon/Card.png")
+			cardIcon.modulate = Color(0.8,0.8,0.8,1)
 	else:
-		cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
-		$Selector.visible = false
+		cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/empty.png")
+		cardIcon.visible = false
 
 func get_drag_data(_position):
+	var card
 	if PlayerStats.current_menu == "inv":
 		PlayerStats.slot_selector = null
 		var card_index = get_index()
-		var card = PlayerStats.inventory.remove_item(card_index)
+		if mode == 0:
+			card = PlayerStats.inventory.remove_item(card_index)
+		else:
+			card = PlayerStats.chest.remove_item(card_index)
 		if card is Card:
-			cardTexture.texture_normal = load("res://Assets/UI/Inventory/Texture/empty.png")
+			cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/empty.png")
+			cardIcon.visible = false
 			var data = {}
 			data.card = card
 			data.card_index = card_index
 			var dragPreview = TextureRect.new()
 			$Selector.visible = false
-			dragPreview.texture = card.texture
-			dragPreview.rect_scale.x = 3
-			dragPreview.rect_scale.y = 3
+			dragPreview.texture = load("res://Assets/UI/Cards/Icon/Card.png")
+			dragPreview.rect_scale.x = 4
+			dragPreview.rect_scale.y = 4
 			set_drag_preview(dragPreview)
 			return data
 
@@ -41,25 +61,44 @@ func can_drop_data(_position, data):
 
 func drop_data(_position, data):
 	var my_card_index = get_index()
-	var my_card = PlayerStats.inventory.cards[my_card_index]
-	if not my_card == null:
-		PlayerStats.inventory.swap_items(my_card_index, data.card_index)
-		PlayerStats.inventory.set_item(my_card_index, data.card)
+	var my_card
+	if mode == 0:
+		my_card = PlayerStats.inventory.cards[my_card_index]
+		if not my_card == null:
+			PlayerStats.inventory.swap_items(my_card_index, data.card_index)
+			PlayerStats.inventory.set_item(my_card_index, data.card)
+		else:
+			PlayerStats.inventory.set_item(data.card_index, data.card)
+		$Selector.visible = false
 	else:
-		PlayerStats.inventory.set_item(data.card_index, data.card)
-	$Selector.visible = false
+		my_card = PlayerStats.chest.cards[my_card_index]
+		if not my_card == null:
+			PlayerStats.chest.swap_items(my_card_index, data.card_index)
+			PlayerStats.chest.set_item(my_card_index, data.card)
+		else:
+			PlayerStats.chest.set_item(data.card_index, data.card)
 
 func _process(_delta):
 	if not PlayerStats.slot_selector == null:
-		if PlayerStats.slot_selector > len(PlayerStats.inventory.cards)-1:
-			$Selector.visible = false
+		if mode == 0:
+			if PlayerStats.slot_selector > len(PlayerStats.inventory.cards)-1:
+				$Selector.visible = false
+		else:
+			if PlayerStats.slot_selector < len(PlayerStats.chest.cards)-1:
+				$Selector.visible = false
 
 func _on_TextureRect_pressed():
-	if PlayerStats.slot_selector != get_index():
-		if PlayerStats.inventory.cards[get_index()] == null:
-			return
-		PlayerStats.slot_selector = get_index()
+	$Selector.visible = true
+	if PlayerStats.slot_selector != get_index() + int(mode*5):
+		if mode == 0:
+			if PlayerStats.inventory.cards[get_index()] == null:
+				return
+		else:
+			if PlayerStats.chest.cards[get_index()] == null:
+				return
+		PlayerStats.slot_selector = get_index() + int(mode*PlayerStats.inventory.cards.size())
 		$Selector.visible = true
+		Audio.play_select()
 		for slot in get_parent().get_child_count():
 			if slot == get_index():
 				pass

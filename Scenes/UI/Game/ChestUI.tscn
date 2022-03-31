@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/UI/Game/SlotDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/UI/Game/ChestDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/UI/ChestUI.gd" type="Script" id=3]
 [ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/UI/Game/Tooltip.tscn" type="PackedScene" id=5]
 
 [node name="ChestUI" type="Control"]
 anchor_right = 1.0
@@ -18,9 +19,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 custom_constants/separation = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Inventory" type="ColorRect" parent="HBoxContainer"]
 margin_right = 160.0
@@ -63,17 +61,15 @@ margin_right = 29.0
 margin_bottom = 19.0
 
 [node name="Label" type="Label" parent="HBoxContainer/Inventory"]
+visible = false
 margin_left = 64.0
 margin_top = 42.0
 margin_right = 108.0
-margin_bottom = 54.0
-custom_fonts/font = ExtResource( 4 )
+margin_bottom = 50.0
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "INVENTORY"
 valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Chest" type="ColorRect" parent="HBoxContainer"]
 margin_left = 160.0
@@ -93,9 +89,6 @@ margin_right = -85.52
 margin_bottom = -56.98
 rect_scale = Vector2( 2.5, 2.5 )
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ChestDisplay" parent="HBoxContainer/Chest/CenterContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -105,89 +98,18 @@ margin_top = 19.0
 margin_right = 29.0
 margin_bottom = 19.0
 
-[node name="Label" type="Label" parent="HBoxContainer/Chest"]
-visible = false
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -66.0
-margin_top = 8.0
-margin_right = -9.0
-margin_bottom = 20.0
-text = "Chest"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Label2" type="Label" parent="HBoxContainer/Chest"]
+visible = false
 margin_left = 64.0
 margin_top = 42.0
 margin_right = 108.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.8, 0.8, 0.8, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "CHEST"
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 0.85
-anchor_top = 0.767
-anchor_right = 0.95
-anchor_bottom = 0.856
-margin_left = -208.0
-margin_top = -16.06
-margin_right = -192.0
-margin_bottom = -16.08
-mouse_filter = 2
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -7.62939e-06
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 0.847059, 0.521569, 1 )
-text = "STORE"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel2" type="Panel" parent="."]
-anchor_left = 0.85
-anchor_top = 0.678
-anchor_right = 0.95
-anchor_bottom = 0.767
-margin_left = -64.0
-margin_top = -0.0399952
-margin_right = -48.0
-margin_bottom = -0.0600035
-mouse_filter = 2
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Button2" type="Button" parent="Panel2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
-custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-custom_colors/font_color_pressed = Color( 1, 0.847059, 0.521569, 1 )
-text = "TAKE"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Panel2/Button2" to="." method="_on_Button2_pressed"]
+[node name="Tooltip" parent="." instance=ExtResource( 5 )]

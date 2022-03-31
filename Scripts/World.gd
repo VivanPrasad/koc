@@ -4,12 +4,19 @@ onready var esc = preload("res://Scenes/UI/Main/EscMenu.tscn")
 onready var day = preload("res://Scenes/UI/Game/DayInfo.tscn")
 onready var inv = preload("res://Scenes/UI/Game/InventoryUI.tscn")
 
-onready var chest = preload("res://Scenes/UI/Game/ChestUI.tscn")
+onready var dungeon = preload("res://Scenes/UI/Game/Dungeon.tscn")
+onready var music = preload("res://Scenes/Instances/musicHandler.tscn")
+onready var chest_ui = preload("res://Scenes/UI/Game/ChestUI.tscn")
 onready var food = preload("res://Scenes/UI/Game/MarketUI.tscn")
 
 onready var dialogue = preload("res://Scenes/Instances/DialogueBox.tscn")
 
-var slow_tiles = ["Grass", "Grass1", "Grass2", "Grass3", "RedFlowers", "YellowFlowers"]
+onready var bed = preload("res://Scenes/Instances/Bed.tscn")
+onready var chest = preload("res://Scenes/Instances/Chest.tscn")
+onready var door = preload("res://Scenes/Instances/Door.tscn")
+onready var market = preload("res://Scenes/Instances/Market.tscn")
+onready var gold_pot = preload("res://Scenes/Instances/GoldPot.tscn")
+var slow_tiles = []
 
 var tile_pos
 var tile
@@ -17,17 +24,32 @@ var tile_name
 
 func _ready():
 	$UI.add_child(day.instance())
+	add_child(music.instance())
 # warning-ignore:return_value_discarded
 	$Stairs.connect("enter_dungeon", self, "enter_dungeon")
 # warning-ignore:return_value_discarded
 	$Stairs.connect("exit_dungeon", self, "exit_dungeon")
 	PlayerStats.can_move = true
 	call_deferred("new_stats")
-	#call_deferred("check_tile")
-	
-	$Objects/Buildings/Structures/Chest4/Collision.disabled = true
-	$Objects/Buildings/Structures/Chest5/Collision.disabled = true
+	add_instances()
 
+func add_instances():
+	var structures = [bed, chest,door, market, gold_pot]
+	var structure_ids = [52, 53, 55, 51, 54]
+	
+	for i in structures:
+		var object = $Objects/Buildings.get_used_cells_by_id(structure_ids[structures.find(i)])
+		for cell in object:
+			var instance = i.instance()
+			instance.set_position(Vector2(cell.x*8, cell.y *8))
+			if i == market:
+				instance.get_child(1).frame = int($Objects/Buildings.get_cell_autotile_coord(cell.x, cell.y).x)
+			elif i == door:
+				instance.type = int($Objects/Buildings.get_cell_autotile_coord(cell.x, cell.y).y)
+			$Objects/Buildings/Structures.add_child(instance)
+			#position = Vector2(cell.x*32, cell.y*32)
+			$Objects/Buildings.set_cell(cell.x, cell.y, -1)
+	
 func new_stats():
 	PlayerStats.new_stats()
 	TownStats.start_town_economy()
@@ -84,22 +106,35 @@ func _input(_event):
 		elif PlayerStats.selected == "pot":
 			if TownStats.town_gold > 0:
 				TownStats.town_gold -= 1
-				PlayerStats.add_card(load("res://Assets/UI/Inventory/Gold.tres"))
+				PlayerStats.add_card(load("res://Assets/UI/Cards/Gold.tres"))
 		elif PlayerStats.selected == "royalchest":
 			if TownStats.royalchest > 0:
 				TownStats.royalchest -= 1
-				PlayerStats.add_card(load("res://Assets/UI/Inventory/RoyalGold.tres"))
+				PlayerStats.add_card(load("res://Assets/UI/Cards/Gold.tres"))
 				get_tree().get_root().find_node("TileSelect", true, false).update_value()
 		elif PlayerStats.selected == "chest":
 			if get_tree().get_root().find_node("ChestUI", true, false) == null:
 				if PlayerStats.current_menu == "none":
-					$UI.add_child(chest.instance())
+					$UI.add_child(chest_ui.instance())
 					PlayerStats.current_menu = "chest"
 			else:
 				$UI/ChestUI.queue_free()
 				PlayerStats.current_menu = "none"
-					
+		elif PlayerStats.selected == "bed":
+			if PlayerStats.can_sleep:
+				if not PlayerStats.sleeping:
+					PlayerStats.good_night()
+				else:
+					Transition.wake()
+					$Objects/Player.position.x += 32
+					PlayerStats.selected = "none"
+					PlayerStats.sleeping = false
+					PlayerStats.can_move = true
+					PlayerStats.current_menu = "none"
 func enter_dungeon():
+	if $MusicChanger != null: 
+		$MusicChanger.queue_free()
+	$Objects.add_child(dungeon.instance())
 	$Stairs.in_dungeon = true
 	$Objects/Dungeon.visible = true
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, true)
@@ -110,17 +145,22 @@ func enter_dungeon():
 	$Objects/Buildings.visible = false
 	$Objects/Buildings.set_collision_layer_bit(0, false)
 	$Shader.visible = false
-	slow_tiles = [""]
+	Audio.play_dungeon()
 
 func exit_dungeon():
+	add_child(music.instance())
 	$Stairs.in_dungeon = false
 	$Objects/Dungeon/Building.set_collision_layer_bit(0, false)
 	$Objects/Dungeon/Building.z_index = 0
-	$Objects/Dungeon.visible = false
+	#$Objects/Dungeon.visible = false
 	
 	$Floor.visible = true
 	$Objects/Decoration.visible = true
 	$Objects/Buildings.visible = true
 	$Objects/Buildings.set_collision_layer_bit(0, true)
 	$Shader.visible = true
-	slow_tiles = ["Grass", "Grass1", "Grass2", "Grass3", "RedFlowers", "YellowFlowers"]
+	if $UI/DayInfo.hour > 3 and $UI/DayInfo.hour < 21:
+		Audio.play_day()
+	else:
+		Audio.play_night()
+	$Objects/Dungeon.queue_free()

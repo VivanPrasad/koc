@@ -27,7 +27,6 @@ func set_class():
 	yield(get_tree().create_timer(0), "timeout")
 	if PlayerStats.starting_class == 1:
 		$Class.text = "Homeowner " + "(" + str(PlayerStats.house_id) + ")"
-		get_tree().get_root().find_node("Markers", true, false).get_child(PlayerStats.house_id - 1).add_color_override("font_color", Color("ffad00"))
 	elif PlayerStats.starting_class == 2:
 		$Class.text = "Homeless"
 	else:

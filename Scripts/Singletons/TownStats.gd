@@ -58,19 +58,21 @@ func set_bank_shop():
 		register_item("House", "bank", 8, int(bool(len(vacant))))
 	if PlayerStats.starting_class == 1:
 		if PlayerStats.house_id > 3:
-			if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(0).disabled:
-				register_item("Old Chest", "bank", 3, 1)
-			elif get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
-				register_item("New Chest", "bank", 6, 1)
+			pass#if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(0).disabled:
+				#register_item("Old Chest", "bank", 3, 1)
+			#elif get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
+				#register_item("New Chest", "bank", 6, 1)
 		else:
-			if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
-				register_item("New Chest", "bank", 6, 1)
+			pass
+			#if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
+				#register_item("New Chest", "bank", 6, 1)
 func start_town_economy():
 	economy_started = true
 	population = randi() % 6 + 4 #4-9
 	print("population: " + str(population))
 	max_bank = population * 5
 	town_gold = max_bank
+	print(town_gold)
 func _physics_process(_delta):
 	if economy_started == true:
 		if float(town_gold)/max_bank == 0:
@@ -86,7 +88,7 @@ func _physics_process(_delta):
 		else:
 			wealth = 2
 		
-		if get_tree().get_root().find_node("World", true, false) != null:
+		if get_node_or_null("/root/World/GoldPot") != null:
 			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
 
 func open_town():
@@ -128,6 +130,7 @@ func update_sentence(time, cell):
 	if time == 0:
 		PlayerStats.sentence[1] = null
 		PlayerStats.starting_class = 2
+
 func set_sentence(time):
 	if cells.has(0):
 		for i in cells:

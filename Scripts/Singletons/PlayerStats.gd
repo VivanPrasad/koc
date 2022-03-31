@@ -18,17 +18,11 @@ var slot_selector
 var current_menu : String = "none"
 var inventory = preload("res://Scripts/Systems/Inventory.tres")
 var chest = preload("res://Scripts/Systems/Chest.tres")
-
+var bed : Array
 onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
 
 var selected : String = "none"
 
-const skins = [
-	"res://Assets/Player/Base Skins/KoC_female1-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male1-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male2-Sheet.png",
-	"res://Assets/Player/Base Skins/KoC_male3-Sheet.png"
-]
 
 const alerts = [
 	"You are hungry",
@@ -57,19 +51,18 @@ func new_stats():
 		starting_class = 1 #Homeowner
 		house_id = randi() % 5+1 #1-5
 	
-	
-	preset_inventory(starting_class)
 	TownStats.set_market()
+	preset_inventory(starting_class)
 	get_tree().get_root().find_node("Player", true, false).set_location()
-	change_skin(skins[randi() % 3])
 
 func preset_inventory(preset_id):
 	if preset_id < 3:
 		for i in 5:
-				inventory.cards[i] = load("res://Assets/UI/Inventory/Gold.tres")
+				inventory.cards[i] = load("res://Assets/UI/Cards/Gold.tres")
+
 	else:
 		for i in 3:
-				inventory.cards[i] = load("res://Assets/UI/Inventory/Bread.tres")
+				inventory.cards[i] = load("res://Assets/UI/Cards/Bread.tres")
 	update_inventory()
 
 func add_card(card):
@@ -98,13 +91,8 @@ func take_card(card):
 	add_card(card)
 	update_inventory()
 func remove_gold(amount):
-	if inventory.cards.has(load("res://Assets/UI/Inventory/RoyalGold.tres")):
-		for i in round(amount / 3) + 1:
-			remove_card(load("res://Assets/UI/Inventory/RoyalGold.tres"))
-			for e in 3:
-				add_card(load("res://Assets/UI/Inventory/Gold.tres"))
 	for i in amount:
-		remove_card(load("res://Assets/UI/Inventory/Gold.tres"))
+		remove_card(load("res://Assets/UI/Cards/Gold.tres"))
 	update_inventory()
 
 func remove_card(card):
@@ -113,18 +101,19 @@ func remove_card(card):
 	update_inventory()
 
 func update_inventory():
-	if get_tree().get_root().find_node("InventoryUI", true, false) != null:
-		get_tree().get_root().find_node("InventoryUI", true, false).update()
-	if get_tree().get_root().find_node("ChestUI", true, false) != null:
-		get_tree().get_root().find_node("ChestUI", true, false).update()
+	if get_node_or_null("/root/World/UI/InventoryUI/") != null:
+		get_node_or_null("/root/World/UI/InventoryUI/").update()
+	if get_node_or_null("/root/World/UI/ChestUI/") != null:
+		get_node_or_null("/root/World/UI/ChestUI/").update()
 	count_gold()
 
 func count_gold():
-	gold = inventory.cards.count(load("res://Assets/UI/Inventory/Gold.tres")) + inventory.cards.count(load("res://Assets/UI/Inventory/RoyalGold.tres")) * 3
+	gold = inventory.cards.count(load("res://Assets/UI/Cards/Gold.tres"))
 
 func food_eaten(food):
 	if food in TownStats.item_list: if life < 2: life += 1
-	get_tree().get_root().find_node("Status", true, false).update_display()
+	if get_node_or_null("/root/World/UI/DayInfo/Status/") != null:
+		get_node_or_null("/root/World/UI/DayInfo/Status/").update_display()
 	show_alert(2)
 func change_skin(skinPath):
 	get_tree().get_root().find_node("Player", true, false).update_skin(skinPath)
@@ -132,3 +121,10 @@ func change_skin(skinPath):
 func show_alert(id):
 	alert_id = id
 	get_tree().get_root().find_node("World", true, false).add_child(information.instance())
+
+func good_night():
+	Transition.sleep_blackout()
+	print("good night my little one...")
+	bed[1].get_child(3).queue_free()
+	current_menu = "sleep"
+	sleeping = true

@@ -1,18 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/UI/Misc/grabber.png" type="Texture" id=1]
 [ext_resource path="res://Assets/UI/theme.tres" type="Theme" id=2]
 [ext_resource path="res://Assets/UI/Fonts/UI-Font10.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scripts/UI/Controls.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Settings.gd" type="Script" id=5]
+[ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scripts/UI/Display.gd" type="Script" id=7]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -41,7 +40,6 @@ __meta__ = {
 }
 
 [node name="Audio" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -148,6 +146,7 @@ __meta__ = {
 }
 
 [node name="Controls" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -185,38 +184,83 @@ margin_left = 5.0
 margin_top = 23.0
 margin_right = -5.0
 margin_bottom = -5.0
+script = ExtResource( 7 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margin/VBoxContainer/Tabs/Display"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBox" type="HBoxContainer" parent="Margin/VBoxContainer/Tabs/Display"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.5
+margin_top = -62.5
+margin_right = 135.5
+margin_bottom = 62.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Resolution" type="OptionButton" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
-visible = false
-margin_right = 92.0
-margin_bottom = 25.0
+[node name="VBox" type="VBoxContainer" parent="Margin/VBoxContainer/Tabs/Display/HBox"]
+margin_right = 169.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox"]
+margin_right = 169.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "RESOLUTION"
+
+[node name="Resolution" type="OptionButton" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox"]
+margin_top = 20.0
+margin_right = 73.0
+margin_bottom = 40.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Resolution"
+text = "1920x1080"
+flat = true
+items = [ "1920x1080", null, false, 0, null, "1280x720", null, false, 1, null, "", null, false, 2, null ]
+selected = 0
 
-[node name="Fullscreen" type="CheckButton" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
+[node name="Label2" type="Label" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox"]
+margin_top = 44.0
+margin_right = 169.0
+margin_bottom = 60.0
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "FPS"
+
+[node name="FPS" type="OptionButton" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox"]
+margin_top = 64.0
+margin_right = 38.0
+margin_bottom = 84.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "60"
+flat = true
+items = [ "Unlimited", null, false, 0, null, "120", null, false, 1, null, "90", null, false, 2, null, "60", null, false, 3, null, "30", null, false, 4, null ]
+selected = 3
+
+[node name="VBox2" type="VBoxContainer" parent="Margin/VBoxContainer/Tabs/Display/HBox"]
+margin_left = 173.0
+margin_right = 271.0
+margin_bottom = 125.0
+size_flags_vertical = 5
+
+[node name="Fullscreen" type="CheckButton" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox2"]
 margin_right = 98.0
 margin_bottom = 24.0
 size_flags_horizontal = 0
 text = "Fullscreen"
 flat = true
 
-[node name="Debug" type="CheckBox" parent="Margin/VBoxContainer/Tabs/Display/VBoxContainer"]
+[node name="Debug" type="CheckBox" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox2"]
 margin_top = 28.0
-margin_right = 278.0
+margin_right = 98.0
 margin_bottom = 52.0
 text = "Debug Mode"
 flat = true
 
-[node name="Back" type="Button" parent="Margin/VBoxContainer/Tabs"]
+[node name="Back" type="Tabs" parent="Margin/VBoxContainer/Tabs"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -230,5 +274,7 @@ margin_bottom = -5.0
 [connection signal="value_changed" from="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer/MuSlider" to="." method="_on_MuSlider_value_changed"]
 [connection signal="value_changed" from="Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer2/SSlider2" to="." method="_on_SSlider_value_changed"]
 [connection signal="pressed" from="Margin/VBoxContainer/Tabs/Controls/Save" to="Margin/VBoxContainer/Tabs/Controls" method="_on_Save_pressed"]
-[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/VBoxContainer/Fullscreen" to="." method="_on_Fullscreen_pressed"]
-[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/VBoxContainer/Debug" to="." method="_on_Debug_pressed"]
+[connection signal="item_selected" from="Margin/VBoxContainer/Tabs/Display/HBox/VBox/Resolution" to="Margin/VBoxContainer/Tabs/Display" method="_on_Resolution_item_selected"]
+[connection signal="item_selected" from="Margin/VBoxContainer/Tabs/Display/HBox/VBox/FPS" to="Margin/VBoxContainer/Tabs/Display" method="_on_FPS_item_selected"]
+[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/HBox/VBox2/Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="Margin/VBoxContainer/Tabs/Display/HBox/VBox2/Debug" to="." method="_on_Debug_pressed"]

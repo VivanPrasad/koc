@@ -11,9 +11,12 @@ onready var button2 = $Panel2/Button2
 
 var id
 
+var mode = 0
 func _ready():
 	button.focus_mode = 0
 	button2.focus_mode = 0
+	if get_parent().name == "ChestUI":
+		mode = 1
 
 func _process(_delta):
 	id = PlayerStats.slot_selector
@@ -47,7 +50,7 @@ func _process(_delta):
 		elif PlayerStats.selected == "bank": type.add_color_override("font_color", Color("cfa365"))
 		if not PlayerStats.slot_selector == null:
 			if PlayerStats.selected != "bank":
-				var get_card = load("res://Assets/UI/Inventory/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
+				var get_card = load("res://Assets/UI/Cards/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
 				card_info(get_card, "market")
 			else:
 				pass
@@ -77,7 +80,7 @@ func _on_Button_pressed(): #BUY OR DROP
 					PlayerStats.remove_gold(TownStats.item_list[TownStats.current_list[id]][1])
 					TownStats.item_list[TownStats.current_list[id]][2] -= 1
 					if PlayerStats.selected != "bank":
-						PlayerStats.add_card(load("res://Assets/UI/Inventory/" + str(TownStats.current_list[id]) + ".tres"))
+						PlayerStats.add_card(load("res://Assets/UI/Cards/" + str(TownStats.current_list[id]) + ".tres"))
 						TownStats.update_market()
 					else:
 						if TownStats.current_list[id] == "Old Chest":

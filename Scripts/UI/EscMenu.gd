@@ -18,14 +18,17 @@ func _ready():
 func _on_Continue_pressed():
 	PlayerStats.can_move = true
 	PlayerStats.current_menu = "none"
+	Audio.play_confirm()
 	queue_free()
+	
 func _on_Collection_pressed():
 	pass
 func _on_Settings_pressed():
-	var child = settings.instance()
-	add_child(child)
+	Audio.play_confirm()
+	add_child(settings.instance())
 
 func _on_Quit_pressed():
-	Transition.change_scene("res://Scenes/UI/Menu.tscn", get_tree().get_root().find_node("World", true, false)
+	Audio.play_confirm()
+	Transition.change_scene("res://Scenes/Menu.tscn", get_tree().get_root().find_node("World", true, false)
 , "QuickFade")
 	emit_signal("quit_to_menu")

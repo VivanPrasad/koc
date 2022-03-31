@@ -16,7 +16,7 @@ var labels = {
 	"ui_cancel":"Exit"
 	}
 func _ready():
-	keybinds = Game.keybinds.duplicate()
+	keybinds = Settings.keybinds.duplicate()
 	for key in keybinds.keys():
 		var hbox = HBoxContainer.new()
 		var label = Label.new()
@@ -26,7 +26,6 @@ func _ready():
 		label.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 		button.set_h_size_flags(Control.SIZE_EXPAND_FILL)
 		
-		print(key)
 		label.text = labels[key]
 		#label.text = label.text.capitalize()
 		
@@ -60,7 +59,7 @@ func change_bind(key, value):
 
 
 func _on_Save_pressed():
-	Game.keybinds = keybinds.duplicate()
-	Game.set_game_binds()
-	Game.write_config()
+	Settings.keybinds = keybinds.duplicate()
+	Settings.set_game_binds()
+	Settings.save_binds()
 	
