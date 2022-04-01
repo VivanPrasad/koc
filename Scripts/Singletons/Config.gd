@@ -1,8 +1,19 @@
 extends Node
 
 var configfile
-var filepath = "res://settings.ini"
+var filepath = "user://data/settings.ini"
 var keybinds = {}
+
+var default_keybinds = {
+	"ui_up":87,
+	"ui_down":83,
+	"ui_left":65,
+	"ui_right":68,
+	"interact":69,
+	"map":77,
+	"ui_accept":32,
+	"ui_cancel":16777217
+	}
 
 var fps
 var resolution
@@ -11,6 +22,9 @@ var master_vol :int
 var music_vol :int
 var sfx_vol:int
 func _ready():
+	load_config()
+
+func load_config():
 	configfile = ConfigFile.new()
 	if configfile.load(filepath) == OK:
 		for key in configfile.get_section_keys("keybinds"):
@@ -27,10 +41,21 @@ func _ready():
 		sfx_vol = configfile.get_value("audio","sfx")
 		update_audio()
 	else:
-		print("CONFIG FILE NOT FOUND")
-		get_tree().quit()
-	
+		new_config()
 	set_game_binds()
+		
+func new_config():
+# warning-ignore:return_value_discarded
+	Directory.new().make_dir("user://data")
+	configfile.set_value("display", "resolution", 1)
+	configfile.set_value("display", "fps", 60)
+	configfile.set_value("audio", "master", 0.0)
+	configfile.set_value("audio", "music", 0.0)
+	configfile.set_value("audio", "sfx", 0.0)
+	for key in default_keybinds:
+		configfile.set_value("keybinds", key, default_keybinds[key])
+	configfile.save(filepath)
+	load_config()
 func set_game_binds():
 	for key in keybinds.keys():
 		var value = keybinds[key]

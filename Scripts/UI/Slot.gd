@@ -22,8 +22,7 @@ func display_card(card):
 		cardIcon.visible = true
 		cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/card.png")
 		
-		
-		if Directory.new().file_exists("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png"):
+		if load("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png") != null:
 			cardIcon.texture = load("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png")
 		else:
 			cardIcon.texture = load("res://Assets/UI/Cards/Icon/Card.png")
@@ -43,6 +42,7 @@ func get_drag_data(_position):
 			card = PlayerStats.chest.remove_item(card_index)
 		if card is Card:
 			cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/empty.png")
+			Audio.take_card()
 			cardIcon.visible = false
 			var data = {}
 			data.card = card

@@ -29,12 +29,13 @@ _global_script_class_icons={
 config/name="Kingdom of Cards"
 run/main_scene="res://Scenes/Menu.tscn"
 config/use_custom_user_dir=true
+config/custom_user_dir_name="Kingdom of Cards"
 run/low_processor_mode=true
 boot_splash/image="res://Assets/Misc/icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.956863, 0.768627, 0.592157, 1 )
 config/icon="res://Assets/Misc/icon.png"
-config/windows_native_icon="res://Assets/Misc/icon.ico"
+config/windows_native_icon="res://app_icon.ico"
 
 [audio]
 
@@ -166,6 +167,10 @@ map={
 2d_physics/layer_1="Objects"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="NPCs"
+
+[logging]
+
+file_logging/max_log_files=3
 
 [physics]
 

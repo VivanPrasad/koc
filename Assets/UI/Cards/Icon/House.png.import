@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/splash.png-e3be0cb9caeaeb7d40ac343468666b49.stex"
+path="res://.import/House.png-15553ff22b155983d0a21dcb67c9404a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Misc/splash.png"
-dest_files=[ "res://.import/splash.png-e3be0cb9caeaeb7d40ac343468666b49.stex" ]
+source_file="res://Assets/UI/Cards/Icon/House.png"
+dest_files=[ "res://.import/House.png-15553ff22b155983d0a21dcb67c9404a.stex" ]
 
 [params]
 

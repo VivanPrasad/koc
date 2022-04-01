@@ -43,6 +43,12 @@ mix_target = 1
 bus = "SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
+mix_target = 1
+
+[node name="TakeCard" type="AudioStreamPlayer" parent="."]
+pitch_scale = 1.2
+mix_target = 1
+bus = "SFX"
 
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0

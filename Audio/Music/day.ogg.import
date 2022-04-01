@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/day.ogg-236ffae3226d99aaf3ca8872c13e7f11.oggstr"
+
+[deps]
+
+source_file="res://Audio/Music/day.ogg"
+dest_files=[ "res://.import/day.ogg-236ffae3226d99aaf3ca8872c13e7f11.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

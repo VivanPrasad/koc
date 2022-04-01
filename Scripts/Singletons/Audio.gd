@@ -16,6 +16,7 @@ const door_open = preload("res://Audio/SFX/doorOpen.ogg")
 const door_close = preload("res://Audio/SFX/doorClose.ogg")
 const death = preload("res://Audio/SFX/dead.ogg")
 
+const card = preload("res://Audio/SFX/card.wav")
 var music_player : String
 func _ready():
 	if get_tree().current_scene.name == "Menu":
@@ -122,3 +123,7 @@ func play_door_close():
 func play_death():
 	$Death.steam = death
 	$Death.play()
+
+func take_card():
+	$TakeCard.stream = card
+	$TakeCard.play()
