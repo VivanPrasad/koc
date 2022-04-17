@@ -28,8 +28,9 @@ animations = [ {
 } ]
 
 [node name="Slot1" type="CenterContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.031
+anchor_bottom = 0.1
+margin_right = 0.0799999
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
@@ -43,10 +44,8 @@ playing = true
 centered = false
 
 [node name="TextureRect" type="TextureButton" parent="."]
-margin_left = 155.0
-margin_top = 81.0
-margin_right = 165.0
-margin_bottom = 99.0
+margin_right = 10.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 10, 18 )
 mouse_filter = 1
 size_flags_horizontal = 3

@@ -42,8 +42,7 @@ func load_scene(path, now):
 			call_deferred("change_scene", path, now, "QuickFade")
 			break
 		elif err == OK:
-			var progress = float(loader.get_stage())/loader.get_stage_count()
-			print(progress*100 % 100)
+			var _progress = float(loader.get_stage())/loader.get_stage_count()
 
 func sleep_blackout():
 	layer = 1

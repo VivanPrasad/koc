@@ -5,5 +5,7 @@ font_path = "res://Assets/UI/Fonts/royal-intonation.ttf"
 
 [resource]
 size = 10
+outline_size = 1
+outline_color = Color( 1, 0.698039, 0.988235, 0.054902 )
 extra_spacing_bottom = -4
 font_data = SubResource( 1 )

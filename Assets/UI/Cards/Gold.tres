@@ -7,3 +7,16 @@ script = ExtResource( 1 )
 name = "Gold"
 type = "Wealth"
 desc = "Used to purchase food and items"
+base_cost = 0
+base_stock = 0.0
+market = ""
+unlock_day = 0
+properties = {
+"drop": {
+},
+"hold": {
+"gold": 1
+},
+"use": {
+}
+}

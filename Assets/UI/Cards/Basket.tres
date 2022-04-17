@@ -6,4 +6,16 @@
 script = ExtResource( 2 )
 name = "Basket"
 type = "Item"
-desc = "Used to refill the market"
+desc = "Gives 3 random food cards"
+base_cost = 0
+base_stock = 0.0
+market = "town"
+unlock_day = 4
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

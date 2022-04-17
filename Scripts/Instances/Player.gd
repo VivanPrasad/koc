@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-const speed = 127.5
 const house_location = [
 	Vector2(-512, -518), 
 	Vector2(512, -358), 
@@ -36,6 +35,7 @@ func set_location():
 		position = cell_location[PlayerStats.sentence[1]]
 		get_tree().get_root().find_node("World", true, false).enter_dungeon()
 func _physics_process(_delta):
+	z_index = 0
 	if PlayerStats.current_menu == "none":
 		PlayerStats.can_move = true
 	else:
@@ -55,20 +55,11 @@ func _physics_process(_delta):
 			animationState.travel("Idle")
 		
 	# warning-ignore:return_value_discarded
-		move_and_slide(speed * move_direction)
+		move_and_slide(PlayerStats.speed * move_direction)
 	else:
 		if not PlayerStats.sleeping:
 			animationState.travel("Idle")
 		else:
 			animationState.travel("Sleep-Work")
-			position = Vector2(PlayerStats.bed[0].x * 4 + 16, PlayerStats.bed[0].y * 4 + 10)
+			position = Vector2(PlayerStats.bed[0].x * 4 + 18, PlayerStats.bed[0].y * 4 + 9)
 			z_index = 2
-func _input(_event):
-	if Input.is_action_just_pressed("map"):
-		if PlayerStats.current_menu == "none":
-			PlayerStats.current_menu = "map"
-			if $Camera2D.current:
-				$Camera2D.zoom = Vector2(8,8)#Vector2(3.6,3.75)
-		elif PlayerStats.current_menu == "map":
-				$Camera2D.zoom = Vector2(1.2,1.25)
-				PlayerStats.current_menu = "none"

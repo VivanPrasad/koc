@@ -21,6 +21,7 @@ export (String) var minute_interval = "00"
 export (String) var time_cycle = "Morning"
 
 func _ready():
+	TownStats.time = self
 	call_deferred("set_class")
 
 func set_class():
@@ -53,7 +54,7 @@ func _process(delta):
 		speed = 480*2 #night
 		time_cycle = "Night"
 		
-	if hour > 17 and hour < 23:
+	if hour > 17 or hour < 3:
 		if not PlayerStats.can_sleep:
 			PlayerStats.can_sleep = true
 			print("can_sleep")

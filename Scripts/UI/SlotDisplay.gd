@@ -10,7 +10,6 @@ func _ready():
 func get_hand():
 	for cards in PlayerStats.inventory.cards.size():
 		add_child(slot.instance())
-
 func update_inventory_display():
 	for card_index in PlayerStats.inventory.cards.size():
 		update_slot_display(card_index)

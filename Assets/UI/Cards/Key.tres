@@ -7,3 +7,15 @@ script = ExtResource( 2 )
 name = "Key"
 type = "Item"
 desc = "Used to Escape the Dungeon"
+base_cost = 0
+base_stock = 0.0
+market = "dungeon"
+unlock_day = 1
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

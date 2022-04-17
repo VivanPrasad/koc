@@ -11,13 +11,14 @@ var gold : int
 
 var life : int
 var status : String
+const base_speed = 127.5
+var speed = base_speed
 var can_eat = true
 var can_sleep = false
 
 var slot_selector
 var current_menu : String = "none"
 var inventory = preload("res://Scripts/Systems/Inventory.tres")
-var chest = preload("res://Scripts/Systems/Chest.tres")
 var bed : Array
 onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
 
@@ -38,6 +39,7 @@ func new_stats():
 	get_tree().get_root().find_node("Status", true, false).update_display()
 	randomize()
 	luck = randi() % 100+1
+	luck = 90
 	if luck < 16:
 		starting_class = 3 #Prisoner
 		if randi() %100 < 21:
@@ -50,21 +52,31 @@ func new_stats():
 	else:
 		starting_class = 1 #Homeowner
 		house_id = randi() % 5+1 #1-5
-	
-	TownStats.set_market()
+
 	preset_inventory(starting_class)
 	get_tree().get_root().find_node("Player", true, false).set_location()
 
 func preset_inventory(preset_id):
-	if preset_id < 3:
-		for i in 5:
-				inventory.cards[i] = load("res://Assets/UI/Cards/Gold.tres")
-
-	else:
+	if preset_id == 3:
 		for i in 3:
 				inventory.cards[i] = load("res://Assets/UI/Cards/Bread.tres")
+	else:
+		var starter = Card.new()
+		starter.name = "Starter Kit"; starter.type = "Item"; starter.desc = "Gives 1 bread and 4 gold. Good Luck.";
+		starter.properties["use"] = {"get_card":{"Bread":1,"Gold":4}}
+		inventory.cards[0] = starter
 	update_inventory()
-
+func get_card(cards):
+	for card in cards:
+		var i = 0
+		while inventory.cards[i] != null:
+			i += 1
+			if i > len(inventory.cards) - 1:
+				inventory.add_slot()
+				break
+		for amount in cards[card]:
+			add_card(card)
+	update_inventory()
 func add_card(card):
 	var i = 0
 	while inventory.cards[i] != null:
@@ -72,24 +84,18 @@ func add_card(card):
 		if i > len(inventory.cards) - 1:
 			inventory.add_slot()
 			break
-	inventory.cards[i] = card
+	if card is Card:
+		inventory.cards[i] = card
+	else:
+		inventory.cards[i] = load("res://Assets/UI/Cards/" + str(card) + ".tres")
 	update_inventory()
 
-func add_to_chest(card):
-	remove_card(inventory.cards[slot_selector])
-	var i = 0
-	while chest.cards[i] != null:
-		i += 1
-		if i > len(chest.cards) - 1:
-			chest.add_slot()
-			break
-	chest.cards[i] = card
-	update_inventory()
-func take_card(card):
-	chest.cards.erase(card)
-	chest.cards.append(null)
-	add_card(card)
-	update_inventory()
+func mod_inv(value):
+	inventory.call_deferred(value[0], value[1])
+func max_hand(value):
+	inventory.max_hand += value
+	for i in value:
+		inventory.add_slot()
 func remove_gold(amount):
 	for i in amount:
 		remove_card(load("res://Assets/UI/Cards/Gold.tres"))
@@ -110,11 +116,12 @@ func update_inventory():
 func count_gold():
 	gold = inventory.cards.count(load("res://Assets/UI/Cards/Gold.tres"))
 
-func food_eaten(food):
-	if food in TownStats.item_list: if life < 2: life += 1
+func gain_life(value):
+	if life < 2: life += value
 	if get_node_or_null("/root/World/UI/DayInfo/Status/") != null:
 		get_node_or_null("/root/World/UI/DayInfo/Status/").update_display()
 	show_alert(2)
+
 func change_skin(skinPath):
 	get_tree().get_root().find_node("Player", true, false).update_skin(skinPath)
 

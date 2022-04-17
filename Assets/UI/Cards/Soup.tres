@@ -7,3 +7,15 @@ script = ExtResource( 2 )
 name = "Soup"
 type = "Food"
 desc = "+1 Life (can be used twice)"
+base_cost = 4
+base_stock = 0.3
+market = ""
+unlock_day = 4
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

@@ -7,14 +7,17 @@ const market = ["item", "food", "role", "bank"]
 func _ready():
 	position = Vector2(position.x + 4, position.y + 4)
 func _on_Area2D_area_exited(_area):
-	if $Sprite.frame < 4 and $Sprite.frame != 2:
+	modulate = Color(1,1,1,1)
+	if $Sprite.frame < 4:
 		get_tree().get_root().find_node("TileSelect", true, false).queue_free()
 		PlayerStats.selected = "none"
 
 func _on_Area2D_area_entered(_area):
-	if $Sprite.frame < 4 and $Sprite.frame != 2:
+	if $Sprite.frame < 4:
+		modulate = Color(1.5,1.5,1.5,1)
 		if get_tree().get_root().find_node("TileSelect", true, false) == null:
 			add_child(tile_select.instance())
+			
 		else:
 			get_tree().get_root().find_node("TileSelect", true, false).queue_free()
 			add_child(tile_select.instance())

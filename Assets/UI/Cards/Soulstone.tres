@@ -7,3 +7,15 @@ script = ExtResource( 2 )
 name = "Soulstone"
 type = "Item"
 desc = "..."
+base_cost = 0
+base_stock = 0.0
+market = "merchant"
+unlock_day = 0
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

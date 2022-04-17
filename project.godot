@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Kingdom of Cards"
-run/main_scene="res://Scenes/Menu.tscn"
+run/main_scene="res://Scenes/World.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Kingdom of Cards"
 run/low_processor_mode=true
@@ -156,7 +156,7 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-map={
+stats={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
@@ -188,4 +188,3 @@ quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 environment/default_clear_color=Color( 0.137255, 0.137255, 0.137255, 1 )
 quality/depth/hdr=false
-environment/default_environment="res://Assets/Misc/default_env.tres"

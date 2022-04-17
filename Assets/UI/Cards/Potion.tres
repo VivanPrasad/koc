@@ -7,3 +7,15 @@ script = ExtResource( 2 )
 name = "Potion"
 type = "Item"
 desc = "Become immortal for a day"
+base_cost = 0
+base_stock = 0.0
+market = "town"
+unlock_day = 5
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}
