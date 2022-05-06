@@ -9,52 +9,52 @@ extents = Vector2( 4, 4 )
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.875, 0.6 )
 
-[sub_resource type="AnimationNodeAnimation" id=39]
+[sub_resource type="AnimationNodeAnimation" id=49]
 animation = "Idle L"
 
-[sub_resource type="AnimationNodeAnimation" id=40]
+[sub_resource type="AnimationNodeAnimation" id=50]
 animation = "Idle R"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
+[sub_resource type="AnimationNodeAnimation" id=51]
 animation = "Idle U"
 
-[sub_resource type="AnimationNodeAnimation" id=42]
+[sub_resource type="AnimationNodeAnimation" id=52]
 animation = "Idle D"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=6]
-blend_point_0/node = SubResource( 39 )
+blend_point_0/node = SubResource( 49 )
 blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 40 )
+blend_point_1/node = SubResource( 50 )
 blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 41 )
+blend_point_2/node = SubResource( 51 )
 blend_point_2/pos = Vector2( 0, -1 )
-blend_point_3/node = SubResource( 42 )
+blend_point_3/node = SubResource( 52 )
 blend_point_3/pos = Vector2( 0, 1 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=44]
 animation = "Sleep-Work"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=53]
 animation = "Walk R"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=54]
 animation = "Walk U"
 
-[sub_resource type="AnimationNodeAnimation" id=37]
+[sub_resource type="AnimationNodeAnimation" id=55]
 animation = "Walk L"
 
-[sub_resource type="AnimationNodeAnimation" id=38]
+[sub_resource type="AnimationNodeAnimation" id=56]
 animation = "Walk D"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=11]
-blend_point_0/node = SubResource( 8 )
+blend_point_0/node = SubResource( 53 )
 blend_point_0/pos = Vector2( 1, 0 )
-blend_point_1/node = SubResource( 9 )
+blend_point_1/node = SubResource( 54 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 37 )
+blend_point_2/node = SubResource( 55 )
 blend_point_2/pos = Vector2( -1, 0 )
-blend_point_3/node = SubResource( 38 )
+blend_point_3/node = SubResource( 56 )
 blend_point_3/pos = Vector2( 0, 1 )
 blend_mode = 1
 
@@ -293,7 +293,7 @@ limit_right = 720
 limit_bottom = 720
 limit_smoothed = true
 smoothing_enabled = true
-smoothing_speed = 6.0
+smoothing_speed = 4.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 14 )

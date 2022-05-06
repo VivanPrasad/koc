@@ -1,5 +1,14 @@
 extends Node
 
+var house_location = []
+var vacant = []
+
+const cell_location = [
+	Vector2(32, -486),
+	Vector2(128, -486),
+	Vector2(224, -486),
+	Vector2(320, -486)
+]
 var population : int
 var max_bank : int
 var town_gold : int
@@ -13,11 +22,10 @@ var day = 1
 var economy_started = false
 var can_steal = true
 
-var royalchest = 10
 var chests = [null]
 var inv_res
 
-var vacant = [1,2,3,4,5]
+
 var cells = [0,0,0,0]
 
 var time
@@ -37,6 +45,7 @@ const events = [
 	"blood_moon",
 	"plague",
 ]
+
 func update_market():
 	if get_tree().get_root().find_node("MarketUI", true, false) != null:
 		get_tree().get_root().find_node("MarketUI", true, false).update()
@@ -78,7 +87,7 @@ func set_bank_shop():
 	elif PlayerStats.starting_class == 1:
 		if PlayerStats.house_id > 3:
 			pass#if get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(0).disabled:
-				#register_item("Old Chest", "bank", 3, 1)
+			register_item("Old Chest", "bank", 3, 1)
 			#elif get_tree().get_root().find_node("Chest" + str(PlayerStats.house_id), true, false).get_child(1).frame == 0:
 				#register_item("New Chest", "bank", 6, 1)
 		else:
@@ -87,7 +96,7 @@ func set_bank_shop():
 				#register_item("New Chest", "bank", 6, 1)
 func start_town_economy():
 	economy_started = true
-	population = randi() % 6 + 4 #4-9
+	population = randi() % 7 + 4 #4-10
 	print("population: " + str(population))
 	max_bank = population * 5
 	town_gold = int(max_bank + randi() % 13 - 6)
@@ -111,6 +120,7 @@ func _physics_process(_delta):
 			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
 
 func open_town():
+	print(events[randi() % len(events) +1])
 	PlayerStats.show_alert(4)
 	set_market()
 	#update_item_cost("Bread", int(2+floor(0.4 * day) - wealth))
@@ -142,11 +152,11 @@ func update_sentence(time, cell):
 		PlayerStats.starting_class = 2
 
 # warning-ignore:shadowed_variable
-func set_sentence(time):
+func set_sentence(time, node):
 	if cells.has(0):
 		for i in cells:
 			#print(i)
 			if i == 0:
 				cells[i] = time
-				PlayerStats.sentence[1] = i
+				node.sentence[1] = i
 				break

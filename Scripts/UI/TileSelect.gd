@@ -13,6 +13,3 @@ func check():
 		$Key/Label.text = "Buy"
 	else:
 		$Key/Label.text = "Steal"
-
-func update_value():
-	$Gold.text = str(TownStats.royalchest) + "/" + "10"

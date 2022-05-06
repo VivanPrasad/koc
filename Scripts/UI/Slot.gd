@@ -82,6 +82,7 @@ func drop_data(_position, data):
 			PlayerStats.inventory.set_item(data.card_index, data.card)
 		$Selector.visible = false
 	else:
+		print(data)
 		my_card = TownStats.inv_res.cards[my_card_index]
 		if not my_card == null:
 			TownStats.inv_res.swap_items(my_card_index, data.card_index)

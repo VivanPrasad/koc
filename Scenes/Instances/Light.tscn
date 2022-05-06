@@ -8,6 +8,5 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
 texture_scale = 0.5
 color = Color( 1, 0.847059, 0.521569, 1 )
-energy = 1.05
 mode = 2
 script = ExtResource( 2 )

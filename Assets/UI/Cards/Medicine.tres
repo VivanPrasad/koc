@@ -9,7 +9,7 @@ type = "Item"
 desc = "Used to cure most illnesses"
 base_cost = 2
 base_stock = 0.2
-market = ""
+market = "town"
 unlock_day = 2
 properties = {
 "drop": {
@@ -17,5 +17,6 @@ properties = {
 "hold": {
 },
 "use": {
+"change_status": "Good"
 }
 }

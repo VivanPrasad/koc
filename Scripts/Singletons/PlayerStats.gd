@@ -5,6 +5,7 @@ var sleeping : bool = false
 var luck : int
 
 var starting_class : int
+var names = ["","Homeowner","Housekeeper","Prisoner","Undead","Spirit"]
 var sentence : Array
 var house_id : int
 var gold : int
@@ -12,25 +13,29 @@ var gold : int
 var life : int
 var status : String
 const base_speed = 127.5
+var input_vector = Vector2.ZERO
+
 var speed = base_speed
 var can_eat = true
 var can_sleep = false
 
 var slot_selector
 var current_menu : String = "none"
-var inventory = preload("res://Scripts/Systems/Inventory.tres")
+onready var inventory = preload("res://Scripts/Systems/Inventory.tres")
 var bed : Array
 onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
 
 var selected : String = "none"
-
+var locative : String
 
 const alerts = [
 	"You are hungry",
 	"You are ill",
 	"You are full",
 	"It's getting dark",
-	"The market is now open"
+	"The market is now open",
+	"You feel better",
+	"You have a bad feeling..."
 ]
 var alert_id : int
 
@@ -46,12 +51,15 @@ func new_stats():
 			sentence = [randi()%4+1,null]
 		else:
 			sentence = [randi()%2+1,null]
-		TownStats.set_sentence(sentence[0])
+		TownStats.set_sentence(sentence[0], self)
+		locative = "dungeon"
 	elif luck < 41:
 		starting_class = 2 #Homeless
+		locative = "town"
 	else:
 		starting_class = 1 #Homeowner
-		house_id = randi() % 5+1 #1-5
+		house_id = randi() % 6+1 #1-6
+		locative = "town"
 
 	preset_inventory(starting_class)
 	get_tree().get_root().find_node("Player", true, false).set_location()
@@ -63,10 +71,14 @@ func preset_inventory(preset_id):
 	else:
 		var starter = Card.new()
 		starter.name = "Starter Kit"; starter.type = "Item"; starter.desc = "Gives 1 bread and 4 gold. Good Luck.";
-		starter.properties["use"] = {"get_card":{"Bread":1,"Gold":4}}
+		starter.properties["use"] = {"get_cards":{"Bread":1,"Gold":1,"Medicine":1,"Soup":1}}
 		inventory.cards[0] = starter
 	update_inventory()
-func get_card(cards):
+
+func add_variant_card(card):
+	var starter = card["properties"]["variant"]
+	print(starter)
+func get_cards(cards):
 	for card in cards:
 		var i = 0
 		while inventory.cards[i] != null:
@@ -116,6 +128,11 @@ func update_inventory():
 func count_gold():
 	gold = inventory.cards.count(load("res://Assets/UI/Cards/Gold.tres"))
 
+func change_status(o):
+	status = str(o)
+	show_alert(5)
+	print(status)
+	
 func gain_life(value):
 	if life < 2: life += value
 	if get_node_or_null("/root/World/UI/DayInfo/Status/") != null:

@@ -17,5 +17,6 @@ properties = {
 "hold": {
 },
 "use": {
+"gain_life": 1
 }
 }

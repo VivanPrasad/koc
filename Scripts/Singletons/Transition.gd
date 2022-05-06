@@ -2,11 +2,12 @@ extends CanvasLayer
 
 
 onready var animation = $AnimationPlayer
+onready var rect = $ColorRect
 var scene : String
 var current
 
 func _ready():
-	$ColorRect.color = ("f4c497")
+	rect.color = ("f4c497")
 	get_tree().paused = true
 	call_deferred("splash_fade")
 
@@ -23,7 +24,7 @@ func change_scene(new_scene, current_scene, transition):
 	scene = new_scene
 	get_tree().paused = false
 	animation.play(transition)
-	$ColorRect.mouse_filter = Control.MOUSE_FILTER_STOP
+	rect.mouse_filter = Control.MOUSE_FILTER_STOP
 
 
 func _new_scene():
@@ -52,4 +53,4 @@ func wake():
 	layer = 2
 	if animation.is_playing():
 		animation.stop()
-	$ColorRect.color = Color("00000000")
+	rect.color = Color("00000000")

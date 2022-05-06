@@ -89,7 +89,7 @@ func play_night():
 func play_dungeon():
 	fade_out()
 	$Music.volume_db = -80
-	$Tween.interpolate_property($Music,"volume_db", -80, -15, 0.5, 2)
+	$Tween.interpolate_property($Music,"volume_db", -80, -10, 0.5, 2)
 	$Tween.start()
 	$Music.stream = dungeon
 	$Music.pitch_scale = 1

@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Systems/Card.gd" type="Script" id=2]
 
-[resource]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 2 )
 name = "Soup"
 type = "Food"
-desc = "+1 Life (can be used twice)"
-base_cost = 4
-base_stock = 0.3
+desc = "+1 Life (1/2 remaining)"
+base_cost = 0
+base_stock = 0.0
 market = ""
 unlock_day = 4
 properties = {
@@ -17,5 +17,26 @@ properties = {
 "hold": {
 },
 "use": {
+"gain_life": 1
+}
+}
+
+[resource]
+script = ExtResource( 2 )
+name = "Soup"
+type = "Food"
+desc = "+1 Life (2/2 remaining)"
+base_cost = 4
+base_stock = 0.3
+market = "town"
+unlock_day = 4
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+"add_card": SubResource( 1 ),
+"gain_life": 1
 }
 }

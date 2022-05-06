@@ -9,7 +9,7 @@ type = "Role"
 desc = "Work in the food or item stall"
 base_cost = 0
 base_stock = 0.0
-market = ""
+market = "town"
 unlock_day = 0
 properties = {
 "drop": {

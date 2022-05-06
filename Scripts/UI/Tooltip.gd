@@ -27,7 +27,6 @@ func _process(_delta):
 				$Panel/VBoxContainer.visible = false
 			if id < len(PlayerStats.inventory.cards):
 				card_info(PlayerStats.inventory.cards[id])
-				type.add_color_override("font_color", Color(color_type[PlayerStats.inventory.cards[id].type]))
 				if not PlayerStats.inventory.cards[id].properties["use"].empty():
 					$Panel/VBoxContainer/Panel2.visible = true
 					if PlayerStats.inventory.cards[id].properties["use"].has("gain_life"):
@@ -43,7 +42,6 @@ func _process(_delta):
 					$Panel/VBoxContainer/Panel2.visible = false
 			else:
 				card_info(TownStats.inv_res.cards[id - len(PlayerStats.inventory.cards)])
-				type.add_color_override("font_color", Color(color_type[TownStats.inv_res.cards[id - len(PlayerStats.inventory.cards)].type]))
 		else:
 			visible = false
 	elif PlayerStats.current_menu == "market":
@@ -51,11 +49,13 @@ func _process(_delta):
 				var get_card = load("res://Assets/UI/Cards/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
 				card_info(get_card)
 func card_info(item):
-	visible = true
-	if not PlayerStats.current_menu in ["bank",null]:
-			Name.text = item.name
-			type.text = item.type
-			desc.text = item.desc
+	if item != null:
+		visible = true
+		if not PlayerStats.current_menu in ["bank",null]:
+				Name.text = item.name
+				type.text = item.type
+				desc.text = item.desc
+				type.add_color_override("font_color", Color(color_type[item.type]))
 func _on_Button_pressed(): #BUY OR DROP
 	id = PlayerStats.slot_selector
 	if PlayerStats.current_menu == "inv": 
@@ -93,6 +93,8 @@ func _on_Button2_pressed():
 	id = PlayerStats.slot_selector
 	if not id == null:
 		PlayerStats.slot_selector = null
+		print(PlayerStats.inventory.cards[id].properties["use"])
 		for command in PlayerStats.inventory.cards[id].properties["use"]:
-			PlayerStats.call_deferred(command, PlayerStats.inventory.cards[id].properties["use"][command])
-			PlayerStats.remove_card(PlayerStats.inventory.cards[id])
+			if PlayerStats.has_method(command):
+				PlayerStats.call_deferred(command, PlayerStats.inventory.cards[id].properties["use"][command])
+		PlayerStats.remove_card(PlayerStats.inventory.cards[id])

@@ -10,7 +10,7 @@ extents = Vector2( 4, 0.6 )
 extents = Vector2( 2, 4 )
 
 [node name="Market" type="StaticBody2D"]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -25,6 +25,7 @@ region_enabled = true
 region_rect = Rect2( 0, 32, 48, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 monitorable = false
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]

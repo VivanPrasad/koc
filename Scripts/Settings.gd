@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 onready var master_vol = $Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer3/MSlider
 onready var music_vol = $Margin/VBoxContainer/Tabs/Audio/VBoxContainer/HBoxContainer/MuSlider

@@ -8,9 +8,8 @@
 [ext_resource path="res://Assets/UI/Fonts/TitleUI-Font8.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scripts/UI/Display.gd" type="Script" id=7]
 
-[node name="Settings" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Settings" type="CanvasLayer"]
+layer = 2
 script = ExtResource( 5 )
 
 [node name="Margin" type="MarginContainer" parent="."]
@@ -20,9 +19,6 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = -8.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
 margin_right = 288.0
@@ -80,7 +76,7 @@ margin_bottom = 24.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 min_value = -72.0
-max_value = 0.0
+max_value = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -218,7 +214,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "1920x1080"
 flat = true
-items = [ "1920x1080", null, false, 0, null, "1280x720", null, false, 1, null, "", null, false, 2, null ]
+items = [ "1920x1080", null, false, 0, null, "1280x720", null, false, 1, null, "320x180", null, false, 2, null ]
 selected = 0
 
 [node name="Label2" type="Label" parent="Margin/VBoxContainer/Tabs/Display/HBox/VBox"]
