@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Instances/CellDoor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/World/Tilesets/tileset-sheet-v4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/World/Tilesets/Dungeon.tres" type="TileSet" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "Grime"
@@ -26,229 +26,41 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 0, 0, 1, 0, 1, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 0, 1, 8, 1, 8, 7, 0, 7 )
-
-[sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( 7, 0, 8, 0, 8, 8, 7, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=11]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=12]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=13]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=14]
-points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
-
-[sub_resource type="TileSet" id=8]
-2/name = "WallTop"
-2/texture = ExtResource( 2 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 32, 72, 8, 8 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 4 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
-2/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-2/z_index = 0
-4/name = "Wall"
-4/texture = ExtResource( 2 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 40, 72, 8, 8 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape = SubResource( 5 )
-4/shape_one_way = false
-4/shape_one_way_margin = 1.0
-4/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-4/z_index = 0
-6/name = "invisWall"
-6/texture = ExtResource( 2 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 96, 72, 8, 8 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 6 )
-6/shape_one_way = false
-6/shape_one_way_margin = 1.0
-6/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 6 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-6/z_index = 0
-7/name = "Bed"
-7/texture = ExtResource( 2 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 24, 40, 8, 8 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 7 )
-7/shape_one_way = false
-7/shape_one_way_margin = 1.0
-7/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 7 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-7/z_index = 0
-8/name = "Dungeon"
-8/texture = ExtResource( 2 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 16, 72, 48, 8 )
-8/tile_mode = 2
-8/autotile/icon_coordinate = Vector2( 0, 0 )
-8/autotile/tile_size = Vector2( 8, 8 )
-8/autotile/spacing = 0
-8/autotile/occluder_map = [  ]
-8/autotile/navpoly_map = [  ]
-8/autotile/priority_map = [  ]
-8/autotile/z_index_map = [  ]
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 9 )
-8/shape_one_way = false
-8/shape_one_way_margin = 1.0
-8/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 9 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 1, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 10 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 2, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 11 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 3, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 12 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 4, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 13 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-}, {
-"autotile_coord": Vector2( 5, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 14 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-8/z_index = 0
-9/name = "Market"
-9/texture = ExtResource( 2 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 40, 32, 8, 8 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shape_offset = Vector2( 0, 0 )
-9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape_one_way = false
-9/shape_one_way_margin = 0.0
-9/shapes = [  ]
-9/z_index = 0
-
-[node name="Dungeon" type="YSort"]
-position = Vector2( -144, -566 )
+[node name="Underground" type="YSort"]
+position = Vector2( 16, 10 )
 
 [node name="Floor" type="TileMap" parent="."]
 scale = Vector2( 4, 4 )
+z_index = -1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
 cell_tile_origin = 1
 format = 1
-tile_data = PoolIntArray( 2, 0, 3, 3, 1, 0, 65538, 0, 3, 65539, 1, 0, 131072, 0, 0, 131073, 0, 0, 131074, 536870912, 1, 131075, -1073741824, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 536870912, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 536870912, 2, 131086, 0, 0, 131087, 0, 0, 196608, 0, 1, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 1610612736, 2, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 1610612736, 1, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 1610612736, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 327680, 0, 0, 327681, 1073741824, 2, 327682, 0, 0, 327683, 0, 0, 327684, 1610612736, 1, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 536870912, 2, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 1 )
+tile_data = PoolIntArray( -1114115, 0, 3, -1114114, 1, 0, -1048579, 0, 3, -1048578, 1, 0, -983045, 0, 0, -983044, 0, 0, -983043, 536870912, 1, -983042, -1073741824, 0, -983041, 0, 0, -1048576, 0, 0, -1048575, 0, 0, -1048574, 536870912, 0, -1048573, 0, 0, -1048572, 0, 0, -1048571, 0, 0, -1048570, 0, 0, -1048569, 0, 0, -1048568, 536870912, 2, -1048567, 0, 0, -1048566, 0, 0, -917509, 0, 1, -917508, 0, 0, -917507, 0, 0, -917506, 0, 0, -917505, 0, 0, -983040, 0, 0, -983039, 0, 0, -983038, 1610612736, 2, -983037, 0, 0, -983036, 0, 0, -983035, 0, 0, -983034, 1610612736, 1, -983033, 0, 0, -983032, 0, 0, -983031, 0, 0, -983030, 0, 0, -851973, 0, 0, -851972, 0, 0, -851971, 0, 0, -851970, 1610612736, 0, -851969, 0, 0, -917504, 0, 0, -917503, 0, 0, -917502, 0, 0, -917501, 0, 0, -917500, 0, 0, -917499, 0, 0, -917498, 0, 0, -917497, 0, 0, -917496, 0, 0, -917495, 0, 0, -917494, 0, 0, -786437, 0, 0, -786436, 1073741824, 2, -786435, 0, 0, -786434, 0, 0, -786433, 1610612736, 1, -851968, 0, 0, -851967, 0, 0, -851966, 0, 0, -851965, 0, 0, -851964, 536870912, 2, -851963, 0, 0, -851962, 0, 0, -851961, 0, 0, -851960, 0, 0, -851959, 0, 0, -851958, 0, 1 )
 
-[node name="Building" type="TileMap" parent="."]
+[node name="Decoration" type="TileMap" parent="."]
 scale = Vector2( 4, 4 )
-tile_set = SubResource( 8 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 8, 8 )
+cell_y_sort = true
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1048580, 12, 0, -1048577, 12, 0, -1114110, 12, 0, -1114107, 12, 0, -1114104, 12, 0, -983041, 11, 0, -1048568, 11, 0 )
+
+[node name="Buildings" type="TileMap" parent="."]
+scale = Vector2( 4, 4 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 8, 8 )
 cell_tile_origin = 1
 cell_y_sort = true
 show_collision = true
+centered_textures = true
 collision_layer = 0
 format = 1
-tile_data = PoolIntArray( -65534, 6, 0, 0, 8, 2, 1, 8, 2, 3, 8, 2, 4, 8, 2, 5, 8, 2, 6, 8, 2, 7, 8, 2, 8, 8, 2, 9, 8, 2, 10, 8, 2, 11, 8, 2, 12, 8, 2, 13, 8, 2, 14, 8, 2, 15, 8, 2, 65536, 8, 3, 65537, 8, 3, 65539, 8, 3, 65540, 8, 3, 65541, 8, 4, 65542, 8, 3, 65543, 8, 3, 65544, 8, 5, 65545, 8, 3, 65546, 8, 3, 65547, 8, 3, 65548, 8, 3, 65549, 8, 3, 65550, 536870920, 4, 65551, 8, 3, 196607, 6, 0, 131072, 9, 0, 131076, 536870920, 1, 131078, 536870919, 0, 131079, 536870920, 1, 131081, 536870919, 0, 131082, 536870920, 1, 131084, 536870919, 0, 131085, 536870920, 1, 131087, 536870919, 0, 131088, 6, 0, 262143, 6, 0, 196612, 536870920, 1, 196615, 536870920, 1, 196618, 536870920, 1, 196621, 536870920, 1, 196624, 6, 0, 327679, 6, 0, 262148, 8, 0, 262149, 8, 0, 262151, 8, 0, 262152, 8, 0, 262154, 8, 0, 262155, 8, 0, 262157, 8, 0, 262158, 8, 0, 262160, 6, 0, 393215, 6, 0, 327696, 6, 0, 393216, 8, 2, 393217, 8, 2, 393218, 8, 2, 393219, 8, 2, 393220, 8, 2, 393221, 8, 2, 393222, 8, 2, 393223, 8, 2, 393224, 8, 2, 393225, 8, 2, 393226, 8, 2, 393227, 8, 2, 393228, 8, 2, 393229, 8, 2, 393230, 8, 2, 393231, 8, 2, 458752, 8, 3, 458753, 8, 3, 458754, 8, 3, 458755, 8, 3, 458756, 8, 3, 458757, 8, 3, 458758, 8, 3, 458759, 8, 3, 458760, 8, 3, 458761, 8, 3, 458762, 8, 3, 458763, 8, 3, 458764, 8, 3, 458765, 8, 3, 458766, 8, 3, 458767, 8, 3 )
+tile_data = PoolIntArray( -1179651, 6, 0, -1114117, 8, 2, -1114116, 8, 2, -1114114, 8, 2, -1114113, 8, 2, -1179648, 8, 2, -1179647, 8, 2, -1179646, 8, 2, -1179645, 8, 2, -1179644, 8, 2, -1179643, 8, 2, -1179642, 8, 2, -1179641, 8, 2, -1179640, 8, 2, -1179639, 8, 2, -1179638, 8, 2, -1048581, 8, 3, -1048580, 8, 3, -1048578, 8, 3, -1048577, 8, 3, -1114112, 8, 4, -1114111, 8, 3, -1114110, 8, 3, -1114109, 8, 5, -1114108, 8, 3, -1114107, 8, 3, -1114106, 8, 3, -1114105, 8, 3, -1114104, 8, 3, -1114103, 536870920, 4, -1114102, 8, 3, -983046, 6, 0, -983045, 9, 0, -983041, 536870920, 1, -1048575, 536870919, 0, -1048574, 536870920, 1, -1048572, 536870919, 0, -1048571, 536870920, 1, -1048569, 536870919, 0, -1048568, 536870920, 1, -1048566, 536870919, 0, -1048565, 6, 0, -917510, 6, 0, -917505, 536870920, 1, -983038, 536870920, 1, -983035, 536870920, 1, -983032, 536870920, 1, -983029, 6, 0, -851974, 6, 0, -851969, 8, 0, -917504, 8, 0, -917503, 10, 0, -917502, 8, 0, -917501, 8, 0, -917500, 10, 0, -917499, 8, 0, -917498, 8, 0, -917497, 10, 0, -917496, 8, 0, -917495, 8, 0, -917494, 10, 0, -917493, 6, 0, -786438, 6, 0, -851957, 6, 0, -720901, 8, 2, -720900, 8, 2, -720899, 8, 2, -720898, 8, 2, -720897, 8, 2, -786432, 8, 2, -786431, 8, 2, -786430, 8, 2, -786429, 8, 2, -786428, 8, 2, -786427, 8, 2, -786426, 8, 2, -786425, 8, 2, -786424, 8, 2, -786423, 8, 2, -786422, 8, 2, -655365, 8, 3, -655364, 8, 3, -655363, 8, 3, -655362, 8, 3, -655361, 8, 3, -720896, 8, 3, -720895, 8, 3, -720894, 8, 3, -720893, 8, 3, -720892, 8, 3, -720891, 8, 3, -720890, 8, 3, -720889, 8, 3, -720888, 8, 3, -720887, 8, 3, -720886, 8, 3 )
 
-[node name="Doors" type="YSort" parent="Building"]
+[node name="Structures" type="YSort" parent="Buildings"]
 
-[node name="CellDoor" parent="Building/Doors" instance=ExtResource( 1 )]
-position = Vector2( 48, 32 )
-
-[node name="CellDoor2" parent="Building/Doors" instance=ExtResource( 1 )]
-position = Vector2( 72, 32 )
-
-[node name="CellDoor3" parent="Building/Doors" instance=ExtResource( 1 )]
-position = Vector2( 96, 32 )
-
-[node name="CellDoor4" parent="Building/Doors" instance=ExtResource( 1 )]
-position = Vector2( 120, 32 )
-
-[node name="Decoration" type="TileMap" parent="."]
-format = 1
+[node name="Shader" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0.137255, 0.121569, 0.258824, 1 )

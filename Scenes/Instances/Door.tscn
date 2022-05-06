@@ -17,10 +17,10 @@ script = ExtResource( 2 )
 position = Vector2( 0, -1 )
 texture = ExtResource( 1 )
 hframes = 2
-vframes = 3
+vframes = 4
 frame = 1
 region_enabled = true
-region_rect = Rect2( 0, 48, 16, 24 )
+region_rect = Rect2( 0, 48, 16, 32 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
@@ -34,5 +34,5 @@ audio_bus_name = "SFX"
 position = Vector2( 0, -1 )
 shape = SubResource( 4 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

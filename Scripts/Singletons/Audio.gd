@@ -88,7 +88,8 @@ func play_night():
 	$Music.stop()
 func play_dungeon():
 	fade_out()
-	$Tween.interpolate_property($Music,"volume_db", -80, -15, 0.5, 2)
+	$Music.volume_db = -80
+	$Tween.interpolate_property($Music,"volume_db", -80, -10, 0.5, 2)
 	$Tween.start()
 	$Music.stream = dungeon
 	$Music.pitch_scale = 1
@@ -108,6 +109,7 @@ func play_dialogue():
 
 func stop_all():
 	$Music.stop()
+	$Door.stop()
 
 func play_door_open():
 	$Door.stream = door_open
@@ -115,13 +117,13 @@ func play_door_open():
 	$Door.play()
 
 func play_door_close():
-	#yield(get_tree().create_timer(0.5), "timeout")
 	$Door.stream = door_close
 	$Door.pitch_scale = 0.8
 	$Door.play()
 
 func play_death():
-	$Death.steam = death
+	stop_all()
+	$Death.stream = death
 	$Death.play()
 
 func take_card():

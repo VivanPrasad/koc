@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/UI/Misc/Controls/joystick_bg.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Misc/Controls/e.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/Misc/Controls/e_press.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/Misc/Controls/blank_press.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/Misc/Controls/blank.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/UI/Main/MobileControls.gd" type="Script" id=11]
+
+[node name="MobileControls" type="CanvasLayer"]
+script = ExtResource( 11 )
+
+[node name="Interact" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 262, 114 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 7 )
+pressed = ExtResource( 8 )
+action = "interact"
+visibility_mode = 1
+
+[node name="Cancel" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 16, 10 )
+scale = Vector2( 2.3, 2 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 9 )
+action = "ui_cancel"
+visibility_mode = 1
+
+[node name="Stats" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 288, 90 )
+scale = Vector2( 1.533, 1.333 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 9 )
+action = "stats"
+visibility_mode = 1
+
+[node name="Joystick" type="TouchScreenButton" parent="."]
+self_modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 32, 106 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 1 )
+visibility_mode = 1
+
+[node name="Circle" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.333333 )
+show_behind_parent = true
+position = Vector2( 56, 130 )
+texture = ExtResource( 1 )

@@ -15,12 +15,18 @@ _global_script_classes=[ {
 "path": "res://Scripts/Systems/Card.gd"
 }, {
 "base": "Resource",
+"class": "Citizen",
+"language": "GDScript",
+"path": "res://Scripts/Instances/AI.gd"
+}, {
+"base": "Resource",
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://Scripts/Systems/InvSystem.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
+"Citizen": "",
 "Inventory": ""
 }
 
@@ -30,16 +36,18 @@ config/name="Kingdom of Cards"
 run/main_scene="res://Scenes/Menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Kingdom of Cards"
-run/low_processor_mode=true
-boot_splash/image="res://Assets/Misc/icon.png"
+run/delta_sync_after_draw=true
+boot_splash/image="res://Misc/icon.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.956863, 0.768627, 0.592157, 1 )
-config/icon="res://Assets/Misc/icon.png"
+config/icon="res://Misc/icon.png"
 config/windows_native_icon="res://app_icon.ico"
 
 [audio]
 
-default_bus_layout="res://Assets/Misc/default_bus_layout.tres"
+default_bus_layout="res://Misc/default_bus_layout.tres"
+channel_disable_threshold_db=-40.0
+channel_disable_time=0.75
 
 [autoload]
 
@@ -48,6 +56,12 @@ Audio="*res://Scenes/Autoloads/Audio.tscn"
 PlayerStats="*res://Scripts/Singletons/PlayerStats.gd"
 TownStats="*res://Scripts/Singletons/TownStats.gd"
 Settings="*res://Scripts/Singletons/Config.gd"
+
+[debug]
+
+settings/stdout/verbose_stdout=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
 
 [display]
 
@@ -156,11 +170,15 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-map={
+stats={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
@@ -174,18 +192,21 @@ file_logging/max_log_files=3
 
 [physics]
 
+common/physics_fps=120
 2d/default_gravity=0
 2d/default_gravity_vector=Vector2( 0, 0 )
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
+quality/directional_shadow/size=2048
+quality/directional_shadow/size.mobile=1024
 quality/shadows/filter_mode=0
 quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
-environment/default_clear_color=Color( 0.137255, 0.137255, 0.137255, 1 )
-quality/depth/hdr=false
-environment/default_environment="res://Assets/Misc/default_env.tres"
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+quality/reflections/atlas_size=512
+environment/default_environment="res://Misc/default_env.tres"

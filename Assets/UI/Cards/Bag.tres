@@ -6,4 +6,17 @@
 script = ExtResource( 2 )
 name = "Bag"
 type = "Item"
-desc = "+5 Inventory Slots"
+desc = "+2 Inventory Slots"
+base_cost = 5
+base_stock = 0.4
+market = "town"
+unlock_day = 1
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+"max_hand": 2
+}
+}

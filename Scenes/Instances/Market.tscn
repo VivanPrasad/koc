@@ -4,17 +4,17 @@
 [ext_resource path="res://Assets/World/Market.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 0.1 )
+extents = Vector2( 4, 0.6 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6, 4 )
+extents = Vector2( 2, 4 )
 
 [node name="Market" type="StaticBody2D"]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.1 )
+position = Vector2( 0, 3.6 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -25,10 +25,11 @@ region_enabled = true
 region_rect = Rect2( 0, 32, 48, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 monitorable = false
 
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 8 )
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

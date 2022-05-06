@@ -6,4 +6,17 @@
 script = ExtResource( 2 )
 name = "Berry"
 type = "Food"
-desc = "+1 Life"
+desc = "+1 Life (+Speed)"
+base_cost = 3
+base_stock = 1.0
+market = "town"
+unlock_day = 2
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+"gain_life": 1
+}
+}

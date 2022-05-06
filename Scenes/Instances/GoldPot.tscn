@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/UI/Fonts/UI-Font8.tres" type="DynamicFont" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+extents = Vector2( 3, 1.5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
@@ -20,6 +20,7 @@ hframes = 6
 frame = 3
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1.5 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

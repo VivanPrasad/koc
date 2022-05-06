@@ -10,10 +10,10 @@ var labels = {
 	"ui_down":"Down", 
 	"ui_left":"Left", 
 	"ui_right":"Right", 
-	"interact":"Interact", 
-	"map":"Map", 
+	"interact":"Interact/Cards", 
+	"stats":"Stat Menu", 
 	"ui_accept":"Confirm", 
-	"ui_cancel":"Exit"
+	"ui_cancel":"Exit Menu"
 	}
 func _ready():
 	keybinds = Settings.keybinds.duplicate()

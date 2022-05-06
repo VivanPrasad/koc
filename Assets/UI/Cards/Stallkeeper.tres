@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Systems/Card.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Stallkeeper"
+type = "Role"
+desc = "Work in the food or item stall"
+base_cost = 0
+base_stock = 0.0
+market = "town"
+unlock_day = 0
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

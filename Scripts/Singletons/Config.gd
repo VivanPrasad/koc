@@ -10,7 +10,7 @@ var default_keybinds = {
 	"ui_left":65,
 	"ui_right":68,
 	"interact":69,
-	"map":77,
+	"stats":77,
 	"ui_accept":32,
 	"ui_cancel":16777217
 	}

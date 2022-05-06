@@ -7,3 +7,15 @@ script = ExtResource( 2 )
 name = "Lantern"
 type = "Item"
 desc = "Used to ward off evil spirits"
+base_cost = 3
+base_stock = 0.8
+market = "town"
+unlock_day = 1
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

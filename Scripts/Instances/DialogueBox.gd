@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var dialogue = []
 
@@ -7,11 +7,19 @@ var dialogue_index = 0
 var finished = false
 
 func _ready():
-	tutorial(1)
+	PlayerStats.current_menu = "dialogue"
+	tutorial(0)
 	load_dialogue()
 
 func tutorial(act):
-	if act == 1:
+	if act == 0:
+		dialogue = ["You start as a [u]" + PlayerStats.names[PlayerStats.starting_class] + "[u].",
+		#"You have a Bed and a Chest.",
+		#"You must pay rent to the bank on Day 3 and 6.",
+		"There are " + str(TownStats.population) + " citizens.",
+		"You think today will be a good day."
+		]
+	elif act == 1:
 		dialogue = ["Kingdom of Cards is a strategic game.",
 		"One with many scenarios, many outcomes.",
 		"To the hand of cards, vital to all.",
@@ -54,7 +62,6 @@ func _process(_delta):
 	$Indicator.visible = finished
 
 func _input(event):
-	print(event)
 	if Input.is_action_just_pressed("ui_accept"):
 		if finished:
 			load_dialogue()
@@ -62,6 +69,12 @@ func _input(event):
 		else:
 			$Tween.seek(1)
 			finished = true
+	if event is InputEventMouseButton and finished:
+		load_dialogue()
+		Audio.play_back2()
+	if Input.is_action_just_pressed("interact") and finished:
+		load_dialogue()
+		Audio.play_back2()
 func load_dialogue():
 	if dialogue_index < dialogue.size():
 		finished = false
@@ -71,10 +84,12 @@ func load_dialogue():
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		$Tween.start()
 	else:
-		Transition.change_scene("res://Scenes/World.tscn", self, "QuickFade")
-		yield(get_tree().create_timer(0), "timeout")
+		PlayerStats.current_menu = "none"
+		#Transition.change_scene("res://Scenes/World.tscn", self, "QuickFade")
+		#yield(get_tree().create_timer(0), "timeout")
 		reset()
-		tutorial(2)
+		queue_free()
+		#tutorial(2)
 	dialogue_index += 1
 
 func _on_Tween_tween_completed(_object, _key):

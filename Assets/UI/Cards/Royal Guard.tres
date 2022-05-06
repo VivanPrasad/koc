@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Systems/Card.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Royal Guard"
+type = "Role"
+desc = "Guard the castle and tend to prisoners"
+base_cost = 2
+base_stock = 0.0
+market = "town"
+unlock_day = 2
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+}
+}

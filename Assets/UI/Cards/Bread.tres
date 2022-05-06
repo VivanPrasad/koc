@@ -7,3 +7,16 @@ script = ExtResource( 2 )
 name = "Bread"
 type = "Food"
 desc = "+1 Life"
+base_cost = 2
+base_stock = 2.0
+market = "town"
+unlock_day = 0
+properties = {
+"drop": {
+},
+"hold": {
+},
+"use": {
+"gain_life": 1
+}
+}

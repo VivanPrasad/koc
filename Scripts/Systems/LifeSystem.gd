@@ -41,4 +41,6 @@ func update_display():
 	elif PlayerStats.status == "Unknown":
 		lifeUI.frame = 9
 	elif PlayerStats.status == "Dead":
+		get_tree().get_root().find_node("World", true, false).queue_free()
+		Audio.play_death()
 		print("you are dead")
