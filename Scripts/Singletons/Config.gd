@@ -17,6 +17,7 @@ var default_keybinds = {
 
 var fps
 var resolution
+var fullscreen
 
 var master_vol :int
 var music_vol :int
@@ -36,10 +37,12 @@ func load_config():
 				keybinds[key] = null
 		fps = configfile.get_value("display", "fps")
 		resolution = configfile.get_value("display", "resolution")
+		fullscreen = configfile.get_value("display", "fullscreen")
 		master_vol = configfile.get_value("audio","master")
 		music_vol = configfile.get_value("audio","music")
 		sfx_vol = configfile.get_value("audio","sfx")
 		update_audio()
+		update_display()
 	else:
 		new_config()
 	set_game_binds()
@@ -49,6 +52,7 @@ func new_config():
 	Directory.new().make_dir("user://data")
 	configfile.set_value("display", "resolution", 1)
 	configfile.set_value("display", "fps", 60)
+	configfile.set_value("display", "fullscreen", 0)
 	configfile.set_value("audio", "master", 0.0)
 	configfile.set_value("audio", "music", 0.0)
 	configfile.set_value("audio", "sfx", 0.0)
@@ -89,6 +93,14 @@ func update_audio():
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), master_vol)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music_vol)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), sfx_vol)
+
+func update_display():
+	OS.window_fullscreen = configfile.get_value("display","fullscreen")
+	if str(configfile.get_value("display","fps")) != "Unlimited":
+		Engine.target_fps = configfile.get_value("display","fps")
+	else:
+		Engine.target_fps = 0
+	OS.window_size = Vector2(320*2,180*2) * (resolution +1)
 func add_object(_object, _hostDest,_destPath):
 	pass
 

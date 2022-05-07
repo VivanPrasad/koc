@@ -71,7 +71,7 @@ func preset_inventory(preset_id):
 	else:
 		var starter = Card.new()
 		starter.name = "Starter Kit"; starter.type = "Item"; starter.desc = "Gives 1 bread and 4 gold. Good Luck.";
-		starter.properties["use"] = {"get_cards":{"Bread":1,"Gold":1,"Medicine":1,"Soup":1}}
+		starter.properties["use"] = {"get_cards":{"Bread":1,"Gold":4}}
 		inventory.cards[0] = starter
 	update_inventory()
 

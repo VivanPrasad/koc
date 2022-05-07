@@ -30,7 +30,7 @@ func display_card(card):
 			cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/card.png")
 		else:
 			cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/role.png")
-		if File.new().file_exists("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png"):
+		if load("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png"):
 			cardIcon.texture = load("res://Assets/UI/Cards/Icon/" + str(card.name) + ".png")
 			cardIcon.modulate = Color(1,1,1,1)
 		else:

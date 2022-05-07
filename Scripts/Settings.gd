@@ -16,12 +16,13 @@ func _ready():
 	music_vol.value = Settings.music_vol
 	sfx_vol.value = Settings.sfx_vol
 	focus_disable()
-	flscrn.pressed = OS.window_fullscreen
+	flscrn.pressed = Settings.fullscreen
 # warning-ignore:standalone_expression
 
 func focus_disable():
 	$Margin/VBoxContainer/Tabs/Display/HBox/VBox/Resolution.focus_mode = 0
 	$Margin/VBoxContainer/Tabs/Display/HBox/VBox/FPS.focus_mode = 0
+	$Margin/VBoxContainer/Tabs/Display/HBox/VBox/Quality.focus_mode = 0
 	$Margin/VBoxContainer/Tabs/Display/HBox/VBox2/Debug.focus_mode = 0
 	flscrn.focus_mode = 0
 func _on_MSlider_value_changed(value)  -> void:
@@ -47,6 +48,7 @@ func _on_TabContainer_tab_changed(tab) -> void:
 func _on_Fullscreen_pressed():
 	Audio.play_dialogue()
 	OS.window_fullscreen = flscrn.pressed
+	Settings.save_display("fullscreen", int(flscrn.pressed))
 func _on_Debug_pressed():
 	Audio.play_dialogue()
 	if debug.pressed == true:

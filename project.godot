@@ -74,6 +74,10 @@ mouse_cursor/custom_image="res://Assets/UI/Misc/cursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
 [global]
 
 console=false
@@ -199,7 +203,6 @@ common/physics_fps=120
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=1
 2d/snapping/use_gpu_pixel_snap=true
 quality/directional_shadow/size=2048

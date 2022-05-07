@@ -18,26 +18,6 @@ func _ready():
 			if TownStats.item_list[slot][0] == PlayerStats.selected:
 				shop_list.add_child(shopslot.instance())
 	$MarginContainer/VBoxContainer/Title.text = str(PlayerStats.selected.capitalize()) + " Stall"
-func _process(_delta):
-	if not PlayerStats.slot_selector == null:
-		card_tooltip(TownStats.current_list[PlayerStats.slot_selector])
-		if PlayerStats.selected == "item":
-			type.add_color_override("font_color", Color("42549c"))
-		elif PlayerStats.selected == "food":
-			type.add_color_override("font_color", Color("9e3f60"))
-		elif PlayerStats.selected == "bank":
-			type.add_color_override("font_color", Color("cfa365"))
-	else:
-		$Tooltip.visible = false
-		Name.text = ""
-		type.text = ""
-		desc.text = ""
-
-func card_tooltip(item):
-	$Tooltip.visible = true
-	Name.text = item
-	type.text = PlayerStats.selected.capitalize()
-	desc.text = ""
 
 func update():
 	for id in $MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/VBoxContainer.get_child_count():

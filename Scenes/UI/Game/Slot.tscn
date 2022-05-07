@@ -39,7 +39,7 @@ script = ExtResource( 3 )
 modulate = Color( 0.733333, 0.733333, 0.733333, 1 )
 position = Vector2( -1, -1 )
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 playing = true
 centered = false
 

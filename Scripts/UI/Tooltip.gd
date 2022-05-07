@@ -10,6 +10,7 @@ onready var button2 = $Panel/VBoxContainer/Panel2/Button2
 const color_type = {"Item":"42549c", "Food":"9e3f60", "Wealth":"cfa365", "Role":"386e4b", "Special":"cccccc", "":""}
 var id
 
+var get_card
 var mode = 0
 func _ready():
 	PlayerStats.slot_selector = null
@@ -44,10 +45,19 @@ func _process(_delta):
 				card_info(TownStats.inv_res.cards[id - len(PlayerStats.inventory.cards)])
 		else:
 			visible = false
+		#get_card = null
 	elif PlayerStats.current_menu == "market":
-		if not id == null:
-				var get_card = load("res://Assets/UI/Cards/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
-				card_info(get_card)
+		if id != null:
+			visible = true
+			if get_card != load("res://Assets/UI/Cards/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres"):
+				get_card = load("res://Assets/UI/Cards/" + str(TownStats.current_list[PlayerStats.slot_selector]) + ".tres")
+			if int(TownStats.item_list[TownStats.current_list[id]][1]) > PlayerStats.gold or int(TownStats.item_list[TownStats.current_list[id]][2]) == 0:
+				button.disabled = true
+			else:
+				button.disabled = false
+		else:
+			visible = false
+		card_info(get_card)
 func card_info(item):
 	if item != null:
 		visible = true

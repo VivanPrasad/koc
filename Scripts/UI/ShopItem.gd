@@ -15,7 +15,6 @@ func update_display():
 	slot_icon.texture = load("res://Assets/UI/Cards/Icon/" + str(TownStats.current_list[id]) + ".png")
 	slot_cost.text = str(TownStats.item_list[TownStats.current_list[id]][1])
 	slot_stock.text = str(TownStats.item_list[TownStats.current_list[id]][2])
-	
 	if int(slot_cost.text) > PlayerStats.gold or int(slot_stock.text) == 0:
 		slot_name.add_color_override("font_color", Color("696969"))
 

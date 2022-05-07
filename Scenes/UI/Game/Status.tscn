@@ -24,6 +24,8 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 
 [node name="Life" type="Sprite" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+show_behind_parent = true
 position = Vector2( 293.784, 28.2652 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
