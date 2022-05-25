@@ -48,7 +48,7 @@ func get_drag_data(_position):
 		if mode == 0:
 			card = PlayerStats.inventory.remove_item(card_index)
 		else:
-			card = TownStats.inv_res.remove_item(card_index)
+			card = TownStats.chests[PlayerStats.selected.to_int()].inventory.remove_item(card_index)
 		if card is Card:
 			cardTexture.texture_normal = load("res://Assets/UI/Cards/Texture/empty.png")
 			Audio.take_card()
@@ -83,12 +83,12 @@ func drop_data(_position, data):
 		$Selector.visible = false
 	else:
 		print(data)
-		my_card = TownStats.inv_res.cards[my_card_index]
+		my_card = TownStats.chests[PlayerStats.selected.to_int()].inventory.cards[my_card_index]
 		if not my_card == null:
-			TownStats.inv_res.swap_items(my_card_index, data.card_index)
-			TownStats.inv_res.set_item(my_card_index, data.card)
+			TownStats.chests[PlayerStats.selected.to_int()].inventory.swap_items(my_card_index, data.card_index)
+			TownStats.chests[PlayerStats.selected.to_int()].inventory.set_item(my_card_index, data.card)
 		else:
-			TownStats.inv_res.set_item(data.card_index, data.card)
+			TownStats.chests[PlayerStats.selected.to_int()].inventory.set_item(data.card_index, data.card)
 
 func _process(_delta):
 	if not PlayerStats.slot_selector == null:
@@ -96,7 +96,7 @@ func _process(_delta):
 			if PlayerStats.slot_selector > len(PlayerStats.inventory.cards)-1:
 				$Selector.visible = false
 		else:
-			if PlayerStats.slot_selector < len(TownStats.inv_res.cards)-1:
+			if PlayerStats.slot_selector < len(TownStats.chests[PlayerStats.selected.to_int()].inventory.cards)-1:
 				$Selector.visible = false
 
 func _on_TextureRect_pressed():
@@ -108,7 +108,7 @@ func _on_TextureRect_pressed():
 			if PlayerStats.inventory.cards[get_index()] == null:
 				$Selector.visible = false
 		else:
-			if TownStats.inv_res.cards[get_index()] == null:
+			if TownStats.chests[PlayerStats.selected.to_int()].inventory.cards[get_index()] == null:
 				$Selector.visible = false
 		PlayerStats.slot_selector = get_index() + int(mode*PlayerStats.inventory.cards.size())
 		$Selector.visible = true

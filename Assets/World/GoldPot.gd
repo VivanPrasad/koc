@@ -20,3 +20,4 @@ func _on_Area2D_area_entered(_area):
 
 func _process(_delta):
 	$TownGold.text = str(TownStats.town_gold) + "/" + str(TownStats.max_bank)
+	$Sprite.frame = TownStats.wealth + 3

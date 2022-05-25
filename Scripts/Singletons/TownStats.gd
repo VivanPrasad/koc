@@ -22,28 +22,27 @@ var day = 1
 var economy_started = false
 var can_steal = true
 
-var chests = [null]
-var inv_res
-
 
 var cells = [0,0,0,0]
 
 var time
 
 const events = [
-	"food_bank",
 	"festival",
 	"tax",
 	"birthday",
 	"bounty",
 	"werewolves",
-	"outbreak",
 	"triple_triumph",
 	"the_culling",
 	"double_event",
 	"new_order",
 	"blood_moon",
 	"plague",
+]
+
+const economic_events = [
+	"food_bank"
 ]
 
 func update_market():
@@ -107,20 +106,18 @@ func _physics_process(_delta):
 			wealth = -3
 		elif float(town_gold)/max_bank <= 0.25:
 			wealth = -2
-		elif float(town_gold)/max_bank <= 0.50:
+		elif float(town_gold)/max_bank <= 0.75:
 			wealth = -1
-		elif float(town_gold)/max_bank <= 1:
+		elif float(town_gold)/max_bank <= 1.0:
 			wealth = 0
 		elif float(town_gold)/max_bank <= 1.25:
 			wealth = 1
-		else:
-			wealth = 2
 		
-		if get_node_or_null("root/World/Objects/Buildings/Structures/GoldPot"):
+		if get_node_or_null("root/World/Navigation2D/Objects/Buildings/Structures/GoldPot"):
 			get_tree().get_root().find_node("GoldPot", true, false).get_child(0).frame = wealth + 3
 
 func open_town():
-	print(events[randi() % len(events) +1])
+	print(events[randi() % len(events)])
 	PlayerStats.show_alert(4)
 	set_market()
 	#update_item_cost("Bread", int(2+floor(0.4 * day) - wealth))

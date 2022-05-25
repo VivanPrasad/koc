@@ -11,7 +11,6 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 
-
 var path = []
 var threshhold = 100
 var nav = null
@@ -31,20 +30,21 @@ func new_stats():
 			else:
 				sentence = [randi()%2+1,null]
 			TownStats.set_sentence(sentence[0], self)
-			print("o h n o")
+			#prisoner
 		elif luck < 41:
 			starting_class = 2
-			print("welp")
+			#start out as homeless
 		else:
 			starting_class = 1
 			house_id = randi() % 6 + 1 #1-6
 			if TownStats.vacant.has(0):
 				while TownStats.vacant[house_id-1] == 1:
 					house_id = randi() % 6 + 1 #1-6
-				print("I got a house!")
+				#homeowner
 			else:
 				starting_class = 2
-				print("too many houses :()")
+				#all houses are taken, start as homeless
+
 func set_location():
 	if starting_class == 1:
 		position = TownStats.house_location[house_id - 1]
@@ -54,13 +54,11 @@ func set_location():
 		position = Vector2(32 + randi()% 10-5 * 10, 282 + randi()% 10-6 * 10)
 		locative = "town"
 	elif starting_class == 3:
-		yield(get_tree().create_timer(0), "timeout")
+		yield(get_tree(), "idle_frame")
 		position = TownStats.cell_location[sentence[1]]
 		locative = "dungeon"
-		print(sentence)
 
 func _physics_process(_delta):
-	pass
 	if locative != PlayerStats.locative:
 		visible = false
 	else:
@@ -80,11 +78,9 @@ func move_to_target():
 		if direction != Vector2.ZERO:
 			animationTree.set("parameters/Walk/blend_position", direction)
 			animationState.travel("Walk")
-		
+
 		move_and_slide(direction * AI.speed)
-		
 		return
 
 func get_target_path(target):
 	path = nav.get_simple_path(global_position, target, false)
-	

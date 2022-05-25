@@ -63,8 +63,6 @@ func add_instances():
 				instance.get_child(1).frame = int(buildings.get_cell_autotile_coord(cell.x, cell.y).x)
 			elif i == door:
 				instance.type = int(buildings.get_cell_autotile_coord(cell.x, cell.y).y)
-			elif i == chest:
-				TownStats.chests.append(instance)
 			structure.add_child(instance)
 			#position = Vector2(cell.x*32, cell.y*32)
 			buildings.set_cell(cell.x, cell.y, -1)
@@ -113,7 +111,6 @@ func add_instances():
 func new_stats():
 	PlayerStats.new_stats()
 	TownStats.start_town_economy()
-	
 	for person in int(TownStats.population - 1):
 		var player = citizen.instance()
 		$Navigation2D/Objects.add_child(player)
@@ -129,7 +126,7 @@ func _process(_delta):
 	if ground.visible:
 		time = $UI/DayInfo.second
 		frame = range_lerp(time,0,86400,0,24)
-		$Shader/AnimationPlayer.play("TimeCycle")
+		$Shader/AnimationPlayer.play("BloodMoon")
 		$Shader/AnimationPlayer.seek(frame)
 	else:
 		$Shader/AnimationPlayer.stop()
@@ -183,7 +180,6 @@ func _unhandled_input(_event):
 				TownStats.town_gold -= 1
 				PlayerStats.add_card(load("res://Assets/UI/Cards/Gold.tres"))
 		elif PlayerStats.selected.begins_with("chest"):
-			TownStats.inv_res = TownStats.chests[PlayerStats.selected.to_int()].inventory
 			if find_node("ChestUI", true, false) == null:
 				if PlayerStats.current_menu == "none":
 					$UI.add_child(chest_ui.instance())
@@ -195,6 +191,8 @@ func _unhandled_input(_event):
 				if not PlayerStats.sleeping:
 					if PlayerStats.can_sleep:
 						PlayerStats.good_night()
+					else:
+						PlayerStats.show_alert(7)
 				else:
 					Transition.wake()
 					$Navigation2D/Objects/Player.position.x += 32
@@ -214,6 +212,7 @@ func enter_dungeon():
 	decoration.visible = false
 	buildings.visible = false
 	buildings.set_collision_layer_bit(0, false)
+	$Navigation2D/Objects/Dungeon/Decoration.set_collision_layer_bit(0, true)
 	$Shader.color = Color("231f42")
 	Audio.play_dungeon()
 
@@ -227,6 +226,7 @@ func exit_dungeon():
 	decoration.visible = true
 	buildings.visible = true
 	buildings.set_collision_layer_bit(0, true)
+	$Navigation2D/Objects/Dungeon/Decoration.set_collision_layer_bit(0, false)
 	$Shader.visible = true
 	if $UI/DayInfo.hour > 3 and $UI/DayInfo.hour < 21:
 		Audio.play_day()

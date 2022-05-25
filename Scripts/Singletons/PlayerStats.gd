@@ -18,11 +18,13 @@ var input_vector = Vector2.ZERO
 var speed = base_speed
 var can_eat = true
 var can_sleep = false
+var bed : Array
 
 var slot_selector
 var current_menu : String = "none"
+
 onready var inventory = preload("res://Scripts/Systems/Inventory.tres")
-var bed : Array
+
 onready var information = preload("res://Scenes/UI/Game/InformationUI.tscn")
 
 var selected : String = "none"
@@ -35,7 +37,9 @@ const alerts = [
 	"It's getting dark",
 	"The market is now open",
 	"You feel better",
-	"You have a bad feeling..."
+	"You have a bad feeling...",
+	"You cannot sleep right now",
+	
 ]
 var alert_id : int
 

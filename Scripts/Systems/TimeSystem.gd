@@ -41,7 +41,7 @@ func _process(delta):
 	if hour > 0:
 		processed = false
 	if hour > 3 and hour < 22:
-		speed = 216 #320 #day
+		speed = 216*2 #320 #day
 		if hour < 8:
 			time_cycle = "Early Morning"
 		elif hour < 12:

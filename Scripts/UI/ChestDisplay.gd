@@ -3,7 +3,6 @@ extends GridContainer
 var slot = preload("res://Scenes/UI/Game/Slot.tscn")
 var resource
 func _ready():
-	resource = TownStats.inv_res
 	resource.connect("cards_changed", self, "on_cards_changed")
 	get_hand()
 	update_inventory_display()

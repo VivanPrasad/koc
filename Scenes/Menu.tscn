@@ -208,9 +208,10 @@ margin_bottom = 24.0
 rect_scale = Vector2( 0.75, 0.75 )
 texture_normal = ExtResource( 6 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [connection signal="mouse_entered" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_Play_mouse_entered"]
 [connection signal="mouse_exited" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Play" to="." method="_on_Play_mouse_exited"]
@@ -229,3 +230,4 @@ __meta__ = {
 [connection signal="pressed" from="Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="Discord" to="." method="_on_Discord_pressed"]
 [connection signal="pressed" from="Reddit" to="." method="_on_Reddit_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

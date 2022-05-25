@@ -16,7 +16,7 @@ onready var settings_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/
 onready var collection_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Collection
 onready var exit_button = $Margin/VBoxContainer/HBoxContainer/VBoxContainer/Exit
 onready var bg = $BG
-#var new_color : Color
+var new_color : Color
 
 func _ready():
 	call_deferred("setup")
@@ -26,12 +26,15 @@ func setup():
 	$BG2.playing = true
 	play_button.focus_mode = 0;tutorial_button.focus_mode = 0;settings_button.focus_mode = 0;settings_button.focus_mode = 0;collection_button.focus_mode = 0;exit_button.focus_mode = 0
 	randomize()
-	bg.modulate = (Color(colors[int(rand_range(0,4))]))
+	bg.modulate = Color(randf(), randf(), randf(), 1.0)
+	new_color = Color(randf(), randf(), randf(), 1.0)
+	#bg.modulate = (Color(colors[int(rand_range(0,4))]))
 
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	bg.modulate = lerp(bg.modulate, new_color, 0.001)
 
 func _on_Play_mouse_entered():
 	play_button.text = "~ Play"
@@ -91,3 +94,7 @@ func _on_Reddit_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_Timer_timeout() -> void:
+	new_color = (Color(randf(),randf(),randf(),1.0))
